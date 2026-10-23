@@ -1,5 +1,5 @@
 === VBEB - Bridge for VikBooking and Elementor ===
-Contributors: (wordpress.org username)
+Contributors: sibsas2013
 Tags: vikbooking, elementor, booking, hotel, room
 Requires at least: 6.5
 Tested up to: 7.1
