@@ -37,6 +37,8 @@ Widget in the "VBEB - General Widgets" category:
 
 The plugin also adds the "VBEB Popup" template type, used by the Room - Information Button widget to show the information request form in a popup.
 
+VikBooking and Elementor are trademarks of their respective owners. This plugin is not affiliated with or endorsed by them.
+
 = Requirements =
 
 * [VikBooking](https://wordpress.org/plugins/vikbooking/) (free version is enough)
