@@ -1,0 +1,43 @@
+<wpml-config>
+	<elementor-widgets>
+		<widget name="vbeb_room_price_widget">
+			<fields>
+				<field type="VBEB Room - Price: Text Before the Price" editor_type="LINE">text_before</field>
+			</fields>
+		</widget>
+		<widget name="vbeb_room_calendar_widget">
+			<fields>
+				<field type="VBEB Room - Calendar: Title" editor_type="AREA">title_text</field>
+			</fields>
+		</widget>
+		<widget name="vbeb_room_bookingform_widget">
+			<fields>
+				<field type="VBEB Room - Booking Form: Title" editor_type="AREA">title_text</field>
+			</fields>
+		</widget>
+		<widget name="vbeb_room_map_widget">
+			<fields>
+				<field type="VBEB Room - Map: Title" editor_type="AREA">title_text</field>
+			</fields>
+		</widget>
+		<widget name="vbeb_room_reqinfobutton_widget">
+			<fields>
+				<field type="VBEB Room - Information Button: Text" editor_type="LINE">button_text</field>
+				<field type="post-ids" sub-type="elementor_library">form_template</field>
+			</fields>
+		</widget>
+		<widget name="vbeb_room_reqinfoform_widget">
+			<fields>
+				<field type="VBEB Room - Information Form: Title" editor_type="AREA">title_text</field>
+				<field type="VBEB Room - Information Form: Message Sent Successfully" editor_type="LINE">notice_text</field>
+			</fields>
+			<fields-in-item items_of="form_fields">
+				<field type="VBEB Room - Information Form: Label" editor_type="LINE">field_label</field>
+				<field type="VBEB Room - Information Form: Acceptance Text" editor_type="AREA">field_acceptance</field>
+				<field type="VBEB Room - Information Form: Text Before the Link" editor_type="AREA">field_link_before</field>
+				<field type="VBEB Room - Information Form: Link Text" editor_type="LINE">field_link_text</field>
+				<field type="VBEB Room - Information Form: Placeholder" editor_type="LINE">field_placeholder</field>
+			</fields-in-item>
+		</widget>
+	</elementor-widgets>
+</wpml-config>

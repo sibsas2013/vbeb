@@ -1,0 +1,415 @@
+# Traduzione spagnola (Spagna) di VBEB - Bridge for VikBooking and Elementor (dominio "vbeb").
+msgid ""
+msgstr ""
+"Project-Id-Version: VBEB - Bridge for VikBooking and Elementor 1.0.0\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: vbeb\n"
+
+msgid "\"Clear dates\" Button"
+msgstr "Botón \"Limpiar fechas\""
+
+msgid "\"Clear dates\" and \"Close\" Buttons"
+msgstr "Botones \"Limpiar fechas\" y \"Cerrar\""
+
+msgid "\"Close\" Button"
+msgstr "Botón \"Cerrar\""
+
+msgid "\"Send\" Button"
+msgstr "Botón \"Enviar\""
+
+msgid "-- Use the original VikBooking template --"
+msgstr "-- Usar la plantilla original de VikBooking --"
+
+msgid "Acceptance Text"
+msgstr "Texto de aceptación"
+
+msgid "Active Thumbnail Border"
+msgstr "Borde de la miniatura activa"
+
+msgid "Adults"
+msgstr "Adultos"
+
+msgid "Adults and Children"
+msgstr "Adultos y niños"
+
+msgid "Advanced"
+msgstr "Avanzado"
+
+msgid "Amenities List"
+msgstr "Lista de servicios"
+
+msgid "Arrow Color"
+msgstr "Color de la flecha"
+
+msgid "Available"
+msgstr "Disponible"
+
+msgid "Available Color"
+msgstr "Color disponible"
+
+msgid "Available Days"
+msgstr "Días disponibles"
+
+msgid "Book Button"
+msgstr "Botón Reservar"
+
+msgid "Calendar"
+msgstr "Calendario"
+
+msgid "Calendar Template"
+msgstr "Plantilla del calendario"
+
+msgid "Calendars Container"
+msgstr "Contenedor de los calendarios"
+
+msgid "Check-in Only (Mouse over a Check-out)"
+msgstr "Solo entrada (ratón sobre una salida)"
+
+msgid "Check-in Too"
+msgstr "También la entrada"
+
+msgid "Check-in and Check-out Selected"
+msgstr "Entrada y salida elegidas"
+
+msgid "Check-in date"
+msgstr "Fecha de entrada"
+
+msgid "Check-out date"
+msgstr "Fecha de salida"
+
+#, php-format
+msgid "Copy failed for: %s (probably a permission problem on that file)."
+msgstr "Copia fallida para: %s (probablemente un problema de permisos en ese archivo)."
+
+msgid "Custom Price Label"
+msgstr "Etiqueta de precio personalizada"
+
+msgid "Custom Price Sub-Text"
+msgstr "Subtexto de precio personalizado"
+
+msgid "Date Range"
+msgstr "Rango de fechas"
+
+msgid "Day Cells"
+msgstr "Celdas de los días"
+
+msgid "Day Names"
+msgstr "Nombres de los días"
+
+msgid "Day Status Legend"
+msgstr "Leyenda del estado de los días"
+
+msgid "Days - Name"
+msgstr "Días - nombre"
+
+msgid "Days - Number"
+msgstr "Días - número"
+
+msgid "Default (VikBooking)"
+msgstr "Predeterminado (VikBooking)"
+
+msgid "Default Label After the Price"
+msgstr "Etiqueta predeterminada después del precio"
+
+#. Description of the plugin
+msgid "Design the VikBooking room details page with Elementor widgets."
+msgstr "Diseña la página de detalle de la habitación de VikBooking con los widgets de Elementor."
+
+msgid "Editor Preview"
+msgstr "Vista previa en el editor"
+
+msgid "Elementor is not active. Activate it to use this feature."
+msgstr "Elementor no está activo. Actívalo para usar esta función."
+
+msgid "Field Height"
+msgstr "Altura de los campos"
+
+#, php-format
+msgid "Files already present with content that is not ours, not overwritten for safety: %s. See the \"-vbeb-suggested.php\" copy saved next to them."
+msgstr "Archivos ya presentes con contenido que no es nuestro, no sobrescritos por seguridad: %s. Consulta la copia \"-vbeb-suggested.php\" guardada al lado."
+
+msgid "Form Icon Color"
+msgstr "Color de los iconos del formulario"
+
+msgid "Form Template"
+msgstr "Plantilla del formulario"
+
+msgid "Full Name"
+msgstr "Nombre completo"
+
+msgid "Guests"
+msgstr "Huéspedes"
+
+msgid "Guests allowed policy"
+msgstr "Políticas de huéspedes permitidas"
+
+msgid "Hide Line"
+msgstr "Ocultar la línea"
+
+msgid "Include Main Image"
+msgstr "Incluir la imagen principal"
+
+msgid "Information Form"
+msgstr "Formulario de información"
+
+msgid "Input Size"
+msgstr "Tamaño de entrada"
+
+msgid "Label Before the Price"
+msgstr "Etiqueta antes del precio"
+
+msgid "Leave empty to use the original VikBooking text"
+msgstr "Deja vacío para usar el texto original de VikBooking"
+
+msgid "Line Color"
+msgstr "Color de la línea"
+
+msgid "Line Thickness"
+msgstr "Grosor de la línea"
+
+msgid "Link Text"
+msgstr "Texto del enlace"
+
+msgid "Map"
+msgstr "Mapa"
+
+msgid "Mark Color"
+msgstr "Color de la marca"
+
+msgid "Masonry"
+msgstr "Mampostería"
+
+msgid "Message Sent Successfully"
+msgstr "Mensaje enviado correctamente"
+
+msgid "Month Dropdown"
+msgstr "Menú desplegable de meses"
+
+msgid "Month Header"
+msgstr "Cabecera del mes"
+
+msgid "Month Navigation"
+msgstr "Navegación del mes"
+
+msgid "Month and Year"
+msgstr "Mes y año"
+
+msgid "Move Down"
+msgstr "Mover hacia abajo"
+
+msgid "Move Left"
+msgstr "Mover a la izquierda"
+
+msgid "Move Right"
+msgstr "Mover a la derecha"
+
+msgid "Move Up"
+msgstr "Mover hacia arriba"
+
+msgid "Not Available"
+msgstr "No disponible"
+
+msgid "Not Available Color"
+msgstr "Color no disponible"
+
+msgid "Not Available Days"
+msgstr "Días no disponibles"
+
+msgid "Partially Reserved"
+msgstr "Parcialmente reservado"
+
+msgid "Partially Reserved Color"
+msgstr "Color parcialmente reservado"
+
+msgid "Past Days"
+msgstr "Días pasados"
+
+msgid "Placeholder"
+msgstr "Marcador de posición"
+
+msgid "Plugin activation error"
+msgstr "Error de activación del plugin"
+
+msgid "Popup"
+msgstr "Popup"
+
+msgid "Popup Calendar"
+msgstr "Calendario emergente"
+
+msgid "Popup Type"
+msgstr "Tipo de popup"
+
+msgid "Price"
+msgstr "Precio"
+
+msgid "Pricing"
+msgstr "Precios"
+
+msgid "Required Mark"
+msgstr "Marca de obligatorio"
+
+msgid "Room Details"
+msgstr "Detalle de la habitación"
+
+msgid "Room Name"
+msgstr "Nombre de la habitación"
+
+msgid "Rooms"
+msgstr "Habitaciones"
+
+msgid "Row Height"
+msgstr "Altura de fila"
+
+msgid "Selected Day"
+msgstr "Día seleccionado"
+
+msgid "Show Amenity Name"
+msgstr "Mostrar el nombre del servicio"
+
+msgid "Show Close Button"
+msgstr "Mostrar botón de cierre"
+
+msgid "Show Default Label After the Price"
+msgstr "Mostrar etiqueta predeterminada después del precio"
+
+msgid "Show Grid"
+msgstr "Mostrar la cuadrícula"
+
+msgid "Show Label Before the Price"
+msgstr "Mostrar etiqueta antes del precio"
+
+msgid "Show Thumbnails"
+msgstr "Mostrar miniaturas"
+
+msgid "Show Title"
+msgstr "Mostrar título"
+
+msgid "Spacing Between Calendars"
+msgstr "Espaciado entre calendarios"
+
+msgid "Template"
+msgstr "Plantilla"
+
+msgid "Terms and Conditions"
+msgstr "Términos y condiciones"
+
+msgid "Text Before the Link"
+msgstr "Texto antes del enlace"
+
+msgid "Text Before the Price"
+msgstr "Texto antes del precio"
+
+msgid "Texts"
+msgstr "Textos"
+
+msgid "There are no templates in the Elementor Template Library yet. First create a template of type \"Section\" (Templates > Add New) with the VBEB widgets you want to use (category \"VBEB - Room Details\" in the widget panel), then come back here to select it."
+msgstr "Todavía no hay ninguna plantilla en la Biblioteca de plantillas de Elementor. Crea primero una plantilla de tipo \"Sección\" (Plantillas > Añadir nueva) con los widgets VBEB que quieras usar (categoría \"VBEB - Detalle de la habitación\" en el panel de widgets) y vuelve aquí para seleccionarla."
+
+msgid "This plugin cannot be activated because the required plugins (Elementor and VikBooking) are missing or inactive."
+msgstr "Este plugin no se puede activar porque los plugins necesarios (Elementor y VikBooking) faltan o están inactivos."
+
+msgid "Thumbnails"
+msgstr "Miniaturas"
+
+msgid "Today"
+msgstr "Hoy"
+
+msgid "Unable to write to the override folder: check the folder permissions via FTP."
+msgstr "No se puede escribir en la carpeta de override: comprueba los permisos por FTP."
+
+msgid "VBEB - General Widgets"
+msgstr "VBEB - Widgets generales"
+
+msgid "VBEB - Room Details"
+msgstr "VBEB - Detalle de la habitación"
+
+msgid "VBEB Popup"
+msgstr "VBEB Popup"
+
+msgid "VBEB Popup Calendar"
+msgstr "VBEB Calendario emergente"
+
+msgid "VBEB Room - Amenities"
+msgstr "VBEB Habitación - Servicios"
+
+msgid "VBEB Room - Booking Form"
+msgstr "VBEB Habitación - Formulario de reserva"
+
+msgid "VBEB Room - Calendar"
+msgstr "VBEB Habitación - Calendario"
+
+msgid "VBEB Room - Category"
+msgstr "VBEB Habitación - Categoría"
+
+msgid "VBEB Room - Description"
+msgstr "VBEB Habitación - Descripción"
+
+msgid "VBEB Room - Gallery"
+msgstr "VBEB Habitación - Galería"
+
+msgid "VBEB Room - Image Carousel"
+msgstr "VBEB Habitación - Carrusel de imágenes"
+
+msgid "VBEB Room - Information Button"
+msgstr "VBEB Habitación - Botón de información"
+
+msgid "VBEB Room - Information Form"
+msgstr "VBEB Habitación - Formulario de información"
+
+msgid "VBEB Room - Main Image"
+msgstr "VBEB Habitación - Imagen principal"
+
+msgid "VBEB Room - Map"
+msgstr "VBEB Habitación - Mapa"
+
+msgid "VBEB Room - Name"
+msgstr "VBEB Habitación - Nombre"
+
+msgid "VBEB Room - Price"
+msgstr "VBEB Habitación - Precio"
+
+msgid "VBEB Room - Short Description"
+msgstr "VBEB Habitación - Descripción corta"
+
+msgid "VikBooking text"
+msgstr "Texto de VikBooking"
+
+msgid "Visible Months"
+msgstr "Meses visibles"
+
+msgid "Visible Thumbnails"
+msgstr "Miniaturas visibles"
+
+msgid "Zoom In"
+msgstr "Acercar"
+
+msgid "Zoom Out"
+msgstr "Alejar"
+
+msgid "e-Mail"
+msgstr "correo electrónico"
+
+msgid "requires the Elementor plugin to be active. The widgets will not be available until Elementor is activated."
+msgstr "requiere que el plugin Elementor esté activo. Los widgets no estarán disponibles hasta que se active Elementor."
+
+#, php-format
+msgid "the files %s already exist with content different from ours (probably not replaced yet, or customized by hand): they were not overwritten for safety. A copy with the suffix \"-vbeb-suggested.php\" was saved next to them: compare it and, if it is fine, rename or replace it manually via FTP."
+msgstr "los archivos %s ya existen con un contenido distinto del nuestro (probablemente aún no sustituidos, o personalizados a mano): no se han sobrescrito por seguridad. Se ha guardado al lado una copia con el sufijo \"-vbeb-suggested.php\": compárala y, si está bien, renómbrala o sustitúyela manualmente por FTP."
+
+#, php-format
+msgid "unable to create or write the override folder %1$s. Copy the file manually from %2$s via FTP, or fix the write permissions."
+msgstr "no se puede crear o escribir la carpeta de override %1$s. Copia el archivo manualmente desde %2$s por FTP, o corrige los permisos de escritura."
+
+#, php-format
+msgid "unable to write the files %1$s to their override folder (insufficient permissions?). Copy them manually via FTP from %2$s."
+msgstr "no se han podido escribir los archivos %1$s en su carpeta de override (¿permisos insuficientes?). Cópialos manualmente por FTP desde %2$s."
+
+msgid "— Original VikBooking Calendar —"
+msgstr "— Calendario original de VikBooking —"
+
+msgid "— Original VikBooking Form —"
+msgstr "— Formulario original de VikBooking —"
