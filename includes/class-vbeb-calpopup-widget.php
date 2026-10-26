@@ -147,7 +147,6 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 			array(
 				'label'       => esc_html__( 'Background Color', 'elementor' ),
 				'type'        => Controls_Manager::COLOR,
-				'description' => 'Con la griglia colora la cella, senza il cerchio del numero.',
 				'selectors'   => array(
 					vbeb_calpop_sel_griglia_multi( $parti, false )                   => 'background: {{VALUE}} !important;',
 					vbeb_calpop_sel_griglia_multi( array_merge( $celle, $parti ), true ) => 'background: {{VALUE}} !important;',
@@ -208,7 +207,6 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 			array(
 				'label'     => esc_html__( 'Background Color', 'elementor' ),
 				'type'      => Controls_Manager::COLOR,
-				'description' => 'Con la griglia colora la cella, senza il cerchio del numero.',
 				// VBEB 7.230.0: come in stile_cerchio(). Con la griglia anche
 				// la variabile dello sfondo delle celle scelte, letta da
 				// VikBooking con "!important" (riga 6001).
@@ -269,15 +267,6 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		$this->start_controls_section( 'section_content', array( 'label' => esc_html__( 'Calendar', 'vbeb' ), 'tab' => Controls_Manager::TAB_CONTENT ) );
 
 		$this->add_control(
-			'intro_note',
-			array(
-				'type'            => Controls_Manager::RAW_HTML,
-				'raw'             => 'Metti questo widget in un template di tipo <strong>Sezione</strong> e scegli il template nella sezione "Calendario popup" del widget "Camera - Modulo prenotazione": il suo calendario prenderà l\'aspetto disegnato qui.<br><br>Qui vedi un calendario di prova, con un soggiorno di esempio che parte da oggi.',
-				'content_classes' => 'elementor-descriptor',
-			)
-		);
-
-		$this->add_control(
 			'months',
 			array(
 				'label'     => esc_html__( 'Visible Months', 'vbeb' ),
@@ -288,7 +277,6 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 					'1' => '1',
 					'2' => '2',
 				),
-				'separator' => 'before',
 			)
 		);
 
@@ -307,14 +295,6 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 			)
 		);
 
-		$this->add_control(
-			'behaviour_note',
-			array(
-				'type'            => Controls_Manager::RAW_HTML,
-				'raw'             => '"Predefinito" lascia la scelta a VikBooking: il modulo di prenotazione della camera mostra 2 mesi (1 da telefono) e i pulsanti. Il resto del funzionamento - date non disponibili, soggiorno minimo, check-in e check-out - resta sempre quello di VikBooking.',
-				'content_classes' => 'elementor-descriptor',
-			)
-		);
 
 		// VBEB 7.223.0: lo stato mostrato dal calendario di prova, per
 		// disegnare le due schede di "Intervallo date" (Giorni - numero).
@@ -331,7 +311,6 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 					''        => esc_html__( 'Check-in and Check-out Selected', 'vbeb' ),
 					'checkin' => esc_html__( 'Check-in Only (Mouse over a Check-out)', 'vbeb' ),
 				),
-				'description' => 'Solo per il calendario di prova qui sotto. Due giorni della prossima settimana sono mostrati come non disponibili.',
 			)
 		);
 
@@ -481,7 +460,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		$this->add_control(
 			'arrows_color',
 			array(
-				'label'     => esc_html__( 'Arrow Color', 'vbeb' ),
+				'label'     => esc_html__( 'Color', 'elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( vbeb_calpop_sel_multi( array( ' .ui-datepicker-prev span:after', ' .ui-datepicker-next span:after' ) ) => 'color: {{VALUE}} !important;' ),
 			)
@@ -512,7 +491,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		$this->add_control(
 			'arrows_color_hover',
 			array(
-				'label'     => esc_html__( 'Arrow Color', 'vbeb' ),
+				'label'     => esc_html__( 'Color', 'elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( vbeb_calpop_sel_multi( array( ' .ui-datepicker-prev:hover span:after', ' .ui-datepicker-next:hover span:after' ) ) => 'color: {{VALUE}} !important;' ),
 			)
@@ -744,7 +723,6 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 				'label_off'    => esc_html__( 'No', 'elementor' ),
 				'return_value' => 'yes',
 				'default'      => '',
-				'description'  => 'Un bordo attorno a oggi, ai giorni disponibili e a quelli non disponibili. I giorni passati restano senza.',
 				// VBEB 7.230.0: il calendario di prova si ridisegna, per la
 				// classe "vbeb-calpop-grid" (vedi render()).
 				'render_type'  => 'template',
@@ -945,7 +923,6 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 			array(
 				'label'       => esc_html__( 'Background Color', 'elementor' ),
 				'type'        => Controls_Manager::COLOR,
-				'description' => 'Con la griglia colora la cella, senza il cerchio del numero.',
 				'selectors'   => array(
 					vbeb_calpop_sel_griglia_multi( array( $futuro . ' > a:hover', $interno . ' > *:hover', $oggi_h . ' > a:hover' ), false ) => 'background: {{VALUE}} !important; --vbo-white-bg-color: {{VALUE}};',
 					vbeb_calpop_sel_griglia_multi( array( $futuro . ':hover', $futuro . ':hover > a', $interno . ':hover', $interno . ':hover > *', $oggi_h . ':hover', $oggi_h . ':hover > a' ), true ) => 'background: {{VALUE}} !important; --vbo-light-grey-bg-color: {{VALUE}}; --vbo-white-bg-color: {{VALUE}};',
@@ -1152,7 +1129,6 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 				'label_off'    => esc_html__( 'No', 'elementor' ),
 				'return_value' => 'yes',
 				'default'      => '',
-				'description'  => 'Il giorno di check-in scelto prende i colori di questa scheda mentre il mouse indica un check-out. Con "No" resta quello di "Giorno selezionato".',
 				'selectors'    => array(
 					$this->sel( $checkin_anteprima . ':not(#vbeb-calpop-prev2) > *' ) => 'color: var(--vbeb-calpop-prev-color, var(--vbo-pref-fontcolor)) !important; background: var(--vbeb-calpop-prev-bg, var(--vbo-pref-bgcolor)) !important;',
 					vbeb_calpop_sel_griglia( $checkin_anteprima, true ) => 'background: var(--vbeb-calpop-prev-bg, var(--vbo-pref-bgcolor)) !important;',
@@ -1160,14 +1136,6 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 			)
 		);
 
-		$this->add_control(
-			'days_preview_note',
-			array(
-				'type'            => Controls_Manager::RAW_HTML,
-				'raw'             => 'Mentre si sceglie il check-out. Per vederlo qui, scegli "Solo check-in" in Contenuto &rarr; Calendario &rarr; Anteprima nell\'editor.',
-				'content_classes' => 'elementor-descriptor',
-			)
-		);
 
 		$this->end_controls_tab();
 
