@@ -42,9 +42,6 @@ msgstr "Avanzado"
 msgid "Amenities List"
 msgstr "Lista de servicios"
 
-msgid "Arrow Color"
-msgstr "Color de la flecha"
-
 msgid "Available"
 msgstr "Disponible"
 
