@@ -25,13 +25,18 @@ define( 'VBEB_URL', plugin_dir_url( __FILE__ ) );
 /**
  * VBEB 7.616.0, su richiesta dell'utente: traduzioni dei testi propri del
  * plugin (dominio "vbeb"). Nel codice i testi sono in inglese; il file
- * languages/vbeb-it_IT riporta l'italiano. I testi che esistono anche in
- * Elementor usano invece il dominio "elementor" e le sue traduzioni.
+ * languages/vbeb-it_IT riporta l'italiano.
+ * VBEB free (wordpress.org), su richiesta dell'utente: anche i testi che
+ * esistono in Elementor usano il dominio "vbeb" (wordpress.org accetta solo
+ * il dominio del plugin). L'inglese resta quello di Elementor e le
+ * traduzioni italiana e spagnola sono copiate dai file di lingua di
+ * Elementor (elementor-it_IT.po, elementor-es_ES.po): i commenti "dominio
+ * elementor" nei widget indicano questi testi.
  * Un file in wp-content/languages/plugins/ (per esempio fatto con Loco
  * Translate) ha la precedenza su quello del plugin.
  */
 function vbeb_load_textdomain() {
-	load_plugin_textdomain( 'vbeb', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+	load_plugin_textdomain( 'vbeb', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' ); // phpcs:ignore PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound -- traduzioni italiana e spagnola incluse nel plugin (cartella languages).
 }
 add_action( 'init', 'vbeb_load_textdomain', 0 );
 
@@ -212,7 +217,7 @@ function vbeb_template_lingua( $template_id ) {
 	if ( function_exists( 'pll_get_post' ) ) {
 		$tradotto = (int) pll_get_post( $template_id );
 	} elseif ( has_filter( 'wpml_object_id' ) ) {
-		$tradotto = (int) apply_filters( 'wpml_object_id', $template_id, 'elementor_library', true );
+		$tradotto = (int) apply_filters( 'wpml_object_id', $template_id, 'elementor_library', true ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- filtro di WPML (anche Polylang lo implementa).
 	}
 
 	if ( $tradotto > 0 && $tradotto !== $template_id && 'publish' === get_post_status( $tradotto ) ) {
@@ -253,10 +258,10 @@ function vbeb_stili_v4_template( $template_id ) {
 	}
 	$fatti[ $template_id ] = true;
 
-	do_action( 'elementor/post/render', $template_id );
+	do_action( 'elementor/post/render', $template_id ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- azione di Elementor.
 
 	if ( did_action( 'elementor/frontend/after_enqueue_post_styles' ) ) {
-		do_action( 'elementor/frontend/after_enqueue_post_styles' );
+		do_action( 'elementor/frontend/after_enqueue_post_styles' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- azione di Elementor.
 	}
 }
 
@@ -296,7 +301,30 @@ add_action(
 		if ( ! defined( 'VBO_SITE_URI' ) ) {
 			return;
 		}
-		wp_enqueue_style( 'vbeb-vikbooking-editor', VBO_SITE_URI . 'resources/vikbooking_styles.css', array(), null );
+		// VBEB free (Plugin Check): versione del foglio = versione di VikBooking.
+		$versione = defined( 'VIKBOOKING_SOFTWARE_VERSION' ) ? VIKBOOKING_SOFTWARE_VERSION : VBEB_VERSION;
+		wp_enqueue_style( 'vbeb-vikbooking-editor', VBO_SITE_URI . 'resources/vikbooking_styles.css', array(), $versione );
+
+		// VBEB free (Plugin Check: i fogli vanno caricati con
+		// wp_enqueue_style()): il foglio di jQuery UI di VikBooking e le icone
+		// di VikBooking (Font Awesome 7), prima stampati con "<link>" dentro i
+		// widget (vbeb_stili_vikbooking_editor(), vbeb_icone_vikbooking_editor()).
+		// Le icone dopo il Font Awesome di Elementor, se registrato, come sul sito.
+		wp_enqueue_style( 'vbeb-vikbooking-jquery-ui', VBO_SITE_URI . 'resources/jquery-ui.min.css', array(), $versione );
+		$fogli = array( 'fontawesome.min.css', 'solid.min.css', 'regular.min.css' );
+		if ( class_exists( 'VikBookingIcons' ) && ! empty( VikBookingIcons::$fa_default_styles ) && is_array( VikBookingIcons::$fa_default_styles ) ) {
+			$fogli = VikBookingIcons::$fa_default_styles;
+		}
+		$dipendenze = array();
+		foreach ( array( 'elementor-icons-fa-solid', 'elementor-icons-fa-regular', 'font-awesome' ) as $handle ) {
+			if ( wp_style_is( $handle, 'registered' ) ) {
+				$dipendenze[] = $handle;
+			}
+		}
+		foreach ( $fogli as $foglio ) {
+			wp_enqueue_style( 'vbeb-vikbooking-' . sanitize_key( str_replace( '.', '-', $foglio ) ), VBO_SITE_URI . 'resources/' . $foglio, $dipendenze, $versione );
+		}
+
 		if ( class_exists( 'VikBooking' ) && method_exists( 'VikBooking', 'getPreferredColors' ) ) {
 			$colori = VikBooking::getPreferredColors();
 			if ( is_array( $colori ) && ! empty( $colori ) ) {
@@ -492,7 +520,20 @@ function vbeb_popup_elenco( $tipo ) {
 		)
 	);
 
+	// VBEB free, segnalato dall'utente: con Polylang o WPML, nell'editor solo
+	// i template nella lingua del template aperto (piu' quelli senza lingua).
+	// Fuori dall'editor, o senza plugin multilingua, tutti.
+	$lingua = ( function_exists( 'vbeb_lingua_template_editor' ) && function_exists( 'vbeb_editor_ripete' ) && vbeb_editor_ripete() )
+		? str_replace( '-', '_', vbeb_lingua_template_editor() )
+		: '';
+
 	foreach ( $posts as $post ) {
+		if ( '' !== $lingua && function_exists( 'vbeb_lingua_contenuto' ) ) {
+			$lingua_post = vbeb_lingua_contenuto( $post->ID );
+			if ( '' !== $lingua_post && $lingua_post !== $lingua ) {
+				continue;
+			}
+		}
 		$impostazioni = get_post_meta( $post->ID, '_elementor_page_settings', true );
 		$tipo_tpl     = ( is_array( $impostazioni ) && ! empty( $impostazioni['vbeb_popup_tipo'] ) ) ? $impostazioni['vbeb_popup_tipo'] : 'reqinfo';
 		if ( $tipo_tpl === $tipo ) {
@@ -579,7 +620,7 @@ function vbeb_reqinfo_etichette_email( $args ) {
 		return $args;
 	}
 
-	$scelte = wp_unslash( $_POST['vbeb_ri_lbl'] );
+	$scelte = map_deep( wp_unslash( $_POST['vbeb_ri_lbl'] ), 'sanitize_text_field' );
 	// phpcs:enable
 
 	$chiavi = array(

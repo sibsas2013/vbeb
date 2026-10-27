@@ -33,9 +33,9 @@ Widgets in the "VBEB - Room Details" category:
 
 Widget in the "VBEB - General Widgets" category:
 
-* VBEB Popup Calendar: designs the look of the date picker used by the Room - Booking Form widget.
+* VBEB Popup Calendar: designs the look of the date picker used by the Room - Booking Form widget. It goes in a "VBEB Popup" template with Popup Type "Popup Calendar".
 
-The plugin also adds the "VBEB Popup" template type, used by the Room - Information Button widget to show the information request form in a popup.
+The plugin also adds the "VBEB Popup" template type, with two popup types: "Information Form", used by the Room - Information Button widget to show the information request form in a popup, and "Popup Calendar", for the date picker of the Room - Booking Form widget.
 
 VikBooking and Elementor are trademarks of their respective owners. This plugin is not affiliated with or endorsed by them.
 
@@ -48,7 +48,7 @@ VikBooking and Elementor are trademarks of their respective owners. This plugin 
 
 1. Install and activate VikBooking and Elementor.
 2. Upload the plugin folder to `/wp-content/plugins/` or install it from the Plugins screen, then activate it.
-3. In Elementor, create a template of type "Section" and add the widgets of the "VBEB - Room Details" category.
+3. In Elementor, create a template of type "Page" and add the widgets of the "VBEB - Room Details" category.
 4. Go to VBEB > Template and select the template for the Room Details page.
 
 On activation the plugin copies the override file `default_listing.php` to `wp-content/uploads/vikbooking/overrides/site/roomdetails/`. If a file with the same name already exists and was not created by this plugin, it is not overwritten: a copy with the suffix `-vbeb-suggested.php` is saved next to it and a notice is shown in the dashboard.
@@ -65,7 +65,7 @@ The Room Details page is shown exactly as VikBooking draws it.
 
 = Does it work with WPML or Polylang? =
 
-Yes. The room data is translated with the VikBooking translations. When a translated copy of the Room Details template (or of a "VBEB Popup" template) exists and is published, it is used for the pages in that language. With WPML, the texts typed in the widgets can be translated with the WPML translation editor (the plugin includes a wpml-config.xml file). With Polylang, enable the translation of the Elementor templates in Languages > Settings > Custom post types and taxonomies.
+Yes. The room data is translated with the VikBooking translations. When a translated copy of the Room Details template (or of a "VBEB Popup" or popup calendar template) exists and is published, it is used for the pages in that language. With WPML, the texts typed in the widgets can be translated with the WPML translation editor (the plugin includes a wpml-config.xml file). With Polylang, enable the translation of the Elementor templates in Languages > Settings > Custom post types and taxonomies.
 
 == Changelog ==
 

@@ -13,6 +13,13 @@
 		<widget name="vbeb_room_bookingform_widget">
 			<fields>
 				<field type="VBEB Room - Booking Form: Title" editor_type="AREA">title_text</field>
+				<field type="post-ids" sub-type="elementor_library">calpopup_template</field>
+			</fields>
+		</widget>
+		<widget name="vbeb_calpopup_widget">
+			<fields>
+				<field type="VBEB Popup Calendar: &quot;Clear dates&quot; Text" editor_type="LINE">clear_text</field>
+				<field type="VBEB Popup Calendar: &quot;Close&quot; Text" editor_type="LINE">close_text</field>
 			</fields>
 		</widget>
 		<widget name="vbeb_room_map_widget">
