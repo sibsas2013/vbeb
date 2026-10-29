@@ -90,8 +90,8 @@ class VBEB_Price_Widget extends Widget_Base {
 			array(
 				'label'        => esc_html__( 'Show Default Label After the Price', 'vbeb' ),
 				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Yes', 'elementor' ),
-				'label_off'    => esc_html__( 'No', 'elementor' ),
+				'label_on'     => esc_html__( 'Yes', 'vbeb' ),
+				'label_off'    => esc_html__( 'No', 'vbeb' ),
 				'return_value' => 'yes',
 				'default'      => '',
 			)
@@ -127,7 +127,7 @@ class VBEB_Price_Widget extends Widget_Base {
 		$this->add_control(
 			'price_color',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( $prezzo => 'color: {{VALUE}};' ),
 			)
@@ -157,7 +157,7 @@ class VBEB_Price_Widget extends Widget_Base {
 		$this->add_control(
 			'text_before_color',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ), // VBEB 7.586.0: era "Color".
+				'label'     => esc_html__( 'Text Color', 'vbeb' ), // VBEB 7.586.0: era "Color".
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .vbeb-price-text-before' => 'color: {{VALUE}};',
@@ -198,7 +198,7 @@ class VBEB_Price_Widget extends Widget_Base {
 		$this->add_control(
 			'default_after_color',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( '{{WRAPPER}} .vbeb-price-default-label' => 'color: {{VALUE}};' ),
 			)
@@ -235,7 +235,7 @@ class VBEB_Price_Widget extends Widget_Base {
 			$this->add_control(
 				$dati[1] . '_color',
 				array(
-					'label'     => esc_html__( 'Text Color', 'elementor' ),
+					'label'     => esc_html__( 'Text Color', 'vbeb' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array( '{{WRAPPER}} ' . $dati[2] => 'color: {{VALUE}};' ),
 				)
@@ -268,9 +268,9 @@ class VBEB_Price_Widget extends Widget_Base {
 		// VBEB 7.354.0: solo con "Mostra testo predefinito dopo il prezzo".
 		$etichetta_classe = 'vbeb-price-custom-label';
 		if ( ! empty( $custpricetxt ) ) {
-			$custpricetxt = JText::translate( $custpricetxt );
+			$custpricetxt = vbeb_vbo_testo( $custpricetxt );
 		} elseif ( isset( $settings['show_default_after'] ) && 'yes' === $settings['show_default_after'] ) {
-			$custpricetxt     = JText::translate( 'VBLISTPERNIGHT' );
+			$custpricetxt     = vbeb_vbo_testo( 'VBLISTPERNIGHT' );
 			// VBEB 7.360.0: classe propria, per la sezione di stile
 			// "Etichetta predefinita dopo il prezzo".
 			$etichetta_classe = 'vbeb-price-default-label';

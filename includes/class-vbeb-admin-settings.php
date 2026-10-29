@@ -62,20 +62,59 @@ add_action( 'admin_init', 'vbeb_register_settings' );
 /**
  * Ritorna l'elenco dei template salvati nella Libreria Template di Elementor,
  * cosi' l'utente puo' sceglierne uno da usare come override.
+ *
+ * VBEB free, su richiesta dell'utente: solo i template di tipo "Pagina"
+ * ("_elementor_template_type" = "page") e, con Polylang o WPML, solo quelli
+ * nella lingua predefinita del sito.
  */
 function vbeb_get_elementor_templates() {
 	if ( ! post_type_exists( 'elementor_library' ) ) {
 		return array();
 	}
-	return get_posts(
-		array(
-			'post_type'      => 'elementor_library',
-			'posts_per_page' => -1,
-			'post_status'    => 'publish',
-			'orderby'        => 'title',
-			'order'          => 'ASC',
-		)
+
+	$args = array(
+		'post_type'      => 'elementor_library',
+		'posts_per_page' => -1,
+		'post_status'    => 'publish',
+		'orderby'        => 'title',
+		'order'          => 'ASC',
+		'meta_key'       => '_elementor_template_type', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- elenco dei template, letto solo in questa pagina.
+		'meta_value'     => 'page', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value -- come sopra.
 	);
+
+	// VBEB free, segnalato dall'utente: la scelta e' una sola per tutte le
+	// lingue (sulle pagine nelle altre lingue VBEB usa da solo la copia
+	// tradotta, vbeb_template_lingua()). Con Polylang o WPML si elencano
+	// quindi solo i template nella lingua predefinita del sito, qualunque
+	// lingua sia scelta nella barra in alto: prima, con "English" scelto,
+	// Polylang nascondeva il template italiano gia' salvato e il menu
+	// mostrava "Usa il template originale di VikBooking".
+	$predefinita = '';
+	if ( function_exists( 'pll_default_language' ) ) {
+		$predefinita = (string) pll_default_language( 'slug' );
+		if ( '' !== $predefinita ) {
+			$args['lang'] = $predefinita;
+		}
+	}
+
+	$templates = get_posts( $args );
+
+	if ( ! function_exists( 'pll_default_language' ) && has_filter( 'wpml_default_language' ) ) {
+		$predefinita = (string) apply_filters( 'wpml_default_language', null ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- filtro di WPML.
+		if ( '' !== $predefinita ) {
+			$templates = array_values(
+				array_filter(
+					$templates,
+					function ( $tpl ) use ( $predefinita ) {
+						$dettagli = apply_filters( 'wpml_post_language_details', null, $tpl->ID ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- filtro di WPML.
+						return ! is_array( $dettagli ) || empty( $dettagli['language_code'] ) || $dettagli['language_code'] === $predefinita;
+					}
+				)
+			);
+		}
+	}
+
+	return $templates;
 }
 
 /**
@@ -123,11 +162,6 @@ function vbeb_render_template_page() {
 
 		<?php vbeb_avvisi_override(); ?>
 
-		<?php if ( empty( $templates ) ) : ?>
-			<div class="notice notice-warning inline" style="margin:0 0 20px 0;">
-				<p><?php esc_html_e( 'There are no templates in the Elementor Template Library yet. First create a template of type "Section" (Templates > Add New) with the VBEB widgets you want to use (category "VBEB - Room Details" in the widget panel), then come back here to select it.', 'vbeb' ); ?></p>
-			</div>
-		<?php endif; ?>
 
 		<form method="post" action="options.php">
 			<?php settings_fields( 'vbeb_template_settings_group' ); ?>

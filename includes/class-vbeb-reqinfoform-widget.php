@@ -131,7 +131,7 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 			return $titolo_vbo;
 		}
 
-		$modello = (string) JText::_( 'VBOROOMREQINFOTITLE' );
+		$modello = vbeb_vbo_testo( 'VBOROOMREQINFOTITLE' );
 		$pos     = strpos( $modello, '%s' );
 
 		if ( false === $pos ) {
@@ -184,7 +184,7 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 		return array(
 			'nome'      => array( 'id' => 'reqname', 'testo' => 'VBOROOMREQINFONAME', 'titolo' => esc_html__( 'Full Name', 'vbeb' ) ),
 			'email'     => array( 'id' => 'reqemail', 'testo' => 'VBOROOMREQINFOEMAIL', 'titolo' => esc_html__( 'e-Mail', 'vbeb' ) ),
-			'messaggio' => array( 'id' => 'reqmess', 'testo' => 'VBOROOMREQINFOMESS', 'titolo' => esc_html__( 'Message', 'elementor' ) ),
+			'messaggio' => array( 'id' => 'reqmess', 'testo' => 'VBOROOMREQINFOMESS', 'titolo' => esc_html__( 'Message', 'vbeb' ) ),
 			// VBEB 7.457.0: anche la casella dei termini (una o piu',
 			// ".vbdialog-reqinfo-formentry-ckbox"), solo etichetta e larghezza.
 			'termini'   => array( 'id' => 'vbof', 'testo' => 'ORDER_TERMSCONDITIONS', 'titolo' => esc_html__( 'Terms and Conditions', 'vbeb' ) ),
@@ -223,9 +223,8 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 		$tabella = $wpdb->prefix . 'vikbooking_custfields';
 		$esito   = false;
 
-		if ( $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $tabella ) ) === $tabella ) {
-			// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- nome della tabella dal prefisso di WordPress.
-			$link  = $wpdb->get_col( "SELECT `poplink` FROM `{$tabella}` WHERE `type`='checkbox' AND `required`=1 ORDER BY `ordering` ASC LIMIT 2" );
+		if ( $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $tabella ) ) === $tabella ) { // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- verifica che la tabella di VikBooking esista.
+			$link  = $wpdb->get_col( $wpdb->prepare( "SELECT `poplink` FROM %i WHERE `type`='checkbox' AND `required`=1 ORDER BY `ordering` ASC LIMIT 2", $tabella ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- tabella di VikBooking, una lettura per richiesta (risultato tenuto in $esito).
 			$esito = false;
 			foreach ( (array) $link as $l ) {
 				if ( '' !== trim( (string) $l ) ) {
@@ -398,12 +397,12 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 		 */
 		$prima = self::prefisso_vikbooking();
 
-		$this->start_controls_section( 'section_content_title', array( 'label' => esc_html__( 'Heading', 'elementor' ), 'tab' => Controls_Manager::TAB_CONTENT ) );
+		$this->start_controls_section( 'section_content_title', array( 'label' => esc_html__( 'Heading', 'vbeb' ), 'tab' => Controls_Manager::TAB_CONTENT ) );
 
 		$this->add_control(
 			'title_text',
 			array(
-				'label'       => esc_html__( 'Title', 'elementor' ),
+				'label'       => esc_html__( 'Title', 'vbeb' ),
 				'type'        => Controls_Manager::TEXTAREA,
 				'default'     => '',
 				'placeholder' => '' !== $prima ? $prima : 'Richiedi informazioni per',
@@ -414,7 +413,14 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 			'title_text_note',
 			array(
 				'type'            => Controls_Manager::RAW_HTML,
-				'raw'             => 'Il testo scritto qui sostituisce solo la parte prima del nome della camera' . ( '' !== $prima ? ' ("' . esc_html( $prima ) . '")' : '' ) . ': il nome della camera resta sempre quello di VikBooking. Lascia vuoto per usare il testo di VikBooking.',
+				// VBEB free, su richiesta dell'utente: nota tradotta (dominio "vbeb").
+				'raw'             => '' !== $prima
+					? sprintf(
+						/* translators: %s: testo di VikBooking prima del nome della camera. */
+						esc_html__( 'The text entered here replaces only the part before the room name ("%s"): the room name always comes from VikBooking. Leave empty to use the VikBooking text.', 'vbeb' ),
+						esc_html( $prima )
+					)
+					: esc_html__( 'The text entered here replaces only the part before the room name: the room name always comes from VikBooking. Leave empty to use the VikBooking text.', 'vbeb' ),
 				'content_classes' => 'elementor-descriptor',
 			)
 		);
@@ -422,7 +428,7 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 		$this->add_control(
 			'title_tag',
 			array(
-				'label'     => esc_html__( 'HTML Tag', 'elementor' ),
+				'label'     => esc_html__( 'HTML Tag', 'vbeb' ),
 				'type'      => Controls_Manager::SELECT,
 				'default'   => 'h3',
 				'separator' => 'before',
@@ -451,7 +457,7 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 		 * del campo (nome del parametro, obbligatorieta', e-mail gia'
 		 * compilata) non cambia. Vedi campi().
 		 */
-		$this->start_controls_section( 'section_content_fields', array( 'label' => esc_html__( 'Form Fields', 'elementor' ), 'tab' => Controls_Manager::TAB_CONTENT ) ); // VBEB 7.456.0: era "Campi".
+		$this->start_controls_section( 'section_content_fields', array( 'label' => esc_html__( 'Form Fields', 'vbeb' ), 'tab' => Controls_Manager::TAB_CONTENT ) ); // VBEB 7.456.0: era "Campi".
 
 		/*
 		 * VBEB 7.457.0, su richiesta dell'utente: i campi come quelli del
@@ -471,7 +477,7 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 		$elenco->add_control(
 			'field_label',
 			array(
-				'label'       => esc_html__( 'Label', 'elementor' ),
+				'label'       => esc_html__( 'Label', 'vbeb' ),
 				'type'        => Controls_Manager::TEXT,
 				'default'     => '',
 				'placeholder' => esc_html__( 'VikBooking text', 'vbeb' ),
@@ -538,7 +544,7 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 		$elenco->add_responsive_control(
 			'field_width',
 			array(
-				'label'      => esc_html__( 'Column Width', 'elementor' ) . ' (%)', // VBEB 7.475.0: con l'unita' nel nome.
+				'label'      => esc_html__( 'Column Width', 'vbeb' ) . ' (%)', // VBEB 7.475.0: con l'unita' nel nome.
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( '%' ),
 				'range'      => array( '%' => array( 'min' => 10, 'max' => 100 ) ),
@@ -556,7 +562,7 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 		$elenco->add_control(
 			'field_rows',
 			array(
-				'label'     => esc_html__( 'Rows', 'elementor' ),
+				'label'     => esc_html__( 'Rows', 'vbeb' ),
 				'type'      => Controls_Manager::NUMBER,
 				'default'   => 5,
 				'min'       => 1,
@@ -584,7 +590,9 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 				// l'Etichetta scelta, come nel widget Modulo di Elementor; vuota,
 				// il testo di VikBooking.
 				// VBEB 7.461.0: "Termini e condizioni" ha sempre questo nome.
-				'title_field'  => "{{{ 'termini' === field_key ? 'Termini e condizioni' : ( field_label ? field_label : field_title ) }}}",
+				// VBEB free, segnalato dall'utente: il nome e' tradotto (dominio
+				// "vbeb"), prima era scritto in italiano.
+				'title_field'  => "{{{ 'termini' === field_key ? '" . esc_js( __( 'Terms and Conditions', 'vbeb' ) ) . "' : ( field_label ? field_label : field_title ) }}}",
 				// VBEB 7.459.0: classe per l'icona "apri" nel pannello (vedi
 				// vbeb.php, foglio dell'editor).
 				'classes'      => 'vbeb-fields-list',
@@ -620,11 +628,11 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 				'default'              => 'sm',
 				'separator'            => 'before',
 				'options'              => array(
-					'xs' => esc_html__( 'Extra Small', 'elementor' ),
-					'sm' => esc_html__( 'Small', 'elementor' ),
-					'md' => esc_html__( 'Medium', 'elementor' ),
-					'lg' => esc_html__( 'Large', 'elementor' ),
-					'xl' => esc_html__( 'Extra Large', 'elementor' ),
+					'xs' => esc_html__( 'Extra Small', 'vbeb' ),
+					'sm' => esc_html__( 'Small', 'vbeb' ),
+					'md' => esc_html__( 'Medium', 'vbeb' ),
+					'lg' => esc_html__( 'Large', 'vbeb' ),
+					'xl' => esc_html__( 'Extra Large', 'vbeb' ),
 				),
 				'selectors_dictionary' => array(
 					'xs' => 'font-size: 13px; min-height: 33px; padding: 4px 12px; border-radius: 2px;',
@@ -640,10 +648,10 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 		$this->add_control(
 			'show_labels',
 			array(
-				'label'        => esc_html__( 'Label', 'elementor' ),
+				'label'        => esc_html__( 'Label', 'vbeb' ),
 				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Yes', 'elementor' ),
-				'label_off'    => esc_html__( 'No', 'elementor' ),
+				'label_on'     => esc_html__( 'Yes', 'vbeb' ),
+				'label_off'    => esc_html__( 'No', 'vbeb' ),
 				'return_value' => 'yes',
 				'default'      => 'yes',
 				'separator'    => 'before',
@@ -665,8 +673,8 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 			array(
 				'label'        => esc_html__( 'Required Mark', 'vbeb' ),
 				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Yes', 'elementor' ),
-				'label_off'    => esc_html__( 'No', 'elementor' ),
+				'label_on'     => esc_html__( 'Yes', 'vbeb' ),
+				'label_off'    => esc_html__( 'No', 'vbeb' ),
 				'return_value' => 'yes',
 				'default'      => '',
 				'condition'    => array( 'show_labels' => 'yes' ),
@@ -694,7 +702,7 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 		 * di sistema "VBOROOMREQINFOSENTOK"). Vale solo per quel messaggio:
 		 * vedi vbeb_reqinfo_messaggio() nel file principale.
 		 */
-		$this->start_controls_section( 'section_content_notice', array( 'label' => esc_html__( 'Message', 'elementor' ), 'tab' => Controls_Manager::TAB_CONTENT ) ); // VBEB 7.491.0: era "Messaggio inviato".
+		$this->start_controls_section( 'section_content_notice', array( 'label' => esc_html__( 'Message', 'vbeb' ), 'tab' => Controls_Manager::TAB_CONTENT ) ); // VBEB 7.491.0: era "Messaggio inviato".
 
 		$this->add_control(
 			'notice_text',
@@ -716,7 +724,7 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'notice_max_width',
 			array(
-				'label'      => esc_html__( 'Max Width', 'elementor' ),
+				'label'      => esc_html__( 'Max Width', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', '%', 'vw', 'custom' ),
 				'range'      => array(
@@ -734,12 +742,12 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'notice_position',
 			array(
-				'label'                => esc_html__( 'Position', 'elementor' ),
+				'label'                => esc_html__( 'Position', 'vbeb' ),
 				'type'                 => Controls_Manager::CHOOSE,
 				'options'              => array(
-					'left'   => array( 'title' => esc_html__( 'Left', 'elementor' ), 'icon' => 'eicon-h-align-left' ),
-					'center' => array( 'title' => esc_html__( 'Center', 'elementor' ), 'icon' => 'eicon-h-align-center' ),
-					'right'  => array( 'title' => esc_html__( 'Right', 'elementor' ), 'icon' => 'eicon-h-align-right' ),
+					'left'   => array( 'title' => esc_html__( 'Left', 'vbeb' ), 'icon' => 'eicon-h-align-left' ),
+					'center' => array( 'title' => esc_html__( 'Center', 'vbeb' ), 'icon' => 'eicon-h-align-center' ),
+					'right'  => array( 'title' => esc_html__( 'Right', 'vbeb' ), 'icon' => 'eicon-h-align-right' ),
 				),
 				'selectors_dictionary' => array(
 					'left'   => 'margin-left: 5px; margin-right: auto;',
@@ -758,7 +766,7 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_title',
 			array(
-				'label'     => esc_html__( 'Heading', 'elementor' ),
+				'label'     => esc_html__( 'Heading', 'vbeb' ),
 				'tab'       => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -771,13 +779,13 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'title_align',
 			array(
-				'label'     => esc_html__( 'Alignment', 'elementor' ),
+				'label'     => esc_html__( 'Alignment', 'vbeb' ),
 				'type'      => Controls_Manager::CHOOSE,
 				'options'   => array(
-					'left'    => array( 'title' => esc_html__( 'Left', 'elementor' ), 'icon' => 'eicon-text-align-left' ),
-					'center'  => array( 'title' => esc_html__( 'Center', 'elementor' ), 'icon' => 'eicon-text-align-center' ),
-					'right'   => array( 'title' => esc_html__( 'Right', 'elementor' ), 'icon' => 'eicon-text-align-right' ),
-					'justify' => array( 'title' => esc_html__( 'Justified', 'elementor' ), 'icon' => 'eicon-text-align-justify' ),
+					'left'    => array( 'title' => esc_html__( 'Left', 'vbeb' ), 'icon' => 'eicon-text-align-left' ),
+					'center'  => array( 'title' => esc_html__( 'Center', 'vbeb' ), 'icon' => 'eicon-text-align-center' ),
+					'right'   => array( 'title' => esc_html__( 'Right', 'vbeb' ), 'icon' => 'eicon-text-align-right' ),
+					'justify' => array( 'title' => esc_html__( 'Justified', 'vbeb' ), 'icon' => 'eicon-text-align-justify' ),
 				),
 				'selectors' => array( $titolo => 'text-align: {{VALUE}};' ),
 			)
@@ -811,23 +819,23 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 		$this->add_control(
 			'title_blend_mode',
 			array(
-				'label'     => esc_html__( 'Blend Mode', 'elementor' ),
+				'label'     => esc_html__( 'Blend Mode', 'vbeb' ),
 				'type'      => Controls_Manager::SELECT,
 				'default'   => '',
 				'options'   => array(
-					''            => esc_html__( 'Normal', 'elementor' ),
-					'multiply'    => esc_html__( 'Multiply', 'elementor' ),
-					'screen'      => esc_html__( 'Screen', 'elementor' ),
-					'overlay'     => esc_html__( 'Overlay', 'elementor' ),
-					'darken'      => esc_html__( 'Darken', 'elementor' ),
-					'lighten'     => esc_html__( 'Lighten', 'elementor' ),
-					'color-dodge' => esc_html__( 'Color Dodge', 'elementor' ),
-					'saturation'  => esc_html__( 'Saturation', 'elementor' ),
-					'color'       => esc_html__( 'Color', 'elementor' ),
-					'difference'  => esc_html__( 'Difference', 'elementor' ),
-					'exclusion'   => esc_html__( 'Exclusion', 'elementor' ),
-					'hue'         => esc_html__( 'Hue', 'elementor' ),
-					'luminosity'  => esc_html__( 'Luminosity', 'elementor' ), // VBEB 7.511.0: in fondo, come in Elementor.
+					''            => esc_html__( 'Normal', 'vbeb' ),
+					'multiply'    => esc_html__( 'Multiply', 'vbeb' ),
+					'screen'      => esc_html__( 'Screen', 'vbeb' ),
+					'overlay'     => esc_html__( 'Overlay', 'vbeb' ),
+					'darken'      => esc_html__( 'Darken', 'vbeb' ),
+					'lighten'     => esc_html__( 'Lighten', 'vbeb' ),
+					'color-dodge' => esc_html__( 'Color Dodge', 'vbeb' ),
+					'saturation'  => esc_html__( 'Saturation', 'vbeb' ),
+					'color'       => esc_html__( 'Color', 'vbeb' ),
+					'difference'  => esc_html__( 'Difference', 'vbeb' ),
+					'exclusion'   => esc_html__( 'Exclusion', 'vbeb' ),
+					'hue'         => esc_html__( 'Hue', 'vbeb' ),
+					'luminosity'  => esc_html__( 'Luminosity', 'vbeb' ), // VBEB 7.511.0: in fondo, come in Elementor.
 				),
 				'selectors' => array( $titolo => 'mix-blend-mode: {{VALUE}};' ),
 			)
@@ -835,13 +843,13 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 
 		// VBEB 7.482.0, su richiesta dell'utente: tolte le schede
 		// Normale/Hover (e il colore al passaggio del mouse); resta il
-		// colore del testo, stesso identificativo.
+		// colore del testo, stesso identificativo. VBEB free, su richiesta
+		// dell'utente: tolta la linea di separazione sopra.
 		$this->add_control(
 			'title_color',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
-				'separator' => 'before',
 				'selectors' => array( $titolo => 'color: {{VALUE}};' ),
 			)
 		);
@@ -857,14 +865,14 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 		 * (".vbdialog-reqinfo-formcont" flessibile, vedi render()), poi la
 		 * sottosezione "Etichetta".
 		 */
-		$this->start_controls_section( 'section_style_form', array( 'label' => esc_html__( 'Form', 'elementor' ), 'tab' => Controls_Manager::TAB_STYLE ) );
+		$this->start_controls_section( 'section_style_form', array( 'label' => esc_html__( 'Form', 'vbeb' ), 'tab' => Controls_Manager::TAB_STYLE ) );
 
 		// Lo spazio fra le colonne passa con --vbeb-ri-gap, che usano anche
 		// le larghezze dei campi ("Larghezza colonna").
 		$this->add_responsive_control(
 			'form_column_gap',
 			array(
-				'label'      => esc_html__( 'Columns Gap', 'elementor' ),
+				'label'      => esc_html__( 'Columns Gap', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em', 'rem', 'custom' ),
 				'range'      => array( 'px' => array( 'min' => 0, 'max' => 60 ) ),
@@ -879,7 +887,7 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'form_row_gap',
 			array(
-				'label'      => esc_html__( 'Rows Gap', 'elementor' ),
+				'label'      => esc_html__( 'Rows Gap', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em', 'rem', 'custom' ),
 				'range'      => array( 'px' => array( 'min' => 0, 'max' => 60 ) ),
@@ -895,7 +903,7 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 		$this->add_control(
 			'labels_heading',
 			array(
-				'label'     => esc_html__( 'Label', 'elementor' ),
+				'label'     => esc_html__( 'Label', 'vbeb' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			)
@@ -910,7 +918,7 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'labels_spacing',
 			array(
-				'label'      => esc_html__( 'Spacing', 'elementor' ),
+				'label'      => esc_html__( 'Spacing', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em', 'rem', 'custom' ),
 				'range'      => array( 'px' => array( 'min' => 0, 'max' => 60 ) ),
@@ -924,7 +932,7 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 		$this->add_control(
 			'labels_color',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				// VBEB 7.473.0, su richiesta dell'utente: anche "Testo
 				// accettazione" (l'etichetta della casella dei termini) e
@@ -975,14 +983,14 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 		 * (vikbooking_styles.css, righe 4221 e 4236): il pannello pesa di
 		 * piu'.
 		 */
-		$this->start_controls_section( 'section_style_fields', array( 'label' => esc_html__( 'Field', 'elementor' ), 'tab' => Controls_Manager::TAB_STYLE ) );
+		$this->start_controls_section( 'section_style_fields', array( 'label' => esc_html__( 'Field', 'vbeb' ), 'tab' => Controls_Manager::TAB_STYLE ) );
 
 		$campi = $w . ' .vbdialog-reqinfo-formentry input[type="text"], ' . $w . ' .vbdialog-reqinfo-formentry input[type="email"], ' . $w . ' .vbdialog-reqinfo-formentry textarea';
 
 		$this->add_control(
 			'fields_text_color',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( $campi => 'color: {{VALUE}};' ),
 			)
@@ -999,7 +1007,7 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 		$this->add_control(
 			'fields_bg_color',
 			array(
-				'label'     => esc_html__( 'Background Color', 'elementor' ),
+				'label'     => esc_html__( 'Background Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'separator' => 'before',
 				'selectors' => array( $campi => 'background-color: {{VALUE}};' ),
@@ -1009,7 +1017,7 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 		$this->add_control(
 			'fields_border_color',
 			array(
-				'label'     => esc_html__( 'Border Color', 'elementor' ),
+				'label'     => esc_html__( 'Border Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'separator' => 'before',
 				'selectors' => array( $campi => 'border-color: {{VALUE}};' ),
@@ -1019,7 +1027,7 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'fields_border_width',
 			array(
-				'label'      => esc_html__( 'Border Width', 'elementor' ),
+				'label'      => esc_html__( 'Border Width', 'vbeb' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', 'rem', 'vw', 'custom' ),
 				'selectors'  => array( $campi => 'border-style: solid; border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};' ),
@@ -1029,7 +1037,7 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'fields_radius',
 			array(
-				'label'      => esc_html__( 'Border Radius', 'elementor' ),
+				'label'      => esc_html__( 'Border Radius', 'vbeb' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 				'selectors'  => array( $campi => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};' ),
@@ -1056,7 +1064,7 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 		$this->add_control(
 			'fields_placeholder_color',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( $segnaposto => 'color: {{VALUE}}; opacity: 1;' ),
 			)
@@ -1104,19 +1112,19 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 			Group_Control_Text_Shadow::get_type(),
 			array(
 				'name'     => 'button_text_shadow',
-				'label'    => esc_html__( 'Text Shadow', 'elementor' ),
+				'label'    => esc_html__( 'Text Shadow', 'vbeb' ),
 				'selector' => $pulsante,
 			)
 		);
 
 		$this->start_controls_tabs( 'button_tabs' );
 
-		$this->start_controls_tab( 'button_tab_normal', array( 'label' => esc_html__( 'Normal', 'elementor' ) ) );
+		$this->start_controls_tab( 'button_tab_normal', array( 'label' => esc_html__( 'Normal', 'vbeb' ) ) );
 
 		$this->add_control(
 			'button_color',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( $pulsante => 'color: {{VALUE}};' ),
 			)
@@ -1127,10 +1135,10 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 			array(
 				'name'           => 'button_background',
 				'types'          => array( 'classic', 'gradient' ),
-				'exclude'        => array( 'image' ),
+				'exclude'        => array( 'image' ), // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- campi esclusi da un controllo di Elementor, non una query.
 				'selector'       => $pulsante,
 				'fields_options' => array(
-					'background' => array( 'label' => esc_html__( 'Background Type', 'elementor' ) ),
+					'background' => array( 'label' => esc_html__( 'Background Type', 'vbeb' ) ),
 				),
 			)
 		);
@@ -1145,12 +1153,12 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 
 		$this->end_controls_tab();
 
-		$this->start_controls_tab( 'button_tab_hover', array( 'label' => esc_html__( 'Hover', 'elementor' ) ) );
+		$this->start_controls_tab( 'button_tab_hover', array( 'label' => esc_html__( 'Hover', 'vbeb' ) ) );
 
 		$this->add_control(
 			'button_color_hover',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( $pulsante_hover => 'color: {{VALUE}};' ),
 			)
@@ -1161,10 +1169,10 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 			array(
 				'name'           => 'button_background_hover',
 				'types'          => array( 'classic', 'gradient' ),
-				'exclude'        => array( 'image' ),
+				'exclude'        => array( 'image' ), // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- campi esclusi da un controllo di Elementor, non una query.
 				'selector'       => $pulsante_hover,
 				'fields_options' => array(
-					'background' => array( 'label' => esc_html__( 'Background Type', 'elementor' ) ),
+					'background' => array( 'label' => esc_html__( 'Background Type', 'vbeb' ) ),
 				),
 			)
 		);
@@ -1172,7 +1180,7 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 		$this->add_control(
 			'button_border_color_hover',
 			array(
-				'label'     => esc_html__( 'Border Color', 'elementor' ),
+				'label'     => esc_html__( 'Border Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'condition' => array( 'button_border_border!' => '' ),
 				'selectors' => array( $pulsante_hover => 'border-color: {{VALUE}};' ),
@@ -1195,7 +1203,7 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'button_radius',
 			array(
-				'label'      => esc_html__( 'Border Radius', 'elementor' ),
+				'label'      => esc_html__( 'Border Radius', 'vbeb' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
 				'selectors'  => array( $pulsante => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};' ),
@@ -1205,7 +1213,7 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'button_padding',
 			array(
-				'label'      => esc_html__( 'Padding', 'elementor' ),
+				'label'      => esc_html__( 'Padding', 'vbeb' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', '%' ),
 				'separator'  => 'before',
@@ -1229,18 +1237,18 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 		$avviso_p    = '.notice > p:has(> .vbeb-reqinfo-msg)';
 		$avviso_text = '.notice > p > .vbeb-reqinfo-msg';
 
-		$this->start_controls_section( 'section_style_notice', array( 'label' => esc_html__( 'Message', 'elementor' ), 'tab' => Controls_Manager::TAB_STYLE ) ); // VBEB 7.492.0: era "Messaggio inviato".
+		$this->start_controls_section( 'section_style_notice', array( 'label' => esc_html__( 'Message', 'vbeb' ), 'tab' => Controls_Manager::TAB_STYLE ) ); // VBEB 7.492.0: era "Messaggio inviato".
 
 		$this->add_responsive_control(
 			'notice_align',
 			array(
-				'label'     => esc_html__( 'Alignment', 'elementor' ),
+				'label'     => esc_html__( 'Alignment', 'vbeb' ),
 				'type'      => Controls_Manager::CHOOSE,
 				'options'   => array(
-					'left'    => array( 'title' => esc_html__( 'Left', 'elementor' ), 'icon' => 'eicon-text-align-left' ),
-					'center'  => array( 'title' => esc_html__( 'Center', 'elementor' ), 'icon' => 'eicon-text-align-center' ),
-					'right'   => array( 'title' => esc_html__( 'Right', 'elementor' ), 'icon' => 'eicon-text-align-right' ),
-					'justify' => array( 'title' => esc_html__( 'Justified', 'elementor' ), 'icon' => 'eicon-text-align-justify' ),
+					'left'    => array( 'title' => esc_html__( 'Left', 'vbeb' ), 'icon' => 'eicon-text-align-left' ),
+					'center'  => array( 'title' => esc_html__( 'Center', 'vbeb' ), 'icon' => 'eicon-text-align-center' ),
+					'right'   => array( 'title' => esc_html__( 'Right', 'vbeb' ), 'icon' => 'eicon-text-align-right' ),
+					'justify' => array( 'title' => esc_html__( 'Justified', 'vbeb' ), 'icon' => 'eicon-text-align-justify' ),
 				),
 				'selectors' => array( $avviso_box => 'text-align: {{VALUE}};' ),
 			)
@@ -1259,7 +1267,7 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 		$this->add_control(
 			'notice_color',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( $avviso_text => 'color: {{VALUE}};' ),
 			)
@@ -1268,7 +1276,7 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 		$this->add_control(
 			'notice_bg_color',
 			array(
-				'label'     => esc_html__( 'Background Color', 'elementor' ),
+				'label'     => esc_html__( 'Background Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				// VBEB 7.495.0: una variabile, usata dalla regola fissa del
 				// widget con "!important" (vedi render()). Con un colore
@@ -1303,7 +1311,7 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'notice_radius',
 			array(
-				'label'      => esc_html__( 'Border Radius', 'elementor' ),
+				'label'      => esc_html__( 'Border Radius', 'vbeb' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 				'selectors'  => array( $avviso_box => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};' ),
@@ -1321,7 +1329,7 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'notice_padding',
 			array(
-				'label'      => esc_html__( 'Padding', 'elementor' ), // VBEB 7.511.0: "Rientro" di Elementor (confermato dall'utente).
+				'label'      => esc_html__( 'Padding', 'vbeb' ), // VBEB 7.511.0: "Rientro" di Elementor (confermato dall'utente).
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 				'separator'  => 'before',

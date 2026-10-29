@@ -63,7 +63,7 @@ class VBEB_Roommap_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_content_title',
 			array(
-				'label' => esc_html__( 'Heading', 'elementor' ),
+				'label' => esc_html__( 'Heading', 'vbeb' ),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			)
 		);
@@ -73,8 +73,8 @@ class VBEB_Roommap_Widget extends Widget_Base {
 			array(
 				'label'        => esc_html__( 'Show Title', 'vbeb' ),
 				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Yes', 'elementor' ),
-				'label_off'    => esc_html__( 'No', 'elementor' ),
+				'label_on'     => esc_html__( 'Yes', 'vbeb' ),
+				'label_off'    => esc_html__( 'No', 'vbeb' ),
 				'return_value' => 'yes',
 				'default'      => 'yes',
 			)
@@ -83,7 +83,7 @@ class VBEB_Roommap_Widget extends Widget_Base {
 		$this->add_control(
 			'title_text',
 			array(
-				'label'       => esc_html__( 'Title', 'elementor' ),
+				'label'       => esc_html__( 'Title', 'vbeb' ),
 				'type'        => Controls_Manager::TEXTAREA,
 				'label_block' => true,
 				'placeholder' => esc_html__( 'Leave empty to use the original VikBooking text', 'vbeb' ),
@@ -95,7 +95,7 @@ class VBEB_Roommap_Widget extends Widget_Base {
 		$this->add_control(
 			'title_tag',
 			array(
-				'label'     => esc_html__( 'HTML Tag', 'elementor' ),
+				'label'     => esc_html__( 'HTML Tag', 'vbeb' ),
 				'type'      => Controls_Manager::SELECT,
 				'default'   => 'h4',
 				'condition' => array( 'show_title' => 'yes' ),
@@ -119,7 +119,7 @@ class VBEB_Roommap_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_title',
 			array(
-				'label'     => esc_html__( 'Heading', 'elementor' ),
+				'label'     => esc_html__( 'Heading', 'vbeb' ),
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => array( 'show_title' => 'yes' ),
 			)
@@ -130,13 +130,13 @@ class VBEB_Roommap_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'title_align',
 			array(
-				'label'     => esc_html__( 'Alignment', 'elementor' ),
+				'label'     => esc_html__( 'Alignment', 'vbeb' ),
 				'type'      => Controls_Manager::CHOOSE,
 				'options'   => array(
-					'left'    => array( 'title' => esc_html__( 'Left', 'elementor' ), 'icon' => 'eicon-text-align-left' ),
-					'center'  => array( 'title' => esc_html__( 'Center', 'elementor' ), 'icon' => 'eicon-text-align-center' ),
-					'right'   => array( 'title' => esc_html__( 'Right', 'elementor' ), 'icon' => 'eicon-text-align-right' ),
-					'justify' => array( 'title' => esc_html__( 'Justified', 'elementor' ), 'icon' => 'eicon-text-align-justify' ),
+					'left'    => array( 'title' => esc_html__( 'Left', 'vbeb' ), 'icon' => 'eicon-text-align-left' ),
+					'center'  => array( 'title' => esc_html__( 'Center', 'vbeb' ), 'icon' => 'eicon-text-align-center' ),
+					'right'   => array( 'title' => esc_html__( 'Right', 'vbeb' ), 'icon' => 'eicon-text-align-right' ),
+					'justify' => array( 'title' => esc_html__( 'Justified', 'vbeb' ), 'icon' => 'eicon-text-align-justify' ),
 				),
 				'selectors' => array( $titolo => 'text-align: {{VALUE}}; display: block;' ),
 			)
@@ -170,23 +170,23 @@ class VBEB_Roommap_Widget extends Widget_Base {
 		$this->add_control(
 			'title_blend_mode',
 			array(
-				'label'     => esc_html__( 'Blend Mode', 'elementor' ),
+				'label'     => esc_html__( 'Blend Mode', 'vbeb' ),
 				'type'      => Controls_Manager::SELECT,
 				'default'   => '',
 				'options'   => array(
-					''            => esc_html__( 'Normal', 'elementor' ),
-					'multiply'    => esc_html__( 'Multiply', 'elementor' ),
-					'screen'      => esc_html__( 'Screen', 'elementor' ),
-					'overlay'     => esc_html__( 'Overlay', 'elementor' ),
-					'darken'      => esc_html__( 'Darken', 'elementor' ),
-					'lighten'     => esc_html__( 'Lighten', 'elementor' ),
-					'color-dodge' => esc_html__( 'Color Dodge', 'elementor' ),
-					'saturation'  => esc_html__( 'Saturation', 'elementor' ),
-					'color'       => esc_html__( 'Color', 'elementor' ),
-					'difference'  => esc_html__( 'Difference', 'elementor' ),
-					'exclusion'   => esc_html__( 'Exclusion', 'elementor' ),
-					'hue'         => esc_html__( 'Hue', 'elementor' ),
-					'luminosity'  => esc_html__( 'Luminosity', 'elementor' ),
+					''            => esc_html__( 'Normal', 'vbeb' ),
+					'multiply'    => esc_html__( 'Multiply', 'vbeb' ),
+					'screen'      => esc_html__( 'Screen', 'vbeb' ),
+					'overlay'     => esc_html__( 'Overlay', 'vbeb' ),
+					'darken'      => esc_html__( 'Darken', 'vbeb' ),
+					'lighten'     => esc_html__( 'Lighten', 'vbeb' ),
+					'color-dodge' => esc_html__( 'Color Dodge', 'vbeb' ),
+					'saturation'  => esc_html__( 'Saturation', 'vbeb' ),
+					'color'       => esc_html__( 'Color', 'vbeb' ),
+					'difference'  => esc_html__( 'Difference', 'vbeb' ),
+					'exclusion'   => esc_html__( 'Exclusion', 'vbeb' ),
+					'hue'         => esc_html__( 'Hue', 'vbeb' ),
+					'luminosity'  => esc_html__( 'Luminosity', 'vbeb' ),
 				),
 				'selectors' => array( $titolo => 'mix-blend-mode: {{VALUE}};' ),
 			)
@@ -195,7 +195,7 @@ class VBEB_Roommap_Widget extends Widget_Base {
 		$this->add_control(
 			'title_color',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( $titolo => 'color: {{VALUE}};' ),
 			)
@@ -227,7 +227,7 @@ class VBEB_Roommap_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'map_border_radius',
 			array(
-				'label'      => esc_html__( 'Border Radius', 'elementor' ),
+				'label'      => esc_html__( 'Border Radius', 'vbeb' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 				'selectors'  => array( $mappa => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};' ),
@@ -252,7 +252,8 @@ class VBEB_Roommap_Widget extends Widget_Base {
 	 * @return string
 	 */
 	protected function html_editor() {
-		$titolo  = class_exists( 'JText' ) ? JText::translate( 'VBO_LISTING_WHERE_YOULLBE' ) : '';
+		// VBEB free: nell'editor nella lingua del template aperto.
+		$titolo  = class_exists( 'JText' ) ? vbeb_vbo_testo( 'VBO_LISTING_WHERE_YOULLBE' ) : '';
 		$titolo  = ( '' === (string) $titolo || 'VBO_LISTING_WHERE_YOULLBE' === $titolo ) ? 'Dove sarai' : $titolo;
 		$rparams = json_decode( (string) VBEB_Room_Context::get( 'params', '' ), true );
 		$geo     = class_exists( 'VikBooking' ) && method_exists( 'VikBooking', 'getGeocodingInstance' ) ? VikBooking::getGeocodingInstance() : null;

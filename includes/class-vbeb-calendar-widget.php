@@ -55,7 +55,7 @@ class VBEB_Calendar_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_content_title',
 			array(
-				'label' => esc_html__( 'Heading', 'elementor' ),
+				'label' => esc_html__( 'Heading', 'vbeb' ),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			)
 		);
@@ -68,8 +68,8 @@ class VBEB_Calendar_Widget extends Widget_Base {
 			array(
 				'label'        => esc_html__( 'Show Title', 'vbeb' ),
 				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Yes', 'elementor' ),
-				'label_off'    => esc_html__( 'No', 'elementor' ),
+				'label_on'     => esc_html__( 'Yes', 'vbeb' ),
+				'label_off'    => esc_html__( 'No', 'vbeb' ),
 				'return_value' => 'yes',
 				'default'      => 'yes',
 			)
@@ -78,7 +78,7 @@ class VBEB_Calendar_Widget extends Widget_Base {
 		$this->add_control(
 			'title_text',
 			array(
-				'label'       => esc_html__( 'Title', 'elementor' ),
+				'label'       => esc_html__( 'Title', 'vbeb' ),
 				'type'        => Controls_Manager::TEXTAREA,
 				'label_block' => true,
 				'placeholder' => esc_html__( 'Leave empty to use the original VikBooking text', 'vbeb' ),
@@ -90,7 +90,7 @@ class VBEB_Calendar_Widget extends Widget_Base {
 		$this->add_control(
 			'title_tag',
 			array(
-				'label'   => esc_html__( 'HTML Tag', 'elementor' ),
+				'label'   => esc_html__( 'HTML Tag', 'vbeb' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'h4',
 				'condition' => array( 'show_title' => 'yes' ),
@@ -114,7 +114,7 @@ class VBEB_Calendar_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_title',
 			array(
-				'label' => esc_html__( 'Heading', 'elementor' ),
+				'label' => esc_html__( 'Heading', 'vbeb' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -127,13 +127,13 @@ class VBEB_Calendar_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'title_align',
 			array(
-				'label'     => esc_html__( 'Alignment', 'elementor' ),
+				'label'     => esc_html__( 'Alignment', 'vbeb' ),
 				'type'      => Controls_Manager::CHOOSE,
 				'options'   => array(
-					'left'    => array( 'title' => esc_html__( 'Left', 'elementor' ), 'icon' => 'eicon-text-align-left' ),
-					'center'  => array( 'title' => esc_html__( 'Center', 'elementor' ), 'icon' => 'eicon-text-align-center' ),
-					'right'   => array( 'title' => esc_html__( 'Right', 'elementor' ), 'icon' => 'eicon-text-align-right' ),
-					'justify' => array( 'title' => esc_html__( 'Justified', 'elementor' ), 'icon' => 'eicon-text-align-justify' ),
+					'left'    => array( 'title' => esc_html__( 'Left', 'vbeb' ), 'icon' => 'eicon-text-align-left' ),
+					'center'  => array( 'title' => esc_html__( 'Center', 'vbeb' ), 'icon' => 'eicon-text-align-center' ),
+					'right'   => array( 'title' => esc_html__( 'Right', 'vbeb' ), 'icon' => 'eicon-text-align-right' ),
+					'justify' => array( 'title' => esc_html__( 'Justified', 'vbeb' ), 'icon' => 'eicon-text-align-justify' ),
 				),
 				// display:block perche' l'allineamento valga anche con i tag
 				// in linea (span).
@@ -169,23 +169,23 @@ class VBEB_Calendar_Widget extends Widget_Base {
 		$this->add_control(
 			'title_blend_mode',
 			array(
-				'label'     => esc_html__( 'Blend Mode', 'elementor' ),
+				'label'     => esc_html__( 'Blend Mode', 'vbeb' ),
 				'type'      => Controls_Manager::SELECT,
 				'default'   => '',
 				'options'   => array(
-					''            => esc_html__( 'Normal', 'elementor' ),
-					'multiply'    => esc_html__( 'Multiply', 'elementor' ),
-					'screen'      => esc_html__( 'Screen', 'elementor' ),
-					'overlay'     => esc_html__( 'Overlay', 'elementor' ),
-					'darken'      => esc_html__( 'Darken', 'elementor' ),
-					'lighten'     => esc_html__( 'Lighten', 'elementor' ),
-					'color-dodge' => esc_html__( 'Color Dodge', 'elementor' ),
-					'saturation'  => esc_html__( 'Saturation', 'elementor' ),
-					'color'       => esc_html__( 'Color', 'elementor' ),
-					'difference'  => esc_html__( 'Difference', 'elementor' ),
-					'exclusion'   => esc_html__( 'Exclusion', 'elementor' ),
-					'hue'         => esc_html__( 'Hue', 'elementor' ),
-					'luminosity'  => esc_html__( 'Luminosity', 'elementor' ), // VBEB 7.510.0: in fondo, come in Elementor.
+					''            => esc_html__( 'Normal', 'vbeb' ),
+					'multiply'    => esc_html__( 'Multiply', 'vbeb' ),
+					'screen'      => esc_html__( 'Screen', 'vbeb' ),
+					'overlay'     => esc_html__( 'Overlay', 'vbeb' ),
+					'darken'      => esc_html__( 'Darken', 'vbeb' ),
+					'lighten'     => esc_html__( 'Lighten', 'vbeb' ),
+					'color-dodge' => esc_html__( 'Color Dodge', 'vbeb' ),
+					'saturation'  => esc_html__( 'Saturation', 'vbeb' ),
+					'color'       => esc_html__( 'Color', 'vbeb' ),
+					'difference'  => esc_html__( 'Difference', 'vbeb' ),
+					'exclusion'   => esc_html__( 'Exclusion', 'vbeb' ),
+					'hue'         => esc_html__( 'Hue', 'vbeb' ),
+					'luminosity'  => esc_html__( 'Luminosity', 'vbeb' ), // VBEB 7.510.0: in fondo, come in Elementor.
 				),
 				'selectors' => array( $titolo => 'mix-blend-mode: {{VALUE}};' ),
 			)
@@ -194,9 +194,88 @@ class VBEB_Calendar_Widget extends Widget_Base {
 		$this->add_control(
 			'title_color',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( $titolo => 'color: {{VALUE}};' ),
+			)
+		);
+
+		$this->end_controls_section();
+
+		/* ================= STILE - MENU MESI ================= */
+		$this->start_controls_section(
+			'section_style_month_select',
+			array(
+				'label' => esc_html__( 'Month Dropdown', 'vbeb' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+
+		// VBEB 7.653.0, su richiesta dell'utente: nota "month_select_note" tolta (nella lista "note widget").
+
+		$this->add_control(
+			'month_select_color',
+			array(
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} select.vbselectm' => 'color: {{VALUE}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'month_select_bg_color',
+			array(
+				'label'     => esc_html__( 'Background Color', 'vbeb' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} select.vbselectm' => 'background-color: {{VALUE}};',
+				),
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'month_select_typography',
+				'selector' => '{{WRAPPER}} select.vbselectm',
+			)
+		);
+
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			array(
+				'name'     => 'month_select_border',
+				'selector' => '{{WRAPPER}} select.vbselectm',
+			)
+		);
+
+		$this->add_control(
+			'month_select_radius',
+			array(
+				'label'      => esc_html__( 'Border Radius', 'vbeb' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px', '%' ),
+				'range'      => array(
+					'px' => array( 'min' => 0, 'max' => 50 ),
+					'%'  => array( 'min' => 0, 'max' => 50 ),
+				),
+				'selectors' => array(
+					'{{WRAPPER}} select.vbselectm' => 'border-radius: {{SIZE}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'month_select_padding',
+			array(
+				'label'      => esc_html__( 'Padding', 'vbeb' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', 'em', '%' ),
+				'selectors'  => array(
+					'{{WRAPPER}} select.vbselectm' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
 			)
 		);
 
@@ -214,7 +293,7 @@ class VBEB_Calendar_Widget extends Widget_Base {
 		$this->add_control(
 			'legend_color',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ), // VBEB 7.652.0: era "Colore testo legenda".
+				'label'     => esc_html__( 'Text Color', 'vbeb' ), // VBEB 7.652.0: era "Colore testo legenda".
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .vblegenda-lbl' => 'color: {{VALUE}};',
@@ -312,7 +391,7 @@ class VBEB_Calendar_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'calendars_container_padding',
 			array(
-				'label'      => esc_html__( 'Padding', 'elementor' ),
+				'label'      => esc_html__( 'Padding', 'vbeb' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', '%' ),
 				'selectors'  => array(
@@ -332,7 +411,7 @@ class VBEB_Calendar_Widget extends Widget_Base {
 		$this->add_control(
 			'calendars_container_radius',
 			array(
-				'label'      => esc_html__( 'Border Radius', 'elementor' ),
+				'label'      => esc_html__( 'Border Radius', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', '%' ),
 				'range'      => array(
@@ -370,85 +449,6 @@ class VBEB_Calendar_Widget extends Widget_Base {
 
 		$this->end_controls_section();
 
-		/* ================= STILE - MENU MESI ================= */
-		$this->start_controls_section(
-			'section_style_month_select',
-			array(
-				'label' => esc_html__( 'Month Dropdown', 'vbeb' ),
-				'tab'   => Controls_Manager::TAB_STYLE,
-			)
-		);
-
-		// VBEB 7.653.0, su richiesta dell'utente: nota "month_select_note" tolta (nella lista "note widget").
-
-		$this->add_control(
-			'month_select_color',
-			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => array(
-					'{{WRAPPER}} select.vbselectm' => 'color: {{VALUE}};',
-				),
-			)
-		);
-
-		$this->add_control(
-			'month_select_bg_color',
-			array(
-				'label'     => esc_html__( 'Background Color', 'elementor' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => array(
-					'{{WRAPPER}} select.vbselectm' => 'background-color: {{VALUE}};',
-				),
-			)
-		);
-
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			array(
-				'name'     => 'month_select_typography',
-				'selector' => '{{WRAPPER}} select.vbselectm',
-			)
-		);
-
-		$this->add_group_control(
-			\Elementor\Group_Control_Border::get_type(),
-			array(
-				'name'     => 'month_select_border',
-				'selector' => '{{WRAPPER}} select.vbselectm',
-			)
-		);
-
-		$this->add_control(
-			'month_select_radius',
-			array(
-				'label'      => esc_html__( 'Border Radius', 'elementor' ),
-				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px', '%' ),
-				'range'      => array(
-					'px' => array( 'min' => 0, 'max' => 50 ),
-					'%'  => array( 'min' => 0, 'max' => 50 ),
-				),
-				'selectors' => array(
-					'{{WRAPPER}} select.vbselectm' => 'border-radius: {{SIZE}}{{UNIT}};',
-				),
-			)
-		);
-
-		$this->add_responsive_control(
-			'month_select_padding',
-			array(
-				'label'      => esc_html__( 'Padding', 'elementor' ),
-				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => array( 'px', 'em', '%' ),
-				'selectors'  => array(
-					'{{WRAPPER}} select.vbselectm' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				),
-			)
-		);
-
-		$this->end_controls_section();
-
 		/* ================= STILE - INTESTAZIONE MESE ================= */
 		$this->start_controls_section(
 			'section_style_month_header',
@@ -471,7 +471,7 @@ class VBEB_Calendar_Widget extends Widget_Base {
 		$this->add_control(
 			'month_bg_color',
 			array(
-				'label'     => esc_html__( 'Background Color', 'elementor' ),
+				'label'     => esc_html__( 'Background Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} tr.vbcaltrmonth td' => 'background-color: {{VALUE}};',
@@ -482,7 +482,7 @@ class VBEB_Calendar_Widget extends Widget_Base {
 		$this->add_control(
 			'month_text_color',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ), // VBEB 7.655.0: era "Colore testo (mese e anno)".
+				'label'     => esc_html__( 'Text Color', 'vbeb' ), // VBEB 7.655.0: era "Colore testo (mese e anno)".
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .vbcaltrmonth-month, {{WRAPPER}} .vbcaltrmonth-year' => 'color: {{VALUE}};',
@@ -531,7 +531,7 @@ class VBEB_Calendar_Widget extends Widget_Base {
 		$this->add_control(
 			'nav_arrows_heading',
 			array(
-				'label'     => esc_html__( 'Navigation', 'elementor' ),
+				'label'     => esc_html__( 'Navigation', 'vbeb' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			)
@@ -540,12 +540,12 @@ class VBEB_Calendar_Widget extends Widget_Base {
 		// VBEB 7.657.0, su richiesta dell'utente: schede Normale / Hover.
 		$this->start_controls_tabs( 'nav_arrows_tabs' );
 
-		$this->start_controls_tab( 'nav_arrows_tab_normal', array( 'label' => esc_html__( 'Normal', 'elementor' ) ) );
+		$this->start_controls_tab( 'nav_arrows_tab_normal', array( 'label' => esc_html__( 'Normal', 'vbeb' ) ) );
 
 		$this->add_control(
 			'nav_arrows_color',
 			array(
-				'label'     => esc_html__( 'Color', 'elementor' ), // VBEB 7.658.0: era "Colore frecce navigazione".
+				'label'     => esc_html__( 'Color', 'vbeb' ), // VBEB 7.658.0: era "Colore frecce navigazione".
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .vbo-rdet-avcal-nav-prev, {{WRAPPER}} .vbo-rdet-avcal-nav-next' => 'color: {{VALUE}};',
@@ -556,7 +556,7 @@ class VBEB_Calendar_Widget extends Widget_Base {
 		$this->add_control(
 			'nav_arrows_bg_color',
 			array(
-				'label'     => esc_html__( 'Background Color', 'elementor' ), // VBEB 7.658.0: era "Colore sfondo frecce navigazione".
+				'label'     => esc_html__( 'Background Color', 'vbeb' ), // VBEB 7.658.0: era "Colore sfondo frecce navigazione".
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .vbo-rdet-avcal-nav' => 'background: {{VALUE}};',
@@ -566,12 +566,12 @@ class VBEB_Calendar_Widget extends Widget_Base {
 
 		$this->end_controls_tab();
 
-		$this->start_controls_tab( 'nav_arrows_tab_hover', array( 'label' => esc_html__( 'Hover', 'elementor' ) ) );
+		$this->start_controls_tab( 'nav_arrows_tab_hover', array( 'label' => esc_html__( 'Hover', 'vbeb' ) ) );
 
 		$this->add_control(
 			'nav_arrows_color_hover',
 			array(
-				'label'     => esc_html__( 'Color', 'elementor' ), // VBEB 7.658.0: era "Colore frecce navigazione".
+				'label'     => esc_html__( 'Color', 'vbeb' ), // VBEB 7.658.0: era "Colore frecce navigazione".
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .vbo-rdet-avcal-nav-prev:hover, {{WRAPPER}} .vbo-rdet-avcal-nav-next:hover' => 'color: {{VALUE}};',
@@ -582,7 +582,7 @@ class VBEB_Calendar_Widget extends Widget_Base {
 		$this->add_control(
 			'nav_arrows_bg_color_hover',
 			array(
-				'label'     => esc_html__( 'Background Color', 'elementor' ), // VBEB 7.658.0: era "Colore sfondo frecce navigazione (hover)".
+				'label'     => esc_html__( 'Background Color', 'vbeb' ), // VBEB 7.658.0: era "Colore sfondo frecce navigazione (hover)".
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .vbo-rdet-avcal-nav:hover' => 'background: {{VALUE}};',
@@ -597,7 +597,7 @@ class VBEB_Calendar_Widget extends Widget_Base {
 		$this->add_control(
 			'nav_arrows_size',
 			array(
-				'label'      => esc_html__( 'Size', 'elementor' ), // VBEB 7.659.0: era "Dimensione frecce navigazione".
+				'label'      => esc_html__( 'Size', 'vbeb' ), // VBEB 7.659.0: era "Dimensione frecce navigazione".
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px' ),
 				'range'      => array(
@@ -623,7 +623,7 @@ class VBEB_Calendar_Widget extends Widget_Base {
 		$this->add_control(
 			'weekday_color',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} tr.vbcaldays td' => 'color: {{VALUE}};',
@@ -634,7 +634,7 @@ class VBEB_Calendar_Widget extends Widget_Base {
 		$this->add_control(
 			'weekday_bg_color',
 			array(
-				'label'     => esc_html__( 'Background Color', 'elementor' ),
+				'label'     => esc_html__( 'Background Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} tr.vbcaldays td' => 'background-color: {{VALUE}};',
@@ -700,12 +700,12 @@ class VBEB_Calendar_Widget extends Widget_Base {
 
 		$this->start_controls_tabs( 'daynum_free_tabs' );
 
-		$this->start_controls_tab( 'daynum_free_tab_normal', array( 'label' => esc_html__( 'Normal', 'elementor' ) ) );
+		$this->start_controls_tab( 'daynum_free_tab_normal', array( 'label' => esc_html__( 'Normal', 'vbeb' ) ) );
 
 		$this->add_control(
 			'daynum_free_cell_text_color',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( $num_libero => 'color: {{VALUE}};' ),
 			)
@@ -721,12 +721,12 @@ class VBEB_Calendar_Widget extends Widget_Base {
 
 		$this->end_controls_tab();
 
-		$this->start_controls_tab( 'daynum_free_tab_hover', array( 'label' => esc_html__( 'Hover', 'elementor' ) ) );
+		$this->start_controls_tab( 'daynum_free_tab_hover', array( 'label' => esc_html__( 'Hover', 'vbeb' ) ) );
 
 		$this->add_control(
 			'daynum_free_cell_text_color_hover',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( $num_libero_hover => 'color: {{VALUE}};' ),
 			)
@@ -766,7 +766,7 @@ class VBEB_Calendar_Widget extends Widget_Base {
 		$this->add_control(
 			'daynum_warning_cell_text_color',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( $num_parz => 'color: {{VALUE}};' ),
 			)
@@ -814,7 +814,7 @@ class VBEB_Calendar_Widget extends Widget_Base {
 		$this->add_control(
 			'daynum_busy_cell_text_color',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( $num_occ_pieni => 'color: {{VALUE}};' ),
 			)
@@ -868,7 +868,7 @@ class VBEB_Calendar_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'daynum_price_padding',
 			array(
-				'label'      => esc_html__( 'Padding', 'elementor' ),
+				'label'      => esc_html__( 'Padding', 'vbeb' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 				'selectors'  => array(
@@ -888,7 +888,7 @@ class VBEB_Calendar_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'daynum_price_radius',
 			array(
-				'label'      => esc_html__( 'Border Radius', 'elementor' ),
+				'label'      => esc_html__( 'Border Radius', 'vbeb' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 				'selectors'  => array(
@@ -902,7 +902,7 @@ class VBEB_Calendar_Widget extends Widget_Base {
 		$this->add_control(
 			'daynum_price_color',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( $prezzo . ', ' . $prezzo . ' span' => 'color: {{VALUE}};' ),
 			)
@@ -911,7 +911,7 @@ class VBEB_Calendar_Widget extends Widget_Base {
 		$this->add_control(
 			'daynum_price_bg_color',
 			array(
-				'label'     => esc_html__( 'Background Color', 'elementor' ),
+				'label'     => esc_html__( 'Background Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( $prezzo => 'background-color: {{VALUE}};' ),
 			)

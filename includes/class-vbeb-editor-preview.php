@@ -59,7 +59,7 @@ function vbeb_carica_camera_anteprima() {
 	}
 	$tentato = true;
 
-	$tabella = apply_filters( 'vik_get_db_prefix', $wpdb->prefix ) . 'vikbooking_rooms';
+	$tabella = apply_filters( 'vik_get_db_prefix', $wpdb->prefix ) . 'vikbooking_rooms'; // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- filtro di VikBooking.
 	$esiste  = $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $tabella ) ); // phpcs:ignore WordPress.DB -- nome tabella di VikBooking.
 
 	if ( ! $esiste ) {
@@ -68,7 +68,7 @@ function vbeb_carica_camera_anteprima() {
 
 	// Solo fra le camere attive: una camera disattivata non comparirebbe
 	// mai sul front-end, e usarla come esempio sarebbe fuorviante.
-	$camera = $wpdb->get_row( "SELECT * FROM `{$tabella}` WHERE `avail`='1' ORDER BY `id` DESC LIMIT 1", ARRAY_A ); // phpcs:ignore WordPress.DB -- nome tabella costruito internamente, nessun input utente.
+	$camera = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM %i WHERE `avail`='1' ORDER BY `id` DESC LIMIT 1", $tabella ), ARRAY_A ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- tabella di VikBooking, solo nell'editor.
 
 	if ( empty( $camera ) ) {
 		return false;
@@ -92,8 +92,8 @@ function vbeb_carica_camera_anteprima() {
 	if ( strlen( (string) $custprice ) > 0 && (float) $custprice > 0 ) {
 		$camera['cost'] = (float) $custprice;
 	} else {
-		$costi   = apply_filters( 'vik_get_db_prefix', $wpdb->prefix ) . 'vikbooking_dispcost';
-		$tariffe = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM `{$costi}` WHERE `idroom` = %d ORDER BY `days` ASC, `cost` ASC LIMIT 1", (int) $camera['id'] ), ARRAY_A ); // phpcs:ignore WordPress.DB -- nome tabella costruito internamente.
+		$costi   = apply_filters( 'vik_get_db_prefix', $wpdb->prefix ) . 'vikbooking_dispcost'; // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- filtro di VikBooking.
+		$tariffe = $wpdb->get_results( $wpdb->prepare( 'SELECT * FROM %i WHERE `idroom` = %d ORDER BY `days` ASC, `cost` ASC LIMIT 1', $costi, (int) $camera['id'] ), ARRAY_A ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- tabella di VikBooking, solo nell'editor.
 
 		if ( ! empty( $tariffe ) ) {
 			$oggi    = mktime( 0, 0, 0, (int) date( 'm' ), (int) date( 'd' ), (int) date( 'Y' ) ); // phpcs:ignore WordPress.DateTime -- stesso calcolo della sorgente catalogo.
@@ -338,7 +338,13 @@ function vbeb_html_camera_anteprima( $parte ) {
 		$view->terms_fields = $terms_fields;
 		$view->vbo_tn       = $vbo_tn;
 
-		$cache[ $chiave ] = (string) $view->loadTemplate( $parte );
+		// VBEB free: le scritte fisse di VikBooking nella lingua del template
+		// aperto (vedi vbeb_in_lingua_template()).
+		$cache[ $chiave ] = (string) vbeb_in_lingua_template(
+			function () use ( $view, $parte ) {
+				return $view->loadTemplate( $parte );
+			}
+		);
 	} catch ( \Throwable $e ) {
 		$cache[ $chiave ] = '';
 	}
@@ -365,13 +371,16 @@ function vbeb_html_camera_anteprima( $parte ) {
 function vbeb_lingua_template_editor() {
 	static $lingua = null;
 
-	if ( null !== $lingua ) {
+	if ( null !== $lingua && '' !== $lingua ) {
 		return $lingua;
 	}
 	$lingua = '';
 
-	$id = 0;
-	if ( class_exists( '\\Elementor\\Plugin' ) ) {
+	// VBEB free: nelle richieste ajax dell'editor (per esempio quella che
+	// prepara i controlli dei widget) Elementor indica il template aperto con
+	// editor_post_id; qui editor->get_post_id() e' ancora vuoto.
+	$id = vbeb_id_editor_ajax();
+	if ( ! $id && class_exists( '\\Elementor\\Plugin' ) ) {
 		$el = \Elementor\Plugin::$instance;
 		if ( isset( $el->editor ) && method_exists( $el->editor, 'get_post_id' ) ) {
 			$id = (int) $el->editor->get_post_id();
@@ -384,22 +393,231 @@ function vbeb_lingua_template_editor() {
 		$id = (int) get_the_ID();
 	}
 	if ( ! $id ) {
-		return $lingua;
+		$lingua = null;
+		return '';
 	}
 
 	$locale = '';
 	if ( function_exists( 'pll_get_post_language' ) ) {
 		$locale = (string) pll_get_post_language( $id, 'locale' );
 	} elseif ( has_filter( 'wpml_post_language_details' ) ) {
-		$dettagli = apply_filters( 'wpml_post_language_details', null, $id );
+		$dettagli = apply_filters( 'wpml_post_language_details', null, $id ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- filtro di WPML.
 		if ( is_array( $dettagli ) && ! empty( $dettagli['locale'] ) ) {
 			$locale = (string) $dettagli['locale'];
 		}
 	}
 
 	$lingua = str_replace( '_', '-', $locale );
+	$valore = $lingua;
+	if ( '' === $lingua ) {
+		$lingua = null;
+	}
 
-	return $lingua;
+	return $valore;
+}
+
+/**
+ * L'ID del template aperto nell'editor, nelle richieste ajax di Elementor.
+ *
+ * VBEB free. Solo lettura: la richiesta e' gia' verificata da Elementor.
+ *
+ * @return int 0 se non e' una richiesta ajax dell'editor.
+ */
+function vbeb_id_editor_ajax() {
+	if ( ! wp_doing_ajax() || empty( $_REQUEST['editor_post_id'] ) || ! current_user_can( 'edit_posts' ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- sola lettura, nonce verificato da Elementor.
+		return 0;
+	}
+
+	$id = absint( wp_unslash( $_REQUEST['editor_post_id'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- sola lettura, nonce verificato da Elementor.
+
+	return current_user_can( 'edit_post', $id ) ? $id : 0;
+}
+
+/**
+ * Esegue una funzione con le traduzioni di VikBooking nella lingua del
+ * template aperto nell'editor.
+ *
+ * VBEB free, segnalato dall'utente: con Polylang o WPML le scritte fisse di
+ * VikBooking (mesi, giorni, pulsanti, etichette dei moduli) devono comparire
+ * nella lingua del template aperto, non in quella della richiesta (le
+ * richieste dell'editor non sono tutte nella stessa lingua).
+ *
+ * Si cambiano SOLO le traduzioni dei domini "vikbooking" e "default" (i
+ * nomi di mesi e giorni che VikBooking prende da WordPress), per la durata
+ * della funzione, e poi si rimettono quelle di prima, identiche. Fino a qui
+ * si cambiava la lingua di tutto WordPress (switch_to_locale()), e a volte
+ * nomi e impostazioni dei widget nel pannello restavano nella lingua del
+ * template invece che in quella della bacheca.
+ *
+ * File cercati, come fa VikBooking: wp-content/languages/loco/plugins,
+ * wp-content/languages/plugins, poi la cartella "languages" di VikBooking
+ * (.mo, oppure .l10n.php). Senza file per quella lingua: i testi originali
+ * (inglese). Fuori dall'editor, o senza plugin multilingua, la funzione gira
+ * e basta.
+ *
+ * @param callable $funzione Funzione da eseguire.
+ * @return mixed Il suo risultato.
+ */
+function vbeb_in_lingua_template( callable $funzione ) {
+	global $l10n;
+
+	$locale = ( function_exists( 'vbeb_editor_ripete' ) && vbeb_editor_ripete() )
+		? str_replace( '-', '_', vbeb_lingua_template_editor() )
+		: '';
+
+	if ( '' === $locale || ! class_exists( 'NOOP_Translations' ) ) {
+		return $funzione();
+	}
+
+	if ( ! is_array( $l10n ) ) {
+		$l10n = array(); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- elenco delle traduzioni caricate, vuoto.
+	}
+
+	// "default": i nomi di mesi e giorni, che VikBooking prende da WordPress
+	// (libraries/language/system.php: "JANUARY" => __( 'January' )).
+	$prima = array();
+	foreach ( array( 'vikbooking', 'default' ) as $dominio ) {
+		$prima[ $dominio ] = array_key_exists( $dominio, $l10n ) ? array( $l10n[ $dominio ] ) : null;
+		$l10n[ $dominio ]  = vbeb_traduzioni_dominio( $dominio, $locale ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- solo per la durata della funzione, rimesse subito dopo.
+	}
+
+	try {
+		return $funzione();
+	} finally {
+		foreach ( $prima as $dominio => $valore ) {
+			if ( null === $valore ) {
+				unset( $l10n[ $dominio ] );
+			} else {
+				$l10n[ $dominio ] = $valore[0]; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- rimette le traduzioni di prima.
+			}
+		}
+	}
+}
+
+/**
+ * Un testo di VikBooking (JText) nella lingua del template aperto
+ * nell'editor; fuori dall'editor come lo traduce VikBooking.
+ *
+ * VBEB free, segnalato dall'utente: nel template inglese "Richiedi
+ * informazioni" e "Dove sarai" comparivano in italiano nell'editor.
+ *
+ * @param string $chiave Chiave di VikBooking.
+ * @return string
+ */
+function vbeb_vbo_testo( $chiave ) {
+	if ( ! class_exists( 'JText' ) ) {
+		return (string) $chiave;
+	}
+
+	return (string) vbeb_in_lingua_template(
+		function () use ( $chiave ) {
+			return JText::translate( $chiave );
+		}
+	);
+}
+
+/**
+ * Le traduzioni di un dominio per una lingua, lette dai file.
+ *
+ * - "vikbooking": wp-content/languages/loco/plugins, wp-content/languages/
+ *   plugins, poi la cartella "languages" di VikBooking;
+ * - "default" (WordPress): wp-content/languages.
+ *
+ * @param string $dominio "vikbooking" o "default".
+ * @param string $locale  Lingua, per esempio "en_US".
+ * @return Translations|NOOP_Translations
+ */
+function vbeb_traduzioni_dominio( $dominio, $locale ) {
+	static $cache = array();
+
+	$chiave = $dominio . '|' . $locale;
+	if ( isset( $cache[ $chiave ] ) ) {
+		return $cache[ $chiave ];
+	}
+
+	if ( 'default' === $dominio ) {
+		$cartelle = array( trailingslashit( WP_LANG_DIR ) );
+		$prefisso = '';
+	} else {
+		$cartelle = array(
+			trailingslashit( WP_LANG_DIR ) . 'loco/plugins/',
+			trailingslashit( WP_LANG_DIR ) . 'plugins/',
+		);
+		if ( defined( 'VIKBOOKING_LANG' ) ) {
+			$cartelle[] = trailingslashit( WP_PLUGIN_DIR ) . trailingslashit( VIKBOOKING_LANG );
+		}
+		$prefisso = $dominio . '-';
+	}
+
+	$cache[ $chiave ] = new NOOP_Translations();
+
+	foreach ( $cartelle as $cartella ) {
+		$mo = $cartella . $prefisso . $locale . '.mo';
+		if ( is_readable( $mo ) && class_exists( 'MO' ) ) {
+			$file = new MO();
+			if ( $file->import_from_file( $mo ) ) {
+				$cache[ $chiave ] = $file;
+				break;
+			}
+		}
+
+		$php = $cartella . $prefisso . $locale . '.l10n.php';
+		if ( is_readable( $php ) && class_exists( 'Translations' ) ) {
+			$dati = include $php;
+			if ( is_array( $dati ) && ! empty( $dati['messages'] ) && is_array( $dati['messages'] ) ) {
+				$file = new Translations();
+				foreach ( $dati['messages'] as $chiave => $valore ) {
+					$contesto = null;
+					if ( false !== strpos( (string) $chiave, "\4" ) ) {
+						list( $contesto, $chiave ) = explode( "\4", (string) $chiave, 2 );
+					}
+					$parti = explode( "\0", (string) $chiave );
+					$voce  = array(
+						'singular'     => $parti[0],
+						'translations' => explode( "\0", (string) $valore ),
+					);
+					if ( isset( $parti[1] ) ) {
+						$voce['plural'] = $parti[1];
+					}
+					if ( null !== $contesto ) {
+						$voce['context'] = $contesto;
+					}
+					$file->add_entry( new Translation_Entry( $voce ) );
+				}
+				$cache[ $chiave ] = $file;
+				break;
+			}
+		}
+	}
+
+	return $cache[ $chiave ];
+}
+
+/**
+ * La lingua di un contenuto secondo Polylang o WPML.
+ *
+ * VBEB free: per mostrare nei menu dei widget solo i template nella lingua
+ * del template aperto nell'editor (vbeb_popup_elenco()).
+ *
+ * @param int $id Contenuto.
+ * @return string Codice della lingua (per esempio "en_US"), vuoto se non c'e'
+ *                un plugin multilingua o il contenuto non ha una lingua.
+ */
+function vbeb_lingua_contenuto( $id ) {
+	$id = (int) $id;
+	if ( $id < 1 ) {
+		return '';
+	}
+	if ( function_exists( 'pll_get_post_language' ) ) {
+		return (string) pll_get_post_language( $id, 'locale' );
+	}
+	if ( has_filter( 'wpml_post_language_details' ) ) {
+		$dettagli = apply_filters( 'wpml_post_language_details', null, $id ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- filtro di WPML.
+		if ( is_array( $dettagli ) && ! empty( $dettagli['locale'] ) ) {
+			return (string) $dettagli['locale'];
+		}
+	}
+	return '';
 }
 
 /**

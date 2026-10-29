@@ -61,7 +61,7 @@ class VBEB_Reqinfo_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_content_button',
 			array(
-				'label' => esc_html__( 'Button', 'elementor' ),
+				'label' => esc_html__( 'Button', 'vbeb' ),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			)
 		);
@@ -69,7 +69,7 @@ class VBEB_Reqinfo_Widget extends Widget_Base {
 		$this->add_control(
 			'button_text',
 			array(
-				'label'       => esc_html__( 'Text', 'elementor' ),
+				'label'       => esc_html__( 'Text', 'vbeb' ),
 				'type'        => Controls_Manager::TEXT,
 				'placeholder' => esc_html__( 'Leave empty to use the original VikBooking text', 'vbeb' ),
 				'default'     => '',
@@ -80,7 +80,7 @@ class VBEB_Reqinfo_Widget extends Widget_Base {
 		$this->add_control(
 			'selected_icon',
 			array(
-				'label'       => esc_html__( 'Icon', 'elementor' ),
+				'label'       => esc_html__( 'Icon', 'vbeb' ),
 				'type'        => Controls_Manager::ICONS,
 				'skin'        => 'inline',
 				'label_block' => false,
@@ -92,13 +92,13 @@ class VBEB_Reqinfo_Widget extends Widget_Base {
 			array(
 				// VBEB 7.404.0: come nel widget Pulsante di Elementor (scelta a
 				// icone); stessi valori di prima.
-				'label'     => esc_html__( 'Icon Position', 'elementor' ),
+				'label'     => esc_html__( 'Icon Position', 'vbeb' ),
 				'type'      => Controls_Manager::CHOOSE,
 				'default'   => 'right',
 				'toggle'    => false,
 				'options'   => array(
-					'left'  => array( 'title' => esc_html__( 'Start', 'elementor' ), 'icon' => 'eicon-h-align-left' ),
-					'right' => array( 'title' => esc_html__( 'End', 'elementor' ), 'icon' => 'eicon-h-align-right' ),
+					'left'  => array( 'title' => esc_html__( 'Start', 'vbeb' ), 'icon' => 'eicon-h-align-left' ),
+					'right' => array( 'title' => esc_html__( 'End', 'vbeb' ), 'icon' => 'eicon-h-align-right' ),
 				),
 				'condition' => array(
 					'selected_icon[value]!' => '',
@@ -109,7 +109,7 @@ class VBEB_Reqinfo_Widget extends Widget_Base {
 		$this->add_control(
 			'icon_spacing',
 			array(
-				'label'      => esc_html__( 'Icon Spacing', 'elementor' ),
+				'label'      => esc_html__( 'Icon Spacing', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em', 'rem', 'vw', 'custom' ),
 				'range'      => array(
@@ -139,7 +139,7 @@ class VBEB_Reqinfo_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_content_form',
 			array(
-				'label' => esc_html__( 'Form', 'elementor' ),
+				'label' => esc_html__( 'Form', 'vbeb' ),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			)
 		);
@@ -171,7 +171,7 @@ class VBEB_Reqinfo_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_button',
 			array(
-				'label' => esc_html__( 'Button', 'elementor' ),
+				'label' => esc_html__( 'Button', 'vbeb' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -183,13 +183,13 @@ class VBEB_Reqinfo_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'button_position',
 			array(
-				'label'                => esc_html__( 'Position', 'elementor' ),
+				'label'                => esc_html__( 'Position', 'vbeb' ),
 				'type'                 => Controls_Manager::CHOOSE,
 				'options'              => array(
-					'left'    => array( 'title' => esc_html__( 'Left', 'elementor' ), 'icon' => 'eicon-h-align-left' ),
-					'center'  => array( 'title' => esc_html__( 'Center', 'elementor' ), 'icon' => 'eicon-h-align-center' ),
-					'right'   => array( 'title' => esc_html__( 'Right', 'elementor' ), 'icon' => 'eicon-h-align-right' ),
-					'justify' => array( 'title' => esc_html__( 'Stretch', 'elementor' ), 'icon' => 'eicon-h-align-stretch' ),
+					'left'    => array( 'title' => esc_html__( 'Left', 'vbeb' ), 'icon' => 'eicon-h-align-left' ),
+					'center'  => array( 'title' => esc_html__( 'Center', 'vbeb' ), 'icon' => 'eicon-h-align-center' ),
+					'right'   => array( 'title' => esc_html__( 'Right', 'vbeb' ), 'icon' => 'eicon-h-align-right' ),
+					'justify' => array( 'title' => esc_html__( 'Stretch', 'vbeb' ), 'icon' => 'eicon-h-align-stretch' ),
 				),
 				'selectors_dictionary' => array(
 					'left'    => '--vbeb-ri-ta: left; --vbeb-ri-w: auto;',
@@ -216,7 +216,7 @@ class VBEB_Reqinfo_Widget extends Widget_Base {
 			Group_Control_Text_Shadow::get_type(),
 			array(
 				'name'     => 'button_text_shadow',
-				'label'    => esc_html__( 'Text Shadow', 'elementor' ),
+				'label'    => esc_html__( 'Text Shadow', 'vbeb' ),
 				'selector' => '{{WRAPPER}} .vbo-reqinfo-opener',
 			)
 		);
@@ -233,12 +233,12 @@ class VBEB_Reqinfo_Widget extends Widget_Base {
 
 		$this->start_controls_tabs( 'button_style_tabs' );
 
-		$this->start_controls_tab( 'button_style_tab_normal', array( 'label' => esc_html__( 'Normal', 'elementor' ) ) );
+		$this->start_controls_tab( 'button_style_tab_normal', array( 'label' => esc_html__( 'Normal', 'vbeb' ) ) );
 
 		$this->add_control(
 			'button_text_color',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					$pulsante => 'color: {{VALUE}}; fill: {{VALUE}};',
@@ -253,10 +253,10 @@ class VBEB_Reqinfo_Widget extends Widget_Base {
 			array(
 				'name'           => 'button_background',
 				'types'          => array( 'classic', 'gradient' ),
-				'exclude'        => array( 'image' ),
+				'exclude'        => array( 'image' ), // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- campi esclusi da un controllo di Elementor, non una query.
 				'selector'       => $pulsante,
 				'fields_options' => array(
-					'background' => array( 'label' => esc_html__( 'Background Type', 'elementor' ) ),
+					'background' => array( 'label' => esc_html__( 'Background Type', 'vbeb' ) ),
 				),
 			)
 		);
@@ -271,12 +271,12 @@ class VBEB_Reqinfo_Widget extends Widget_Base {
 
 		$this->end_controls_tab();
 
-		$this->start_controls_tab( 'button_style_tab_hover', array( 'label' => esc_html__( 'Hover', 'elementor' ) ) );
+		$this->start_controls_tab( 'button_style_tab_hover', array( 'label' => esc_html__( 'Hover', 'vbeb' ) ) );
 
 		$this->add_control(
 			'button_text_color_hover',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					$pulsante_hover => 'color: {{VALUE}}; fill: {{VALUE}};',
@@ -290,10 +290,10 @@ class VBEB_Reqinfo_Widget extends Widget_Base {
 			array(
 				'name'           => 'button_background_hover',
 				'types'          => array( 'classic', 'gradient' ),
-				'exclude'        => array( 'image' ),
+				'exclude'        => array( 'image' ), // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- campi esclusi da un controllo di Elementor, non una query.
 				'selector'       => $pulsante_hover,
 				'fields_options' => array(
-					'background' => array( 'label' => esc_html__( 'Background Type', 'elementor' ) ),
+					'background' => array( 'label' => esc_html__( 'Background Type', 'vbeb' ) ),
 				),
 			)
 		);
@@ -301,7 +301,7 @@ class VBEB_Reqinfo_Widget extends Widget_Base {
 		$this->add_control(
 			'button_border_color_hover',
 			array(
-				'label'     => esc_html__( 'Border Color', 'elementor' ),
+				'label'     => esc_html__( 'Border Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'condition' => array( 'button_border_border!' => '' ),
 				'selectors' => array( $pulsante_hover => 'border-color: {{VALUE}};' ),
@@ -323,7 +323,7 @@ class VBEB_Reqinfo_Widget extends Widget_Base {
 		$this->add_control(
 			'button_hover_transition_duration',
 			array(
-				'label'      => esc_html__( 'Transition Duration', 'elementor' ),
+				'label'      => esc_html__( 'Transition Duration', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 's', 'ms', 'custom' ),
 				'default'    => array( 'unit' => 's' ),
@@ -334,7 +334,7 @@ class VBEB_Reqinfo_Widget extends Widget_Base {
 		$this->add_control(
 			'hover_animation',
 			array(
-				'label' => esc_html__( 'Hover Animation', 'elementor' ),
+				'label' => esc_html__( 'Hover Animation', 'vbeb' ),
 				'type'  => Controls_Manager::HOVER_ANIMATION,
 			)
 		);
@@ -355,7 +355,7 @@ class VBEB_Reqinfo_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'button_radius',
 			array(
-				'label'      => esc_html__( 'Border Radius', 'elementor' ),
+				'label'      => esc_html__( 'Border Radius', 'vbeb' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
 				'selectors'  => array( $pulsante => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};' ),
@@ -365,7 +365,7 @@ class VBEB_Reqinfo_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'button_padding',
 			array(
-				'label'      => esc_html__( 'Padding', 'elementor' ),
+				'label'      => esc_html__( 'Padding', 'vbeb' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', '%' ),
 				'separator'  => 'before',
@@ -422,7 +422,8 @@ class VBEB_Reqinfo_Widget extends Widget_Base {
 	 * @return string
 	 */
 	private function pulsante_anteprima() {
-		$testo = class_exists( 'JText' ) ? JText::translate( 'VBOROOMREQINFOBTN' ) : 'VBOROOMREQINFOBTN';
+		// VBEB free: nell'editor nella lingua del template aperto.
+		$testo = class_exists( 'JText' ) ? vbeb_vbo_testo( 'VBOROOMREQINFOBTN' ) : 'VBOROOMREQINFOBTN';
 
 		return '<div class="vbo-reqinfo-cont"><span><a href="#" onclick="return false;" class="vbo-reqinfo-opener vbo-pref-color-btn">' . esc_html( $testo ) . '</a></span></div>';
 	}

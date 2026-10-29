@@ -14,7 +14,8 @@ use Elementor\Group_Control_Background;
 /**
  * VBEB 7.210.0: "VBEB Calendario popup".
  *
- * Richiesto dall'utente. Il widget si mette in un template di tipo Sezione e
+ * Richiesto dall'utente. Il widget si mette in un template "VBEB Popup" con
+ * "Tipo di popup: Calendario popup" (versione free; prima Sezione) e
  * serve a dare un ASPETTO al calendario delle date di VikBooking: i widget
  * che hanno la sezione "Calendario popup" (nella versione free solo "VBEB
  * Camera - Modulo prenotazione")
@@ -145,7 +146,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		$this->add_control(
 			$nome . '_bg',
 			array(
-				'label'       => esc_html__( 'Background Color', 'elementor' ),
+				'label'       => esc_html__( 'Background Color', 'vbeb' ),
 				'type'        => Controls_Manager::COLOR,
 				'selectors'   => array(
 					vbeb_calpop_sel_griglia_multi( $parti, false )                   => 'background: {{VALUE}} !important;',
@@ -162,7 +163,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 				'condition'      => $condizione,
 				'fields_options' => array(
 					'border' => array(
-						'label'     => esc_html__( 'Border Type', 'elementor' ),
+						'label'     => esc_html__( 'Border Type', 'vbeb' ),
 						'selectors' => array( '{{SELECTOR}}' => 'border-style: {{VALUE}} !important;' ),
 					),
 					'width'  => array(
@@ -178,7 +179,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			$nome . '_radius',
 			array(
-				'label'      => esc_html__( 'Border Radius', 'elementor' ),
+				'label'      => esc_html__( 'Border Radius', 'vbeb' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'condition'  => $condizione,
@@ -205,7 +206,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		$this->add_control(
 			$nome . '_bg',
 			array(
-				'label'     => esc_html__( 'Background Color', 'elementor' ),
+				'label'     => esc_html__( 'Background Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				// VBEB 7.230.0: come in stile_cerchio(). Con la griglia anche
 				// la variabile dello sfondo delle celle scelte, letta da
@@ -226,7 +227,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 				'selector'       => $sel,
 				'fields_options' => array(
 					'border' => array(
-						'label'     => esc_html__( 'Border Type', 'elementor' ),
+						'label'     => esc_html__( 'Border Type', 'vbeb' ),
 						'selectors' => array( '{{SELECTOR}}' => 'border-style: {{VALUE}} !important;' ),
 					),
 					'width'  => array(
@@ -242,7 +243,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			$nome . '_radius',
 			array(
-				'label'      => esc_html__( 'Border Radius', 'elementor' ),
+				'label'      => esc_html__( 'Border Radius', 'vbeb' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				// VBEB 7.235.0: con la griglia i cerchi non hanno raggio.
@@ -289,12 +290,11 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 				'label_block' => true,
 				'options'     => array(
 					''     => esc_html__( 'Default (VikBooking)', 'vbeb' ),
-					'show' => esc_html__( 'Show', 'elementor' ),
-					'hide' => esc_html__( 'Hide', 'elementor' ),
+					'show' => esc_html__( 'Show', 'vbeb' ),
+					'hide' => esc_html__( 'Hide', 'vbeb' ),
 				),
 			)
 		);
-
 
 		// VBEB 7.223.0: lo stato mostrato dal calendario di prova, per
 		// disegnare le due schede di "Intervallo date" (Giorni - numero).
@@ -330,15 +330,15 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		 * calendario e' una tabella, e i bordi delle sette celle formano la
 		 * linea.
 		 * ------------------------------------------------------------- */
-		$this->start_controls_section( 'section_content_divider', array( 'label' => esc_html__( 'Divider', 'elementor' ), 'tab' => Controls_Manager::TAB_CONTENT ) );
+		$this->start_controls_section( 'section_content_divider', array( 'label' => esc_html__( 'Divider', 'vbeb' ), 'tab' => Controls_Manager::TAB_CONTENT ) );
 
 		$this->add_control(
 			'divider_hide',
 			array(
 				'label'        => esc_html__( 'Hide Line', 'vbeb' ),
 				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Yes', 'elementor' ),
-				'label_off'    => esc_html__( 'No', 'elementor' ),
+				'label_on'     => esc_html__( 'Yes', 'vbeb' ),
+				'label_off'    => esc_html__( 'No', 'vbeb' ),
 				'return_value' => 'yes',
 				'default'      => '',
 				'selectors'    => array( $this->sel( ' .ui-datepicker-calendar thead tr:first-child th' ) => 'border-top-width: 0 !important; border-block-start-width: 0 !important;' ),
@@ -348,61 +348,66 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		$this->end_controls_section();
 
 		/* ---------------------------------------------------------------
-		 * STILE - CONTENITORE
+		 * CONTENUTO - PULSANTI "CANCELLA LE DATE" E "CHIUDI"
+		 *
+		 * VBEB free, su richiesta dell'utente: i testi dei due pulsanti, ognuno
+		 * nella propria sezione. Vuoti, quelli di VikBooking (gia' tradotti in
+		 * ogni lingua). Scritti qui, stanno nel template: per le altre lingue
+		 * si traduce il template (Polylang o WPML, vedi vbeb_template_lingua()
+		 * e wpml-config.xml). Le sezioni non compaiono con i pulsanti su
+		 * "Nascondi".
 		 * ------------------------------------------------------------- */
-		$this->start_controls_section( 'section_style_box', array( 'label' => esc_html__( 'Container', 'elementor' ), 'tab' => Controls_Manager::TAB_STYLE ) );
+		$this->start_controls_section(
+			'section_content_clear',
+			array(
+				'label'     => esc_html__( '"Clear dates" Button', 'vbeb' ),
+				'tab'       => Controls_Manager::TAB_CONTENT,
+				'condition' => array( 'buttons!' => 'hide' ),
+			)
+		);
 
 		$this->add_control(
-			'box_bg',
+			'clear_text',
 			array(
-				'label'     => esc_html__( 'Background Color', 'elementor' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => array( $this->sel( '' ) => 'background-color: {{VALUE}} !important;' ),
+				'label'       => esc_html__( 'Text', 'vbeb' ),
+				'type'        => Controls_Manager::TEXT,
+				'default'     => '',
+				'placeholder' => vbeb_calpop_testo_vikbooking( 'VBO_CLEAR_DATES' ),
+				'label_block' => false,
 			)
 		);
-
-		$this->add_group_control(
-			Group_Control_Border::get_type(),
-			array(
-				'name'     => 'box_border',
-				'selector' => $this->sel( '' ),
-			)
-		);
-
-		$this->add_responsive_control(
-			'box_radius',
-			array(
-				'label'      => esc_html__( 'Border Radius', 'elementor' ),
-				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => array( 'px', '%', 'em', 'rem' ),
-				'selectors'  => array(
-					$this->sel( '' ) => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				),
-			)
-		);
-
-		$this->add_group_control(
-			Group_Control_Box_Shadow::get_type(),
-			array(
-				'name'     => 'box_shadow',
-				'selector' => $this->sel( '' ),
-			)
-		);
-
-		$this->add_responsive_control(
-			'box_padding',
-			array(
-				'label'      => esc_html__( 'Padding', 'elementor' ),
-				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => array( 'px', 'em', 'rem' ),
-				'selectors'  => array(
-					$this->sel( '' ) => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				),
-			)
-		);
-
 
 		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'section_content_close',
+			array(
+				'label'     => esc_html__( '"Close" Button', 'vbeb' ),
+				'tab'       => Controls_Manager::TAB_CONTENT,
+				'condition' => array( 'buttons!' => 'hide' ),
+			)
+		);
+
+		$this->add_control(
+			'close_text',
+			array(
+				'label'       => esc_html__( 'Text', 'vbeb' ),
+				'type'        => Controls_Manager::TEXT,
+				'default'     => '',
+				'placeholder' => vbeb_calpop_testo_vikbooking( 'VBO_CLOSE' ),
+				'label_block' => false,
+			)
+		);
+
+		$this->end_controls_section();
+
+		/* ---------------------------------------------------------------
+		 * STILE - CONTENITORE
+		 * ------------------------------------------------------------- */
+		// VBEB free, su richiesta dell'utente: tolta la sezione "Contenitore".
+		// Sfondo, bordo, raggio, ombra e rientro del riquadro del calendario si
+		// impostano nel template "VBEB Popup" (Stile > Popup, Avanzato >
+		// Rientro), vedi class-vbeb-popup-document.php.
 
 		/* ---------------------------------------------------------------
 		 * STILE - NAVIGAZIONE MESE
@@ -434,7 +439,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		$this->add_control(
 			'title_color',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( $this->sel( ' .ui-datepicker-header .ui-datepicker-title' ) => 'color: {{VALUE}} !important;' ),
 			)
@@ -443,7 +448,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		$this->add_control(
 			'nav_heading_arrows',
 			array(
-				'label'     => esc_html__( 'Arrows', 'elementor' ),
+				'label'     => esc_html__( 'Arrows', 'vbeb' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			)
@@ -455,12 +460,12 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 
 		$this->start_controls_tabs( 'arrows_tabs' );
 
-		$this->start_controls_tab( 'arrows_tab_normal', array( 'label' => esc_html__( 'Normal', 'elementor' ) ) );
+		$this->start_controls_tab( 'arrows_tab_normal', array( 'label' => esc_html__( 'Normal', 'vbeb' ) ) );
 
 		$this->add_control(
 			'arrows_color',
 			array(
-				'label'     => esc_html__( 'Color', 'elementor' ),
+				'label'     => esc_html__( 'Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( vbeb_calpop_sel_multi( array( ' .ui-datepicker-prev span:after', ' .ui-datepicker-next span:after' ) ) => 'color: {{VALUE}} !important;' ),
 			)
@@ -469,7 +474,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		$this->add_control(
 			'arrows_bg',
 			array(
-				'label'     => esc_html__( 'Background Color', 'elementor' ),
+				'label'     => esc_html__( 'Background Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( vbeb_calpop_sel_multi( array( ' .ui-datepicker-prev', ' .ui-datepicker-next' ) ) => 'background-color: {{VALUE}} !important;' ),
 			)
@@ -478,7 +483,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		$this->add_control(
 			'arrows_border_color',
 			array(
-				'label'     => esc_html__( 'Border Color', 'elementor' ),
+				'label'     => esc_html__( 'Border Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( vbeb_calpop_sel_multi( array( ' .ui-datepicker-prev', ' .ui-datepicker-next' ) ) => 'border-color: {{VALUE}} !important;' ),
 			)
@@ -486,12 +491,12 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 
 		$this->end_controls_tab();
 
-		$this->start_controls_tab( 'arrows_tab_hover', array( 'label' => esc_html__( 'Hover', 'elementor' ) ) );
+		$this->start_controls_tab( 'arrows_tab_hover', array( 'label' => esc_html__( 'Hover', 'vbeb' ) ) );
 
 		$this->add_control(
 			'arrows_color_hover',
 			array(
-				'label'     => esc_html__( 'Color', 'elementor' ),
+				'label'     => esc_html__( 'Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( vbeb_calpop_sel_multi( array( ' .ui-datepicker-prev:hover span:after', ' .ui-datepicker-next:hover span:after' ) ) => 'color: {{VALUE}} !important;' ),
 			)
@@ -500,7 +505,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		$this->add_control(
 			'arrows_bg_hover',
 			array(
-				'label'     => esc_html__( 'Background Color', 'elementor' ),
+				'label'     => esc_html__( 'Background Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				// VBEB 7.211.0: lo sfondo di hover va a uno strato "::before"
 				// della freccia (vbeb_calpop_css_base()), perche' VikBooking
@@ -514,7 +519,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		$this->add_control(
 			'arrows_border_color_hover',
 			array(
-				'label'     => esc_html__( 'Border Color', 'elementor' ),
+				'label'     => esc_html__( 'Border Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				// VBEB 7.211.0: anche la variabile che la regola di VikBooking
 				// legge con "!important" (riga 6037: --vbo-pref-bgcolor).
@@ -539,7 +544,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_divider',
 			array(
-				'label'     => esc_html__( 'Divider', 'elementor' ),
+				'label'     => esc_html__( 'Divider', 'vbeb' ),
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => array( 'divider_hide!' => 'yes' ),
 			)
@@ -548,7 +553,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		$this->add_control(
 			'divider_color',
 			array(
-				'label'     => esc_html__( 'Color', 'elementor' ),
+				'label'     => esc_html__( 'Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( $this->sel( ' .ui-datepicker-calendar thead tr:first-child th' ) => 'border-top-color: {{VALUE}};' ),
 			)
@@ -557,7 +562,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'divider_width',
 			array(
-				'label'      => esc_html__( 'Weight', 'elementor' ),
+				'label'      => esc_html__( 'Weight', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px' ),
 				'range'      => array(
@@ -589,7 +594,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		$this->add_control(
 			'weekdays_color',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				// VBEB 7.211.0: anche la variabile che la regola di VikBooking
 				// legge con "!important" (riga 5922: --vbo-middle-text-color).
@@ -650,7 +655,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'days_size',
 			array(
-				'label'      => esc_html__( 'Size', 'elementor' ),
+				'label'      => esc_html__( 'Size', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px' ),
 				'range'      => array(
@@ -712,15 +717,15 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		 */
 		$griglia_celle = ' .ui-datepicker-calendar td:not(.vbeb-past):not(.ui-datepicker-other-month)';
 
-		$this->add_control( 'days_grid_heading', array( 'label' => esc_html__( 'Grid', 'elementor' ), 'type' => Controls_Manager::HEADING, 'separator' => 'before' ) );
+		$this->add_control( 'days_grid_heading', array( 'label' => esc_html__( 'Grid', 'vbeb' ), 'type' => Controls_Manager::HEADING, 'separator' => 'before' ) );
 
 		$this->add_control(
 			'days_grid',
 			array(
 				'label'        => esc_html__( 'Show Grid', 'vbeb' ),
 				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Yes', 'elementor' ),
-				'label_off'    => esc_html__( 'No', 'elementor' ),
+				'label_on'     => esc_html__( 'Yes', 'vbeb' ),
+				'label_off'    => esc_html__( 'No', 'vbeb' ),
 				'return_value' => 'yes',
 				'default'      => '',
 				// VBEB 7.230.0: il calendario di prova si ridisegna, per la
@@ -808,7 +813,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		$this->add_control(
 			'days_today_color',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				// VBEB 7.230.0: con un colore globale il numero di oggi non
 				// prendeva il colore (segnalato dall'utente): Elementor toglie
@@ -839,7 +844,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		$this->add_control(
 			'days_past_opacity',
 			array(
-				'label'     => esc_html__( 'Opacity', 'elementor' ),
+				'label'     => esc_html__( 'Opacity', 'vbeb' ),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => array(
 					'px' => array(
@@ -864,12 +869,12 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		// VBEB 7.232.0, su richiesta dell'utente: schede Normale e Hover.
 		$this->start_controls_tabs( 'days_future_tabs' );
 
-		$this->start_controls_tab( 'days_future_tab_normal', array( 'label' => esc_html__( 'Normal', 'elementor' ) ) );
+		$this->start_controls_tab( 'days_future_tab_normal', array( 'label' => esc_html__( 'Normal', 'vbeb' ) ) );
 
 		$this->add_control(
 			'days_color',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				// VBEB 7.212.0: senza "!important", vedi la 7.212.0 nel readme.
 				'selectors' => array( $this->sel( $futuro . ' > a' ) . ', ' . $this->sel( $futuro_min . ' > *' ) => 'color: {{VALUE}}; --vbo-light-dark-grey-bg-color: {{VALUE}};' ),
@@ -891,7 +896,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		 * nella scheda Normale: cerchio senza, cella (e cerchio) con. Vale
 		 * anche per oggi, che e' un giorno futuro cliccabile.
 		 */
-		$this->start_controls_tab( 'days_future_tab_hover', array( 'label' => esc_html__( 'Hover', 'elementor' ) ) );
+		$this->start_controls_tab( 'days_future_tab_hover', array( 'label' => esc_html__( 'Hover', 'vbeb' ) ) );
 
 		// VBEB 7.238.0, su richiesta dell'utente: anche i giorni in mezzo a
 		// un intervallo gia' scelto, che sono cliccabili come gli altri (un
@@ -912,7 +917,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		$this->add_control(
 			'days_future_color_hover',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( vbeb_calpop_sel_multi( array( $futuro . ' > a:hover', $interno . ' > *:hover', $oggi_h . ' > a:hover' ) ) => 'color: {{VALUE}} !important; --vbo-pref-textcolor: {{VALUE}}; --vbo-light-dark-grey-bg-color: {{VALUE}};' ),
 			)
@@ -921,7 +926,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		$this->add_control(
 			'days_future_bg_hover',
 			array(
-				'label'       => esc_html__( 'Background Color', 'elementor' ),
+				'label'       => esc_html__( 'Background Color', 'vbeb' ),
 				'type'        => Controls_Manager::COLOR,
 				'selectors'   => array(
 					vbeb_calpop_sel_griglia_multi( array( $futuro . ' > a:hover', $interno . ' > *:hover', $oggi_h . ' > a:hover' ), false ) => 'background: {{VALUE}} !important; --vbo-white-bg-color: {{VALUE}};',
@@ -946,7 +951,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 				'condition'      => array( 'days_grid!' => 'yes' ),
 				'fields_options' => array(
 					'border' => array(
-						'label'     => esc_html__( 'Border Type', 'elementor' ),
+						'label'     => esc_html__( 'Border Type', 'vbeb' ),
 						'selectors' => array( '{{SELECTOR}}' => 'border-style: {{VALUE}} !important;' ),
 					),
 					'width'  => array(
@@ -962,7 +967,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'days_future_radius_hover',
 			array(
-				'label'      => esc_html__( 'Border Radius', 'elementor' ),
+				'label'      => esc_html__( 'Border Radius', 'vbeb' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'condition'  => array( 'days_grid!' => 'yes' ),
@@ -980,9 +985,12 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		$this->add_control(
 			'days_disabled_color',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
-				'selectors' => array( $this->sel( $nondisp . ' > *' ) => 'color: {{VALUE}} !important;' ),
+				// VBEB free, segnalato dall'utente: con "Griglia" il numero dei
+				// giorni non disponibili e' sbiadito (opacita' .2, vedi
+				// days_grid); con un colore scelto si vede pieno.
+				'selectors' => array( $this->sel( $nondisp . ' > *' ) => 'color: {{VALUE}} !important; opacity: 1 !important;' ),
 			)
 		);
 
@@ -1011,7 +1019,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		$this->add_control(
 			'days_selected_color',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( vbeb_calpop_sel_multi( $selezionato ) => 'color: {{VALUE}} !important; --vbo-pref-fontcolor: {{VALUE}}; --vbo-contrast-text-color: {{VALUE}}; --vbo-light-dark-grey-bg-color: {{VALUE}};' ),
 			)
@@ -1023,7 +1031,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 
 		$this->start_controls_tabs( 'days_range_tabs' );
 
-		$this->start_controls_tab( 'days_range_tab_normal', array( 'label' => esc_html__( 'Normal', 'elementor' ) ) );
+		$this->start_controls_tab( 'days_range_tab_normal', array( 'label' => esc_html__( 'Normal', 'vbeb' ) ) );
 
 		// VBEB 7.229.0: i cerchi di check-in, check-out e giorno scelto
 		// sono passati a "Giorno selezionato"; qui la striscia e i cerchi
@@ -1040,7 +1048,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		$this->add_control(
 			'days_range_color',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( vbeb_calpop_sel_multi( $scelto_cerchi ) => 'color: {{VALUE}} !important; --vbo-pref-fontcolor: {{VALUE}}; --vbo-contrast-text-color: {{VALUE}};' ),
 			)
@@ -1049,7 +1057,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		$this->add_control(
 			'days_range_bg',
 			array(
-				'label'     => esc_html__( 'Background Color', 'elementor' ),
+				'label'     => esc_html__( 'Background Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					vbeb_calpop_sel_multi( $scelto_celle )  => 'background: {{VALUE}} !important; --vbo-light-grey-bg-color: {{VALUE}};',
@@ -1066,7 +1074,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 
 		$this->end_controls_tab();
 
-		$this->start_controls_tab( 'days_range_tab_hover', array( 'label' => esc_html__( 'Hover', 'elementor' ) ) );
+		$this->start_controls_tab( 'days_range_tab_hover', array( 'label' => esc_html__( 'Hover', 'vbeb' ) ) );
 
 		// VBEB 7.229.0: il cerchio del check-in segue "Giorno selezionato"
 		// anche in questa fase (opzione 1 dell'utente).
@@ -1083,7 +1091,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		$this->add_control(
 			'days_preview_color',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					vbeb_calpop_sel_multi( $anteprima_cerchi ) => 'color: {{VALUE}} !important; --vbo-pref-fontcolor: {{VALUE}}; --vbo-contrast-text-color: {{VALUE}}; --vbo-pref-textcolor: {{VALUE}};',
@@ -1096,7 +1104,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		$this->add_control(
 			'days_preview_bg',
 			array(
-				'label'     => esc_html__( 'Background Color', 'elementor' ),
+				'label'     => esc_html__( 'Background Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					vbeb_calpop_sel_multi( $anteprima_celle )  => 'background: {{VALUE}} !important; --vbo-light-grey-bg-color: {{VALUE}};',
@@ -1125,8 +1133,8 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 			array(
 				'label'        => esc_html__( 'Check-in Too', 'vbeb' ),
 				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Yes', 'elementor' ),
-				'label_off'    => esc_html__( 'No', 'elementor' ),
+				'label_on'     => esc_html__( 'Yes', 'vbeb' ),
+				'label_off'    => esc_html__( 'No', 'vbeb' ),
 				'return_value' => 'yes',
 				'default'      => '',
 				'selectors'    => array(
@@ -1176,12 +1184,12 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 
 		$this->start_controls_tabs( 'clear_tabs' );
 
-		$this->start_controls_tab( 'clear_tab_normal', array( 'label' => esc_html__( 'Normal', 'elementor' ) ) );
+		$this->start_controls_tab( 'clear_tab_normal', array( 'label' => esc_html__( 'Normal', 'vbeb' ) ) );
 
 		$this->add_control(
 			'clear_color',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( $this->sel( ' .vbo-drp-commands-bottom .vbo-drp-command-clear a' ) => 'color: {{VALUE}} !important;' ),
 			)
@@ -1192,7 +1200,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 			array(
 				'name'     => 'clear_background',
 				'types'    => array( 'classic', 'gradient' ),
-				'exclude'  => array( 'image' ),
+				'exclude'  => array( 'image' ), // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- campi esclusi da un controllo di Elementor, non una query.
 				'selector' => $this->sel( ' .vbo-drp-commands-bottom .vbo-drp-command-clear a' ),
 			)
 		);
@@ -1207,12 +1215,12 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 
 		$this->end_controls_tab();
 
-		$this->start_controls_tab( 'clear_tab_hover', array( 'label' => esc_html__( 'Hover', 'elementor' ) ) );
+		$this->start_controls_tab( 'clear_tab_hover', array( 'label' => esc_html__( 'Hover', 'vbeb' ) ) );
 
 		$this->add_control(
 			'clear_color_hover',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( $this->sel( ' .vbo-drp-commands-bottom .vbo-drp-command-clear a:hover' ) => 'color: {{VALUE}} !important;' ),
 			)
@@ -1223,7 +1231,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 			array(
 				'name'     => 'clear_background_hover',
 				'types'    => array( 'classic', 'gradient' ),
-				'exclude'  => array( 'image' ),
+				'exclude'  => array( 'image' ), // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- campi esclusi da un controllo di Elementor, non una query.
 				'selector' => $this->sel( ' .vbo-drp-commands-bottom .vbo-drp-command-clear a:hover' ),
 			)
 		);
@@ -1231,7 +1239,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		$this->add_control(
 			'clear_border_color_hover',
 			array(
-				'label'     => esc_html__( 'Border Color', 'elementor' ),
+				'label'     => esc_html__( 'Border Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( $this->sel( ' .vbo-drp-commands-bottom .vbo-drp-command-clear a:hover' ) => 'border-color: {{VALUE}} !important;' ),
 			)
@@ -1261,7 +1269,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'clear_radius',
 			array(
-				'label'      => esc_html__( 'Border Radius', 'elementor' ),
+				'label'      => esc_html__( 'Border Radius', 'vbeb' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em', 'rem' ),
 				'selectors'  => array(
@@ -1273,7 +1281,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'clear_padding',
 			array(
-				'label'      => esc_html__( 'Padding', 'elementor' ),
+				'label'      => esc_html__( 'Padding', 'vbeb' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', 'rem' ),
 				'selectors'  => array(
@@ -1306,12 +1314,12 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 
 		$this->start_controls_tabs( 'close_tabs' );
 
-		$this->start_controls_tab( 'close_tab_normal', array( 'label' => esc_html__( 'Normal', 'elementor' ) ) );
+		$this->start_controls_tab( 'close_tab_normal', array( 'label' => esc_html__( 'Normal', 'vbeb' ) ) );
 
 		$this->add_control(
 			'close_color',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( $this->sel( ' .vbo-drp-commands-bottom .vbo-drp-command-close button' ) => 'color: {{VALUE}} !important;' ),
 			)
@@ -1322,7 +1330,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 			array(
 				'name'     => 'close_background',
 				'types'    => array( 'classic', 'gradient' ),
-				'exclude'  => array( 'image' ),
+				'exclude'  => array( 'image' ), // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- campi esclusi da un controllo di Elementor, non una query.
 				'selector' => $this->sel( ' .vbo-drp-commands-bottom .vbo-drp-command-close button' ),
 			)
 		);
@@ -1337,12 +1345,12 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 
 		$this->end_controls_tab();
 
-		$this->start_controls_tab( 'close_tab_hover', array( 'label' => esc_html__( 'Hover', 'elementor' ) ) );
+		$this->start_controls_tab( 'close_tab_hover', array( 'label' => esc_html__( 'Hover', 'vbeb' ) ) );
 
 		$this->add_control(
 			'close_color_hover',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( $this->sel( ' .vbo-drp-commands-bottom .vbo-drp-command-close button:hover' ) => 'color: {{VALUE}} !important;' ),
 			)
@@ -1353,7 +1361,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 			array(
 				'name'     => 'close_background_hover',
 				'types'    => array( 'classic', 'gradient' ),
-				'exclude'  => array( 'image' ),
+				'exclude'  => array( 'image' ), // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- campi esclusi da un controllo di Elementor, non una query.
 				'selector' => $this->sel( ' .vbo-drp-commands-bottom .vbo-drp-command-close button:hover' ),
 			)
 		);
@@ -1361,7 +1369,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		$this->add_control(
 			'close_border_color_hover',
 			array(
-				'label'     => esc_html__( 'Border Color', 'elementor' ),
+				'label'     => esc_html__( 'Border Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( $this->sel( ' .vbo-drp-commands-bottom .vbo-drp-command-close button:hover' ) => 'border-color: {{VALUE}} !important;' ),
 			)
@@ -1391,7 +1399,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'close_radius',
 			array(
-				'label'      => esc_html__( 'Border Radius', 'elementor' ),
+				'label'      => esc_html__( 'Border Radius', 'vbeb' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em', 'rem' ),
 				'selectors'  => array(
@@ -1403,7 +1411,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'close_padding',
 			array(
-				'label'      => esc_html__( 'Padding', 'elementor' ),
+				'label'      => esc_html__( 'Padding', 'vbeb' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', 'rem' ),
 				'selectors'  => array(
@@ -1424,7 +1432,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 	 *
 	 * @return array
 	 */
-	private function regionale() {
+	public function regionale() {
 		if ( ! class_exists( 'JText' ) ) {
 			return array();
 		}
@@ -1476,20 +1484,28 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		if ( function_exists( 'vbeb_icone_vikbooking_editor' ) ) {
 			echo vbeb_icone_vikbooking_editor(); // phpcs:ignore -- fogli delle icone di VikBooking.
 		}
-		if ( defined( 'VBO_SITE_URI' ) ) {
-			echo '<link rel="stylesheet" href="' . esc_url( VBO_SITE_URI . 'resources/jquery-ui.min.css' ) . '" />';
-		}
+		// VBEB free (Plugin Check): il foglio di jQuery UI di VikBooking lo
+		// carica l'anteprima dell'editor ("elementor/preview/enqueue_styles",
+		// vbeb.php) invece di un "<link>" qui; sul sito il template del
+		// calendario non viene stampato, se ne legge solo lo stile.
 
-		$testi = array(
-			'clear' => class_exists( 'JText' ) ? JText::_( 'VBO_CLEAR_DATES' ) : 'Cancella le date',
-			'close' => class_exists( 'JText' ) ? JText::_( 'VBO_CLOSE' ) : 'Chiudi',
-		);
+		// VBEB free: testi di VikBooking (pulsanti, mesi, giorni) nella lingua
+		// del template aperto, sia all'apertura sia dopo una modifica.
+		$widget    = $this;
+		$traduzioni = function_exists( 'vbeb_in_lingua_template' )
+			? vbeb_in_lingua_template(
+				function () use ( $widget, $impostazioni ) {
+					return array( vbeb_calpop_testi( $impostazioni ), $widget->regionale() );
+				}
+			)
+			: array( vbeb_calpop_testi( $impostazioni ), $this->regionale() );
+		$testi      = $traduzioni[0];
 
 		$dati = array(
 			'months'   => $mesi,
 			'buttons'  => $pulsanti,
 			'texts'    => $testi,
-			'regional' => $this->regionale(),
+			'regional' => $traduzioni[1],
 			'preview'  => ( isset( $impostazioni['preview_state'] ) && 'checkin' === $impostazioni['preview_state'] ) ? 'checkin' : '',
 		);
 
@@ -1498,7 +1514,10 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 		// perche' il calendario e' aperto e non e' "#ui-datepicker-div". Peso
 		// basso, cosi' il pannello vince sempre.
 		echo '<style>'
-			. '.vbeb-calpop-preview .ui-datepicker{display:inline-block;background:var(--vbo-white-bg-color,#fff);box-shadow:0 3px 12px 0 rgb(0 0 0 / .15);border-radius:32px;padding:30px;}'
+			// VBEB free, su richiesta dell'utente: il riquadro del calendario di
+			// prova senza aspetto proprio (sfondo, bordo, raggio, ombra, rientro e
+			// margine azzerati): lo da' il template "VBEB Popup" che lo contiene.
+			. '.vbeb-calpop-preview .ui-datepicker{display:inline-block;background:transparent;border:0;border-radius:0;box-shadow:none;padding:0;margin:0;}'
 			. '.vbeb-calpop-preview{max-width:100%;overflow-x:auto;}'
 			. '</style>';
 
@@ -1508,7 +1527,7 @@ class VBEB_Calpopup_Widget extends Widget_Base {
 
 		$griglia = ( isset( $impostazioni['days_grid'] ) && 'yes' === $impostazioni['days_grid'] ) ? ' vbeb-calpop-grid' : '';
 
-		echo '<div class="vbeb-calpop-preview vbeb-calpop-' . esc_attr( $id ) . $griglia . '" data-vbeb-calpop="' . esc_attr( wp_json_encode( $dati ) ) . '"><div class="vbeb-calpop-dp"></div></div>';
+		echo '<div class="vbeb-calpop-preview vbeb-calpop-' . esc_attr( $id ) . esc_attr( $griglia ) . '" data-vbeb-calpop="' . esc_attr( wp_json_encode( $dati ) ) . '"><div class="vbeb-calpop-dp"></div></div>';
 
 		?>
 		<script>
@@ -1735,36 +1754,18 @@ function vbeb_calpop_css_template( $tpl_id ) {
 }
 
 /**
- * Elenco dei template di tipo Sezione (e contenitore), per i menu.
+ * Elenco dei template "VBEB Popup" di tipo "Calendario popup", per i menu.
  *
  * @return array
  */
 function vbeb_calpop_elenco_template() {
 	$elenco = array( '' => esc_html__( '— Original VikBooking Calendar —', 'vbeb' ) );
 
-	if ( ! post_type_exists( 'elementor_library' ) ) {
-		return $elenco;
-	}
-
-	$posts = get_posts(
-		array(
-			'post_type'      => 'elementor_library',
-			'posts_per_page' => -1,
-			'orderby'        => 'title',
-			'order'          => 'ASC',
-			'post_status'    => 'publish',
-			'meta_query'     => array( // phpcs:ignore WordPress.DB.SlowDBQuery -- elenco di template, letto solo nel pannello.
-				array(
-					'key'     => '_elementor_template_type',
-					'value'   => array( 'section', 'container' ),
-					'compare' => 'IN',
-				),
-			),
-		)
-	);
-
-	foreach ( $posts as $post ) {
-		$elenco[ (string) $post->ID ] = $post->post_title;
+	// VBEB free, su richiesta dell'utente: il calendario sta in un template
+	// "VBEB Popup" con "Tipo di popup: Calendario popup" (come il popup del
+	// Modulo informazioni), non piu' in un template di tipo Sezione.
+	if ( function_exists( 'vbeb_popup_elenco' ) ) {
+		$elenco += vbeb_popup_elenco( 'calpopup' );
 	}
 
 	return $elenco;
@@ -1865,15 +1866,61 @@ function vbeb_calpop_dati( $tpl_id ) {
 
 	return array(
 		'class'   => 'vbeb-calpop-' . sanitize_html_class( $calpop['id'] ),
+		// VBEB free: le classi del template "VBEB Popup", cosi' sul sito il
+		// riquadro del calendario ("#ui-datepicker-div") prende lo stile
+		// "Popup" e il "Rientro" del template (class-vbeb-popup-document.php).
+		'popup'   => 'vbeb-popup vbeb-popup-' . (int) $tpl_id,
 		'months'  => in_array( $mesi, array( '1', '2' ), true ) ? (int) $mesi : 0,
 		'buttons' => 'show' === $pulsanti,
 		'hide'    => 'hide' === $pulsanti,
 		'grid'    => isset( $calpop['settings']['days_grid'] ) && 'yes' === $calpop['settings']['days_grid'],
-		'texts'   => array(
-			'clear' => class_exists( 'JText' ) ? JText::_( 'VBO_CLEAR_DATES' ) : 'Cancella le date',
-			'close' => class_exists( 'JText' ) ? JText::_( 'VBO_CLOSE' ) : 'Chiudi',
-		),
+		'texts'   => vbeb_calpop_testi( $calpop['settings'] ),
+		// VBEB free: testi scelti nel template, da mettere anche sui
+		// pulsanti che VikBooking crea da se' (vedi vbeb_calpop_script_popup()).
+		'custom'  => '' !== trim( (string) ( isset( $calpop['settings']['clear_text'] ) ? $calpop['settings']['clear_text'] : '' ) )
+			|| '' !== trim( (string) ( isset( $calpop['settings']['close_text'] ) ? $calpop['settings']['close_text'] : '' ) ),
 	);
+}
+
+/**
+ * I testi dei pulsanti "Cancella le date" e "Chiudi".
+ *
+ * VBEB free: quelli scritti nel widget "VBEB Calendario popup" o, se vuoti,
+ * quelli di VikBooking (VBO_CLEAR_DATES e VBO_CLOSE, gia' tradotti).
+ *
+ * @param array $settings Impostazioni del widget "VBEB Calendario popup".
+ * @return array
+ */
+function vbeb_calpop_testi( $settings ) {
+	$clear = isset( $settings['clear_text'] ) ? trim( (string) $settings['clear_text'] ) : '';
+	$close = isset( $settings['close_text'] ) ? trim( (string) $settings['close_text'] ) : '';
+
+	if ( '' === $clear ) {
+		$clear = vbeb_calpop_testo_vikbooking( 'VBO_CLEAR_DATES' );
+	}
+	if ( '' === $close ) {
+		$close = vbeb_calpop_testo_vikbooking( 'VBO_CLOSE' );
+	}
+
+	return array(
+		'clear' => '' !== $clear ? $clear : 'Clear dates',
+		'close' => '' !== $close ? $close : 'Close',
+	);
+}
+
+/**
+ * Un testo di VikBooking, vuoto se la traduzione non e' disponibile
+ * (VikBooking restituisce la chiave stessa quando non la trova).
+ *
+ * @param string $chiave Chiave di lingua di VikBooking.
+ * @return string
+ */
+function vbeb_calpop_testo_vikbooking( $chiave ) {
+	if ( ! class_exists( 'JText' ) ) {
+		return '';
+	}
+	$testo = (string) JText::_( $chiave );
+	return $testo === $chiave ? '' : $testo;
 }
 
 /**
@@ -1929,7 +1976,7 @@ function vbeb_calpop_script_popup() {
 
 			if ( is_array( $orari ) ) {
 				$hm     = VikBooking::getHoursMinutes( $orari[0] );
-				$data   = date( 'Y-m-d' );
+				$data   = date( 'Y-m-d' ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date -- stesso calcolo di VikBooking (date() nel suo codice), con il fuso orario che VikBooking usa per getDateTimestamp().
 				$chiude = (int) VikBooking::getDateTimestamp( $data, $hm[0], $hm[1] );
 			}
 		}
@@ -1957,9 +2004,13 @@ function vbeb_calpop_script_popup() {
 		. 'if(cfg&&cfg.months){inst.settings.numberOfMonths=parseInt(cfg.months,10);}'
 		. 'var r=orig.apply(this,arguments);passati(inst);'
 		. 'try{if(inst&&!inst.inline){var d=inst.dpDiv;'
-		. 'd.removeClass(function(i,c){return (c.match(/(^|\s)vbeb-calpop-\S+/g)||[]).join(" ");});'
+		. 'd.removeClass(function(i,c){return (c.match(/(^|\s)vbeb-(calpop-\S+|popup(-\S+)?)(?=\s|$)/g)||[]).join(" ");});'
 		. 'd.children(".vbeb-calpop-commands").remove();'
-		. 'if(cfg&&cfg.class){d.addClass(cfg.class);if(cfg.hide){d.addClass("vbeb-calpop-nocmd");}if(cfg.grid){d.addClass("vbeb-calpop-grid");}'
+		. 'if(cfg&&cfg.class){d.addClass(cfg.class);if(cfg.popup){d.addClass(cfg.popup);}if(cfg.hide){d.addClass("vbeb-calpop-nocmd");}if(cfg.grid){d.addClass("vbeb-calpop-grid");}'
+		// VBEB free: i testi scelti nel template anche sui pulsanti che
+		// VikBooking ha appena creato (datesrangepicker.js, "onUpdateDatepicker",
+		// chiamato da jQuery UI dentro _updateDatepicker, quindi prima di qui).
+		. 'if(cfg.custom&&cfg.texts){if(cfg.texts.clear){d.find(".vbo-drp-command-clear a").text(cfg.texts.clear);}if(cfg.texts.close){d.find(".vbo-drp-command-close button").text(cfg.texts.close);}}'
 		. 'if(cfg.buttons&&!d.children(".vbo-drp-commands-bottom").length){'
 		. 'var t=cfg.texts||{},c=$("<div class=\"vbo-drp-commands-bottom vbeb-calpop-commands\"></div>");'
 		. 'var a=$("<a href=\"javascript:void(0);\"></a>").text(t.clear||"Clear dates").on("click",function(e){e.preventDefault();inst.input.val("").trigger("change");$.datepicker._hideDatepicker();});'
@@ -2006,6 +2057,27 @@ function vbeb_calpop_sezione( $widget, $descrizione ) {
 }
 
 /**
+ * Il template del calendario scelto da un widget, nella lingua della pagina.
+ *
+ * VBEB free, su richiesta dell'utente: con i testi dei pulsanti il template
+ * del calendario si puo' tradurre. Con Polylang o WPML si usa la sua copia
+ * nella lingua della pagina, se esiste ed e' pubblicata; altrimenti
+ * l'originale (vbeb_template_lingua(), vbeb.php).
+ *
+ * @param array $settings Impostazioni del widget che sceglie il template.
+ * @return int
+ */
+function vbeb_calpop_template_scelto( $settings ) {
+	$tpl = isset( $settings['calpopup_template'] ) ? (int) $settings['calpopup_template'] : 0;
+
+	if ( $tpl > 0 && function_exists( 'vbeb_template_lingua' ) ) {
+		$tpl = vbeb_template_lingua( $tpl );
+	}
+
+	return $tpl;
+}
+
+/**
  * I dati del template scelto, come attributo del contenitore del widget.
  *
  * VBEB 7.220.0.
@@ -2014,7 +2086,7 @@ function vbeb_calpop_sezione( $widget, $descrizione ) {
  * @return string Vuoto se non c'e' un template valido.
  */
 function vbeb_calpop_attributo( $settings ) {
-	$tpl  = isset( $settings['calpopup_template'] ) ? (int) $settings['calpopup_template'] : 0;
+	$tpl  = vbeb_calpop_template_scelto( $settings );
 	$dati = $tpl > 0 ? vbeb_calpop_dati( $tpl ) : null;
 
 	if ( $dati ) {
@@ -2035,16 +2107,27 @@ function vbeb_calpop_attributo( $settings ) {
  * @return string
  */
 function vbeb_calpop_html_popup( $settings ) {
-	$tpl = isset( $settings['calpopup_template'] ) ? (int) $settings['calpopup_template'] : 0;
+	$tpl = vbeb_calpop_template_scelto( $settings );
 
 	if ( $tpl <= 0 ) {
 		return '';
 	}
 
 	if ( ! vbeb_calpop_dati( $tpl ) ) {
-		$in_editor = class_exists( '\Elementor\Plugin' ) && \Elementor\Plugin::$instance->editor->is_edit_mode();
+		// VBEB free: l'avviso solo se il template scelto esiste ed e' davvero
+		// un popup "Calendario popup" senza il widget. Un valore rimasto da un
+		// template eliminato o di un altro tipo non mostra nulla: resta il
+		// calendario originale di VikBooking.
+		$in_editor = function_exists( 'vbeb_editor_ripete' ) && vbeb_editor_ripete();
+		if ( ! $in_editor || 'publish' !== get_post_status( $tpl ) || 'vbeb-popup' !== get_post_meta( $tpl, '_elementor_template_type', true ) ) {
+			return '';
+		}
+		$impostazioni = get_post_meta( $tpl, '_elementor_page_settings', true );
+		if ( ! is_array( $impostazioni ) || empty( $impostazioni['vbeb_popup_tipo'] ) || 'calpopup' !== $impostazioni['vbeb_popup_tipo'] ) {
+			return '';
+		}
 
-		return $in_editor ? '<div style="padding:10px;margin-bottom:10px;background:#fff3cd;border:1px solid #ffc107;color:#856404;">Calendario popup: il template scelto non contiene il widget "VBEB Calendario popup".</div>' : '';
+		return '<div style="padding:10px;margin-bottom:10px;background:#fff3cd;border:1px solid #ffc107;color:#856404;">' . esc_html__( 'Popup Calendar: the selected template does not contain the "VBEB Popup Calendar" widget.', 'vbeb' ) . '</div>';
 	}
 
 	return vbeb_calpop_css_base() . vbeb_calpop_css_template( $tpl ) . vbeb_calpop_script_popup();
