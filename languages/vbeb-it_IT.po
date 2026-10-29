@@ -27,8 +27,20 @@ msgstr "-- Usa il template originale di VikBooking --"
 msgid "Acceptance Text"
 msgstr "Testo accettazione"
 
+#. Elementor
+msgid "Active Color"
+msgstr "Colore attivo"
+
 msgid "Active Thumbnail Border"
 msgstr "Bordo miniatura attiva"
+
+#. Elementor
+msgid "Additional Options"
+msgstr "Opzioni aggiuntive"
+
+#. Elementor
+msgid "Adjust Vertical Position"
+msgstr "Regola la posizione verticale"
 
 msgid "Adults"
 msgstr "Adulti"
@@ -39,8 +51,40 @@ msgstr "Adulti e bambini"
 msgid "Advanced"
 msgstr "Avanzate"
 
+#. Elementor
+msgid "Alignment"
+msgstr "Allineamento"
+
 msgid "Amenities List"
 msgstr "Lista servizi"
+
+#. Elementor
+msgid "Animation Duration"
+msgstr "Durata dell'animazione"
+
+#. Elementor
+msgid "Animation Speed"
+msgstr "Velocità dell'animazione"
+
+#. Elementor
+msgid "Arrows"
+msgstr "Frecce"
+
+#. Elementor
+msgid "Arrows and Dots"
+msgstr "Frecce e Punti"
+
+#. Elementor
+msgid "Aspect Ratio"
+msgstr "Proporzioni"
+
+#. Elementor
+msgid "Autoplay"
+msgstr "Autoplay"
+
+#. Elementor
+msgid "Autoplay Speed"
+msgstr "Velocità dell'autoplay"
 
 msgid "Available"
 msgstr "Disponibile"
@@ -51,8 +95,44 @@ msgstr "Colore disponibile"
 msgid "Available Days"
 msgstr "Giorni disponibili"
 
+#. Elementor
+msgid "Background Color"
+msgstr "Colore di sfondo"
+
+#. Elementor
+msgid "Background Type"
+msgstr "Tipo di sfondo"
+
+#. Elementor
+msgid "Blend Mode"
+msgstr "Modalità di fusione"
+
 msgid "Book Button"
 msgstr "Pulsante Prenota"
+
+#. Elementor
+msgid "Border Color"
+msgstr "Colore del bordo"
+
+#. Elementor
+msgid "Border Radius"
+msgstr "Raggio del bordo"
+
+#. Elementor
+msgid "Border Type"
+msgstr "Tipo di bordo"
+
+#. Elementor
+msgid "Border Width"
+msgstr "Spessore bordi"
+
+#. Elementor
+msgid "Bottom Center"
+msgstr "Centrato Sotto"
+
+#. Elementor
+msgid "Button"
+msgstr "Pulsante"
 
 msgid "Calendar"
 msgstr "Calendario"
@@ -62,6 +142,26 @@ msgstr "Template del calendario"
 
 msgid "Calendars Container"
 msgstr "Contenitore calendari"
+
+#. Elementor
+msgid "Caption"
+msgstr "Didascalia"
+
+#. Elementor
+msgid "Center"
+msgstr "Centra"
+
+#. Elementor
+msgid "Center Center"
+msgstr "Centrato"
+
+#. Elementor
+msgid "Center Left"
+msgstr "Centrato a Sinistra"
+
+#. Elementor
+msgid "Center Right"
+msgstr "Centrato a Destra"
 
 msgid "Check-in Only (Mouse over a Check-out)"
 msgstr "Solo check-in (mouse su un check-out)"
@@ -78,15 +178,59 @@ msgstr "Data check-in"
 msgid "Check-out date"
 msgstr "Data check-out"
 
+#. Elementor
+msgid "Circle"
+msgstr "Cerchio"
+
+#. Elementor
+msgid "Color"
+msgstr "Colore"
+
+#. Elementor
+msgid "Color Dodge"
+msgstr "Scherma il colore"
+
+#. Elementor
+msgid "Column Width"
+msgstr "Larghezza colonna"
+
+#. Elementor
+msgid "Columns"
+msgstr "Colonne"
+
+#. Elementor
+msgid "Columns Gap"
+msgstr "Spaziatura colonne"
+
+#. Elementor
+msgid "Contain"
+msgstr "Contenitore"
+
 #, php-format
 msgid "Copy failed for: %s (probably a permission problem on that file)."
 msgstr "Copia non riuscita per: %s (probabile problema di permessi su quel file specifico)."
+
+#. Elementor
+msgid "Cover"
+msgstr "Cover"
+
+#. Elementor
+msgid "Custom"
+msgstr "Personalizzato"
 
 msgid "Custom Price Label"
 msgstr "Etichetta prezzo personalizzato"
 
 msgid "Custom Price Sub-Text"
 msgstr "Sub-Testo prezzo personalizzato"
+
+#. Elementor
+msgid "Darken"
+msgstr "Scurisci"
+
+#. Elementor
+msgid "Dashed"
+msgstr "Tratteggiato"
 
 msgid "Date Range"
 msgstr "Intervallo date"
@@ -106,6 +250,10 @@ msgstr "Giorni - nome"
 msgid "Days - Number"
 msgstr "Giorni - numero"
 
+#. Elementor
+msgid "Default"
+msgstr "Predefinito"
+
 msgid "Default (VikBooking)"
 msgstr "Predefinito (VikBooking)"
 
@@ -116,11 +264,59 @@ msgstr "Etichetta predefinita dopo il prezzo"
 msgid "Design the VikBooking room details page with Elementor widgets."
 msgstr "Progetta la pagina Dettaglio Camera di VikBooking con i widget di Elementor."
 
+#. Elementor
+msgid "Difference"
+msgstr "Differenza"
+
+#. Elementor
+msgid "Direction"
+msgstr "Direzione"
+
+#. Elementor
+msgid "Divider"
+msgstr "Divisore"
+
+#. Elementor
+msgid "Dots"
+msgstr "Punti"
+
+#. Elementor
+msgid "Dotted"
+msgstr "Punteggiato"
+
+#. Elementor
+msgid "Double"
+msgstr "Doppio"
+
+#. Elementor
+msgid "Drop Cap"
+msgstr "Capolettera"
+
 msgid "Editor Preview"
 msgstr "Anteprima nell'editor"
 
 msgid "Elementor is not active. Activate it to use this feature."
 msgstr "Elementor non risulta attivo. Attivalo per usare questa funzione."
+
+#. Elementor
+msgid "End"
+msgstr "Fine"
+
+#. Elementor
+msgid "Exclusion"
+msgstr "Esclusione"
+
+#. Elementor
+msgid "Extra Large"
+msgstr "Molto Grande"
+
+#. Elementor
+msgid "Extra Small"
+msgstr "Molto Piccolo"
+
+#. Elementor
+msgid "Field"
+msgstr "Campo"
 
 msgid "Field Height"
 msgstr "Altezza campi"
@@ -129,14 +325,42 @@ msgstr "Altezza campi"
 msgid "Files already present with content that is not ours, not overwritten for safety: %s. See the \"-vbeb-suggested.php\" copy saved next to them."
 msgstr "File già presenti con contenuto non nostro, non sovrascritti per sicurezza: %s. Vedi la copia \"-vbeb-suggested.php\" salvata accanto."
 
+#. Elementor
+msgid "Fill"
+msgstr "Riempi"
+
+#. Elementor
+msgid "Form"
+msgstr "Modulo"
+
+#. Elementor
+msgid "Form Fields"
+msgstr "Campi modulo"
+
 msgid "Form Icon Color"
 msgstr "Colore icone modulo"
 
 msgid "Form Template"
 msgstr "Template del modulo"
 
+#. Elementor
+msgid "Framed"
+msgstr "Incorniciato"
+
+#. Elementor
+msgid "Full"
+msgstr "Pieno"
+
 msgid "Full Name"
 msgstr "Nome completo"
+
+#. Elementor
+msgid "Gap"
+msgstr "Spaziatura"
+
+#. Elementor
+msgid "Grid"
+msgstr "Griglia"
 
 msgid "Guests"
 msgstr "Ospiti"
@@ -144,23 +368,139 @@ msgstr "Ospiti"
 msgid "Guests allowed policy"
 msgstr "Politica ospiti ammessi"
 
+#. Elementor
+msgid "HTML Tag"
+msgstr "Tag HTML"
+
+#. Elementor
+msgid "Heading"
+msgstr "Titolo"
+
+#. Elementor
+msgid "Height"
+msgstr "Altezza"
+
+#. Elementor
+msgid "Hide"
+msgstr "Nascondi"
+
 msgid "Hide Line"
 msgstr "Nascondi linea"
+
+#. Elementor
+msgid "Horizontal"
+msgstr "Orizzontale"
+
+#. Elementor
+msgid "Hover"
+msgstr "Hover"
+
+#. Elementor
+msgid "Hover Animation"
+msgstr "Animazione al passaggio del mouse"
+
+#. Elementor
+msgid "Hue"
+msgstr "Tonalità"
+
+#. Elementor
+msgid "Icon"
+msgstr "Icona"
+
+#. Elementor
+msgid "Icon Position"
+msgstr "Posizione dell'icona"
+
+#. Elementor
+msgid "Icon Spacing"
+msgstr "Spaziatura dell'icona"
+
+#. Elementor
+msgid "Image"
+msgstr "Immagine"
+
+#. Elementor
+msgid "Image Carousel"
+msgstr "Carosello d'immagini"
+
+#. Elementor
+msgid "Image Dimension"
+msgstr "Dimensioni dell'immagine"
+
+#. Elementor
+msgid "Image Resolution"
+msgstr "Risoluzione immagine"
+
+#. Elementor
+msgid "Image Spacing"
+msgstr "Spaziatura immagine"
+
+#. Elementor
+msgid "Image Stretch"
+msgstr "Estendi l'Immagine"
 
 msgid "Include Main Image"
 msgstr "Includi immagine principale"
 
+#. Elementor
+msgid "Infinite Loop"
+msgstr "Ciclo infinito"
+
 msgid "Information Form"
 msgstr "Modulo informazioni"
+
+#. Elementor
+msgid "Inline"
+msgstr "In linea"
 
 msgid "Input Size"
 msgstr "Dimensione Input"
 
+#. Elementor
+msgid "Inside"
+msgstr "Interno"
+
+#. Elementor
+msgid "Justified"
+msgstr "Giustificato"
+
+#. Elementor
+msgid "Label"
+msgstr "Etichetta"
+
 msgid "Label Before the Price"
 msgstr "Etichetta prima del prezzo"
 
+#. Elementor
+msgid "Large"
+msgstr "Grande"
+
+#. Elementor
+msgid "Layout"
+msgstr "Layout"
+
+#. Elementor
+msgid "Lazy Load"
+msgstr "Lazy Load"
+
+#. Elementor
+msgid "Lazyload"
+msgstr "Lazyload"
+
 msgid "Leave empty to use the original VikBooking text"
 msgstr "Lascia vuoto per usare il testo originale di VikBooking"
+
+#. Elementor
+msgid "Left"
+msgstr "Sinistra"
+
+#. Elementor
+msgid "Lightbox"
+msgstr "Lightbox"
+
+#. Elementor
+msgid "Lighten"
+msgstr "Schiarisci"
 
 msgid "Line Color"
 msgstr "Colore della linea"
@@ -168,17 +508,58 @@ msgstr "Colore della linea"
 msgid "Line Thickness"
 msgstr "Spessore della linea"
 
+#. Elementor
+msgid "Link"
+msgstr "Link"
+
+#. Elementor
+msgid "Link Color"
+msgstr "Colore del link"
+
 msgid "Link Text"
 msgstr "Testo link"
 
+#. Elementor
+msgid "List"
+msgstr "Elenco"
+
+#. Elementor
+msgid "Luminosity"
+msgstr "Luminosità"
+
+#. Elementor
+#, php-format
+msgid "Manage your site’s lightbox settings in the %1$sLightbox panel%2$s."
+msgstr "Gestisci le impostazioni delle lightbox del tuo sito nel %1$spannello Lightbox%2$s."
+
 msgid "Map"
 msgstr "Mappa"
+
+#. Elementor
+msgid "Margin"
+msgstr "Margine"
 
 msgid "Mark Color"
 msgstr "Colore marcatura"
 
 msgid "Masonry"
 msgstr "Masonry"
+
+#. Elementor
+msgid "Max Width"
+msgstr "Larghezza Massima"
+
+#. Elementor
+msgid "Media File"
+msgstr "File media"
+
+#. Elementor
+msgid "Medium"
+msgstr "Medio"
+
+#. Elementor
+msgid "Message"
+msgstr "Messaggio"
 
 msgid "Message Sent Successfully"
 msgstr "Messaggio inviato con successo"
@@ -207,6 +588,30 @@ msgstr "Sposta a destra"
 msgid "Move Up"
 msgstr "Sposta in alto"
 
+#. Elementor
+msgid "Multiply"
+msgstr "Moltiplica"
+
+#. Elementor
+msgid "Navigation"
+msgstr "Navigazione"
+
+#. Elementor
+msgid "Next Arrow Icon"
+msgstr "Icona della freccia successiva"
+
+#. Elementor
+msgid "No"
+msgstr "No"
+
+#. Elementor
+msgid "None"
+msgstr "Nessuno"
+
+#. Elementor
+msgid "Normal"
+msgstr "Normale"
+
 msgid "Not Available"
 msgstr "Non disponibile"
 
@@ -216,6 +621,46 @@ msgstr "Colore non disponibile"
 msgid "Not Available Days"
 msgstr "Giorni non disponibili"
 
+#. Elementor
+msgid "Object Fit"
+msgstr "Adatta oggetto"
+
+#. Elementor
+msgid "Object Position"
+msgstr "Posizione oggetto"
+
+#. Elementor
+msgid "Off"
+msgstr "Off"
+
+#. Elementor
+msgid "On"
+msgstr "On"
+
+#. Elementor
+msgid "Opacity"
+msgstr "Opacità"
+
+#. Elementor
+msgid "Outside"
+msgstr "Esterno"
+
+#. Elementor
+msgid "Overlay"
+msgstr "Sovrapponi"
+
+#. Elementor
+msgid "Padding"
+msgstr "Rientro"
+
+#. Elementor
+msgid "Pagination"
+msgstr "Paginazione"
+
+#. Elementor
+msgid "Paragraph Spacing"
+msgstr "Spaziatura paragrafo"
+
 msgid "Partially Reserved"
 msgstr "Parzialmente prenotato"
 
@@ -224,6 +669,14 @@ msgstr "Colore parzialmente prenotato"
 
 msgid "Past Days"
 msgstr "Giorni passati"
+
+#. Elementor
+msgid "Pause on Hover"
+msgstr "Pausa al passaggio del mouse"
+
+#. Elementor
+msgid "Pause on Interaction"
+msgstr "Pausa su interazione"
 
 msgid "Placeholder"
 msgstr "Segnaposto"
@@ -240,14 +693,30 @@ msgstr "Calendario popup"
 msgid "Popup Type"
 msgstr "Tipo di popup"
 
+#. Elementor
+msgid "Position"
+msgstr "Posizione"
+
+#. Elementor
+msgid "Previous Arrow Icon"
+msgstr "Icona della freccia precedente"
+
 msgid "Price"
 msgstr "Prezzo"
 
 msgid "Pricing"
 msgstr "Prezzi"
 
+#. Elementor
+msgid "Primary Color"
+msgstr "Colore principale"
+
 msgid "Required Mark"
 msgstr "Marcatura richiesta"
+
+#. Elementor
+msgid "Right"
+msgstr "Destra"
 
 msgid "Room Details"
 msgstr "Dettaglio Camera"
@@ -258,11 +727,51 @@ msgstr "Nome camera"
 msgid "Rooms"
 msgstr "Camere"
 
+#. Elementor
+msgid "Rounded"
+msgstr "Arrotondato"
+
 msgid "Row Height"
 msgstr "Altezza riga"
 
+#. Elementor
+msgid "Rows"
+msgstr "Righe"
+
+#. Elementor
+msgid "Rows Gap"
+msgstr "Spaziatura righe"
+
+#. Elementor
+msgid "Saturation"
+msgstr "Saturazione"
+
+#. Elementor
+msgid "Scale Down"
+msgstr "Riduci"
+
+#. Elementor
+msgid "Screen"
+msgstr "Schermata"
+
+#. Elementor
+msgid "Secondary Color"
+msgstr "Colore secondario"
+
 msgid "Selected Day"
 msgstr "Giorno selezionato"
+
+#. Elementor
+msgid "Settings"
+msgstr "Impostazioni"
+
+#. Elementor
+msgid "Shape"
+msgstr "Forma"
+
+#. Elementor
+msgid "Show"
+msgstr "Mostra"
 
 msgid "Show Amenity Name"
 msgstr "Mostra nome servizio"
@@ -285,8 +794,64 @@ msgstr "Mostra miniature"
 msgid "Show Title"
 msgstr "Mostra titolo"
 
+#. Elementor
+msgid "Size"
+msgstr "Dimensione"
+
+#. Elementor
+msgid "Slides to Scroll"
+msgstr "Slide da scorrere"
+
+#. Elementor
+msgid "Slides to Show"
+msgstr "Slide da visualizzare"
+
+#. Elementor
+msgid "Small"
+msgstr "Piccolo"
+
+#. Elementor
+msgid "Solid"
+msgstr "Solido"
+
+#. Elementor
+msgid "Space"
+msgstr "Spazio"
+
+#. Elementor
+msgid "Space Between"
+msgstr "Spazio intermedio"
+
+#. Elementor
+msgid "Space Between Dots"
+msgstr "Spazio tra i punti"
+
+#. Elementor
+msgid "Spacing"
+msgstr "Spaziatura"
+
 msgid "Spacing Between Calendars"
 msgstr "Spaziatura tra calendari"
+
+#. Elementor
+msgid "Square"
+msgstr "Quadrato"
+
+#. Elementor
+msgid "Stacked"
+msgstr "Impilato"
+
+#. Elementor
+msgid "Start"
+msgstr "Inizio"
+
+#. Elementor
+msgid "Stretch"
+msgstr "Estendi"
+
+#. Elementor
+msgid "Style"
+msgstr "Stile"
 
 msgid "Template"
 msgstr "Template"
@@ -294,17 +859,37 @@ msgstr "Template"
 msgid "Terms and Conditions"
 msgstr "Termini e condizioni"
 
+#. Elementor
+msgid "Text"
+msgstr "Testo"
+
 msgid "Text Before the Link"
 msgstr "Testo prima del link"
 
 msgid "Text Before the Price"
 msgstr "Testo prima del prezzo"
 
+#. Elementor
+msgid "Text Color"
+msgstr "Colore del testo"
+
+#. Elementor
+msgid "Text Editor"
+msgstr "Editor di testo"
+
+#. Elementor
+msgid "Text Shadow"
+msgstr "Ombra del Testo"
+
 msgid "Texts"
 msgstr "Testi"
 
-msgid "There are no templates in the Elementor Template Library yet. First create a template of type \"Section\" (Templates > Add New) with the VBEB widgets you want to use (category \"VBEB - Room Details\" in the widget panel), then come back here to select it."
-msgstr "Non hai ancora nessun template salvato nella Libreria Template di Elementor. Crea prima un template di tipo \"Sezione\" (Template > Aggiungi nuovo) con i widget VBEB che vuoi usare (categoria \"VBEB - Dettaglio camera\" nel pannello widget), poi torna qui per selezionarlo."
+#, php-format
+msgid "The text entered here replaces only the part before the room name (\"%s\"): the room name always comes from VikBooking. Leave empty to use the VikBooking text."
+msgstr "Il testo scritto qui sostituisce solo la parte prima del nome della camera (\"%s\"): il nome della camera resta sempre quello di VikBooking. Lascia vuoto per usare il testo di VikBooking."
+
+msgid "The text entered here replaces only the part before the room name: the room name always comes from VikBooking. Leave empty to use the VikBooking text."
+msgstr "Il testo scritto qui sostituisce solo la parte prima del nome della camera: il nome della camera resta sempre quello di VikBooking. Lascia vuoto per usare il testo di VikBooking."
 
 msgid "This plugin cannot be activated because the required plugins (Elementor and VikBooking) are missing or inactive."
 msgstr "Questo plugin non può essere attivato, perché i plugin richiesti (Elementor e VikBooking) sono mancanti o inattivi."
@@ -312,8 +897,24 @@ msgstr "Questo plugin non può essere attivato, perché i plugin richiesti (Elem
 msgid "Thumbnails"
 msgstr "Miniature"
 
+#. Elementor
+msgid "Title"
+msgstr "Titolo"
+
 msgid "Today"
 msgstr "Oggi"
+
+#. Elementor
+msgid "Top Center"
+msgstr "Sopra al Centro"
+
+#. Elementor
+msgid "Transition Duration"
+msgstr "Durata della transizione"
+
+#. Elementor
+msgid "Typography"
+msgstr "Tipografia"
 
 msgid "Unable to write to the override folder: check the folder permissions via FTP."
 msgstr "Impossibile scrivere nella cartella override: verifica i permessi via FTP."
@@ -372,6 +973,22 @@ msgstr "VBEB Camera - Prezzo"
 msgid "VBEB Room - Short Description"
 msgstr "VBEB Camera - Descrizione breve"
 
+#. Elementor
+msgid "Vertical"
+msgstr "Verticale"
+
+#. Elementor
+msgid "Vertical Align"
+msgstr "Allineamento verticale"
+
+#. Elementor
+msgid "Vertical Alignment"
+msgstr "Allineamento verticale"
+
+#. Elementor
+msgid "View"
+msgstr "Visualizza"
+
 msgid "VikBooking text"
 msgstr "Testo di VikBooking"
 
@@ -380,6 +997,22 @@ msgstr "Mesi visibili"
 
 msgid "Visible Thumbnails"
 msgstr "Miniature visibili"
+
+#. Elementor
+msgid "Weight"
+msgstr "Spessore"
+
+#. Elementor
+msgid "Width"
+msgstr "Larghezza"
+
+#. Elementor
+msgid "Yes"
+msgstr "Sì"
+
+#. Elementor
+msgid "You can crop the original image size to any custom size. You can also set a single value for height or width in order to keep the original size ratio."
+msgstr "Puoi ritagliare l'immagine originale in qualsiasi misura personalizzata. Puoi anche indicare solo un valore per l'altezza o la larghezza così da mantenere le proporzioni originali."
 
 msgid "Zoom In"
 msgstr "Ingrandisci"
@@ -410,3 +1043,6 @@ msgstr "— Calendario originale di VikBooking —"
 
 msgid "— Original VikBooking Form —"
 msgstr "— Modulo originale di VikBooking —"
+
+msgid "Popup Calendar: the selected template does not contain the \"VBEB Popup Calendar\" widget."
+msgstr "Calendario popup: il template scelto non contiene il widget \"VBEB Calendario popup\"."
