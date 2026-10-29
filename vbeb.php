@@ -511,6 +511,9 @@ function vbeb_popup_elenco( $tipo ) {
 			'orderby'        => 'title',
 			'order'          => 'ASC',
 			'post_status'    => 'publish',
+			// VBEB free: tutte le lingue (Polylang altrimenti filtra con la
+			// lingua scelta nella barra); la scelta per lingua e' fatta qui sotto.
+			'lang'           => 'all',
 			'meta_query'     => array( // phpcs:ignore WordPress.DB.SlowDBQuery -- elenco di template, letto solo nel pannello.
 				array(
 					'key'   => '_elementor_template_type',
@@ -523,7 +526,9 @@ function vbeb_popup_elenco( $tipo ) {
 	// VBEB free, segnalato dall'utente: con Polylang o WPML, nell'editor solo
 	// i template nella lingua del template aperto (piu' quelli senza lingua).
 	// Fuori dall'editor, o senza plugin multilingua, tutti.
-	$lingua = ( function_exists( 'vbeb_lingua_template_editor' ) && function_exists( 'vbeb_editor_ripete' ) && vbeb_editor_ripete() )
+	$in_editor = ( function_exists( 'vbeb_editor_ripete' ) && vbeb_editor_ripete() )
+		|| ( function_exists( 'vbeb_id_editor_ajax' ) && vbeb_id_editor_ajax() > 0 );
+	$lingua    = ( $in_editor && function_exists( 'vbeb_lingua_template_editor' ) )
 		? str_replace( '-', '_', vbeb_lingua_template_editor() )
 		: '';
 
@@ -743,6 +748,35 @@ add_action(
 );
 
 add_action( 'elementor/elements/categories_registered', 'vbeb_register_widget_category' );
+
+/**
+ * Polylang: le richieste AJAX dell'editor di Elementor nella lingua della
+ * bacheca.
+ *
+ * VBEB free, segnalato dall'utente: con Polylang le impostazioni dei widget
+ * nel pannello comparivano a volte nella lingua dell'ultimo template aperto
+ * (contenuto in italiano, impostazioni in inglese e viceversa). Polylang
+ * tratta ogni richiesta AJAX come una richiesta del sito, nella lingua del
+ * cookie "pll_language" (lasciato dall'anteprima), a meno che la richiesta
+ * porti "pll_ajax_backend" (polylang/src/class-polylang.php,
+ * is_ajax_on_front()). Nelle pagine di amministrazione lo aggiunge lo script
+ * di Polylang; l'editor di Elementor non lo carica, e le richieste con cui
+ * Elementor chiede le impostazioni dei widget restavano "del sito". Qui lo
+ * si aggiunge alle richieste AJAX dell'editor, come fa Polylang.
+ */
+add_action(
+	'elementor/editor/after_enqueue_scripts',
+	function () {
+		if ( ! function_exists( 'pll_current_language' ) ) {
+			return;
+		}
+		wp_add_inline_script(
+			'elementor-editor',
+			'(function(){var $=window.jQuery;if(!$||!$.ajaxPrefilter){return;}$.ajaxPrefilter(function(o){if(o&&typeof o.url==="string"&&o.url.indexOf("admin-ajax.php")!==-1&&o.url.indexOf("pll_ajax_backend")===-1){o.url+=(o.url.indexOf("?")===-1?"?":"&")+"pll_ajax_backend=1";}});})();',
+			'before'
+		);
+	}
+);
 
 /**
  * Registra i widget di VBEB free (compatibile con le API nuove e vecchie di
