@@ -64,7 +64,7 @@ Note: for a logged-in user, VikBooking shows its data in the language chosen in 
 
 ## Translations
 
-The interface of the plugin is in English and is translated into Italian and Spanish (text domain `vbeb`, files in the `languages` folder).
+The interface of the plugin is in English and is translated into Italian and Spanish (text domain `vbeb-bridge-for-vikbooking-and-elementor`, files in the `languages` folder).
 
 ## License
 

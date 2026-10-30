@@ -9,7 +9,7 @@
  * Author: S.I.B. s.a.s.
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: vbeb
+ * Text Domain: vbeb-bridge-for-vikbooking-and-elementor
  * Domain Path: /languages
  */
 
@@ -24,10 +24,10 @@ define( 'VBEB_URL', plugin_dir_url( __FILE__ ) );
 
 /**
  * VBEB 7.616.0, su richiesta dell'utente: traduzioni dei testi propri del
- * plugin (dominio "vbeb"). Nel codice i testi sono in inglese; il file
+ * plugin (dominio "vbeb-bridge-for-vikbooking-and-elementor"). Nel codice i testi sono in inglese; il file
  * languages/vbeb-it_IT riporta l'italiano.
  * VBEB free (wordpress.org), su richiesta dell'utente: anche i testi che
- * esistono in Elementor usano il dominio "vbeb" (wordpress.org accetta solo
+ * esistono in Elementor usano il dominio "vbeb-bridge-for-vikbooking-and-elementor" (wordpress.org accetta solo
  * il dominio del plugin). L'inglese resta quello di Elementor e le
  * traduzioni italiana e spagnola sono copiate dai file di lingua di
  * Elementor (elementor-it_IT.po, elementor-es_ES.po): i commenti "dominio
@@ -36,7 +36,7 @@ define( 'VBEB_URL', plugin_dir_url( __FILE__ ) );
  * Translate) ha la precedenza su quello del plugin.
  */
 function vbeb_load_textdomain() {
-	load_plugin_textdomain( 'vbeb', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' ); // phpcs:ignore PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound -- traduzioni italiana e spagnola incluse nel plugin (cartella languages).
+	load_plugin_textdomain( 'vbeb-bridge-for-vikbooking-and-elementor', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' ); // phpcs:ignore PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound -- traduzioni italiana e spagnola incluse nel plugin (cartella languages).
 }
 add_action( 'init', 'vbeb_load_textdomain', 0 );
 
@@ -53,8 +53,8 @@ function vbeb_activation_check() {
 	if ( ! $elementor_active || ! $vikbooking_active ) {
 		deactivate_plugins( plugin_basename( __FILE__ ) );
 		wp_die(
-			esc_html__( 'This plugin cannot be activated because the required plugins (Elementor and VikBooking) are missing or inactive.', 'vbeb' ),
-			esc_html__( 'Plugin activation error', 'vbeb' ),
+			esc_html__( 'This plugin cannot be activated because the required plugins (Elementor and VikBooking) are missing or inactive.', 'vbeb-bridge-for-vikbooking-and-elementor' ),
+			esc_html__( 'Plugin activation error', 'vbeb-bridge-for-vikbooking-and-elementor' ),
 			array( 'back_link' => true )
 		);
 	}
@@ -70,7 +70,7 @@ function vbeb_admin_notice_missing_elementor() {
 	}
 	?>
 	<div class="notice notice-error">
-		<p><strong>VBEB</strong>: <?php esc_html_e( 'requires the Elementor plugin to be active. The widgets will not be available until Elementor is activated.', 'vbeb' ); ?></p>
+		<p><strong>VBEB</strong>: <?php esc_html_e( 'requires the Elementor plugin to be active. The widgets will not be available until Elementor is activated.', 'vbeb-bridge-for-vikbooking-and-elementor' ); ?></p>
 	</div>
 	<?php
 }
@@ -695,14 +695,14 @@ function vbeb_register_widget_category( $elements_manager ) {
 	$elements_manager->add_category(
 		'vbeb-search',
 		array(
-			'title' => esc_html__( 'VBEB - General Widgets', 'vbeb' ),
+			'title' => esc_html__( 'VBEB - General Widgets', 'vbeb-bridge-for-vikbooking-and-elementor' ),
 			'icon'  => 'fa fa-search',
 		)
 	);
 	$elements_manager->add_category(
 		'vikbooking-bridge',
 		array(
-			'title' => esc_html__( 'VBEB - Room Details', 'vbeb' ),
+			'title' => esc_html__( 'VBEB - Room Details', 'vbeb-bridge-for-vikbooking-and-elementor' ),
 			'icon'  => 'fa fa-plug',
 		)
 	);
