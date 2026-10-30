@@ -1046,3 +1046,51 @@ msgstr "— Modulo originale di VikBooking —"
 
 msgid "Popup Calendar: the selected template does not contain the \"VBEB Popup Calendar\" widget."
 msgstr "Calendario popup: il template scelto non contiene il widget \"VBEB Calendario popup\"."
+
+msgid "Room - Amenities: the real list will appear on the front end of a room page."
+msgstr "Camera - Servizi: l'elenco reale comparirà sul front-end di una pagina camera."
+
+msgid "This room has no amenities assigned."
+msgstr "Questa camera non ha servizi assegnati."
+
+msgid "Room - Booking Form: the real form will appear on the front end of a room page."
+msgstr "Camera - Modulo prenotazione: il modulo reale comparirà sul front-end di una pagina camera."
+
+msgid "Room - Calendar: the real calendar will appear on the front end of a room page."
+msgstr "Camera - Calendario: il calendario reale comparirà sul front-end di una pagina camera."
+
+msgid "[Category]"
+msgstr "[Categoria]"
+
+msgid "Room - Description: the real text will appear on the front end of a room page."
+msgstr "Camera - Descrizione: il testo reale comparirà sul front-end di una pagina camera."
+
+msgid "Room - Image Carousel: the real photos will appear on the front end of a room page."
+msgstr "Camera - Carosello d'immagini: le foto reali compariranno sul front-end di una pagina camera."
+
+msgid "This room has no photos."
+msgstr "Questa camera non ha foto caricate."
+
+msgid "Room - Gallery: the real photos will appear on the front end of a room page."
+msgstr "Camera - Galleria: le foto reali compariranno sul front-end di una pagina camera."
+
+msgid "Room - Price: the real price will appear on the front end of a room page."
+msgstr "Camera - Prezzo: il prezzo reale comparirà sul front-end di una pagina camera."
+
+msgid "Request information for"
+msgstr "Richiedi informazioni per"
+
+msgid "Room - Information Form: the real form will appear in the popup of the information button on the room page."
+msgstr "Camera - Modulo informazioni: il modulo reale comparirà nel popup del pulsante informazioni della pagina camera."
+
+msgid "The room photo will appear on the front end."
+msgstr "La foto della camera comparirà sul front-end."
+
+msgid "The map will appear on the front end."
+msgstr "La mappa comparirà sul front-end."
+
+msgid "Room - Short Description: the real text will appear on the front end of a room page or room list."
+msgstr "Camera - Descrizione breve: il testo reale comparirà sul front-end di una pagina camera o della lista camere."
+
+msgid "[Room Name]"
+msgstr "[Nome camera]"
