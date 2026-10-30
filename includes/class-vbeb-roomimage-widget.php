@@ -67,7 +67,7 @@ class VBEB_Roomimage_Widget extends Widget_Base {
 	 */
 	protected function register_controls() {
 
-		$this->start_controls_section( 'section_content', array( 'label' => esc_html__( 'Image', 'elementor' ), 'tab' => Controls_Manager::TAB_CONTENT ) );
+		$this->start_controls_section( 'section_content', array( 'label' => esc_html__( 'Image', 'vbeb' ), 'tab' => Controls_Manager::TAB_CONTENT ) );
 
 		// VBEB 7.408.0, su richiesta dell'utente: tolta "Risoluzione
 		// immagine" (con la sua nota); si usa sempre il file salvato da
@@ -75,11 +75,11 @@ class VBEB_Roomimage_Widget extends Widget_Base {
 		$this->add_control(
 			'caption',
 			array(
-				'label'       => esc_html__( 'Caption', 'elementor' ),
+				'label'       => esc_html__( 'Caption', 'vbeb' ),
 				'type'        => Controls_Manager::SELECT,
 				'default'     => 'none',
 				'options'     => array(
-					'none' => esc_html__( 'None', 'elementor' ),
+					'none' => esc_html__( 'None', 'vbeb' ),
 					'name' => esc_html__( 'Room Name', 'vbeb' ),
 				),
 			)
@@ -88,17 +88,17 @@ class VBEB_Roomimage_Widget extends Widget_Base {
 		$this->end_controls_section();
 
 		/* ===================== STILE ===================== */
-		$this->start_controls_section( 'section_style', array( 'label' => esc_html__( 'Image', 'elementor' ), 'tab' => Controls_Manager::TAB_STYLE ) );
+		$this->start_controls_section( 'section_style', array( 'label' => esc_html__( 'Image', 'vbeb' ), 'tab' => Controls_Manager::TAB_STYLE ) );
 
 		$this->add_responsive_control(
 			'align',
 			array(
-				'label'     => esc_html__( 'Alignment', 'elementor' ),
+				'label'     => esc_html__( 'Alignment', 'vbeb' ),
 				'type'      => Controls_Manager::CHOOSE,
 				'options'   => array(
-					'left'   => array( 'title' => esc_html__( 'Left', 'elementor' ), 'icon' => 'eicon-text-align-left' ),
-					'center' => array( 'title' => esc_html__( 'Center', 'elementor' ), 'icon' => 'eicon-text-align-center' ),
-					'right'  => array( 'title' => esc_html__( 'Right', 'elementor' ), 'icon' => 'eicon-text-align-right' ),
+					'left'   => array( 'title' => esc_html__( 'Left', 'vbeb' ), 'icon' => 'eicon-text-align-left' ),
+					'center' => array( 'title' => esc_html__( 'Center', 'vbeb' ), 'icon' => 'eicon-text-align-center' ),
+					'right'  => array( 'title' => esc_html__( 'Right', 'vbeb' ), 'icon' => 'eicon-text-align-right' ),
 				),
 				'selectors' => array( '{{WRAPPER}} .vbeb-room-image' => 'text-align: {{VALUE}};' ),
 			)
@@ -111,7 +111,7 @@ class VBEB_Roomimage_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'width',
 			array(
-				'label'          => esc_html__( 'Width', 'elementor' ),
+				'label'          => esc_html__( 'Width', 'vbeb' ),
 				'type'           => Controls_Manager::SLIDER,
 				'size_units'     => array( '%', 'px', 'em', 'rem', 'vw' ),
 				'default'        => array( 'unit' => '%' ),
@@ -124,7 +124,7 @@ class VBEB_Roomimage_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'max_width',
 			array(
-				'label'          => esc_html__( 'Max Width', 'elementor' ),
+				'label'          => esc_html__( 'Max Width', 'vbeb' ),
 				'type'           => Controls_Manager::SLIDER,
 				'size_units'     => array( '%', 'px', 'em', 'rem', 'vw' ),
 				'default'        => array( 'unit' => '%' ),
@@ -137,7 +137,7 @@ class VBEB_Roomimage_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'height',
 			array(
-				'label'      => esc_html__( 'Height', 'elementor' ),
+				'label'      => esc_html__( 'Height', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', '%', 'em', 'rem', 'vh' ),
 				'range'      => array(
@@ -154,7 +154,7 @@ class VBEB_Roomimage_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'object_fit',
 			array(
-				'label'       => esc_html__( 'Object Fit', 'elementor' ),
+				'label'       => esc_html__( 'Object Fit', 'vbeb' ),
 				'type'        => Controls_Manager::SELECT,
 				'default'     => '',
 				// VBEB 7.587.0, su richiesta dell'utente: tutte le voci e
@@ -162,11 +162,11 @@ class VBEB_Roomimage_Widget extends Widget_Base {
 				// VBEB 7.588.0, su richiesta dell'utente: valore di partenza
 				// "Predefinito", come Elementor (prima "cover").
 				'options'     => array(
-					''           => esc_html__( 'Default', 'elementor' ),
-					'fill'       => esc_html__( 'Fill', 'elementor' ),
-					'cover'      => esc_html__( 'Cover', 'elementor' ),
-					'contain'    => esc_html__( 'Contain', 'elementor' ),
-					'scale-down' => esc_html__( 'Scale Down', 'elementor' ),
+					''           => esc_html__( 'Default', 'vbeb' ),
+					'fill'       => esc_html__( 'Fill', 'vbeb' ),
+					'cover'      => esc_html__( 'Cover', 'vbeb' ),
+					'contain'    => esc_html__( 'Contain', 'vbeb' ),
+					'scale-down' => esc_html__( 'Scale Down', 'vbeb' ),
 				),
 				'selectors'   => array( '{{WRAPPER}} .vbeb-room-image img' => 'object-fit: {{VALUE}};' ),
 				'condition'   => array( 'height[size]!' => '' ),
@@ -177,15 +177,15 @@ class VBEB_Roomimage_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'object_position',
 			array(
-				'label'     => esc_html__( 'Object Position', 'elementor' ),
+				'label'     => esc_html__( 'Object Position', 'vbeb' ),
 				'type'      => Controls_Manager::SELECT,
 				'default'   => 'center center',
 				'options'   => array(
-					'center center' => esc_html__( 'Center Center', 'elementor' ),
-					'center top'    => esc_html__( 'Top Center', 'elementor' ),
-					'center bottom' => esc_html__( 'Bottom Center', 'elementor' ),
-					'left center'   => esc_html__( 'Center Left', 'elementor' ),
-					'right center'  => esc_html__( 'Center Right', 'elementor' ),
+					'center center' => esc_html__( 'Center Center', 'vbeb' ),
+					'center top'    => esc_html__( 'Top Center', 'vbeb' ),
+					'center bottom' => esc_html__( 'Bottom Center', 'vbeb' ),
+					'left center'   => esc_html__( 'Center Left', 'vbeb' ),
+					'right center'  => esc_html__( 'Center Right', 'vbeb' ),
 				),
 				'selectors' => array( '{{WRAPPER}} .vbeb-room-image img' => 'object-position: {{VALUE}};' ),
 				// VBEB 7.589.0, su richiesta dell'utente: come Elementor, anche
@@ -206,12 +206,12 @@ class VBEB_Roomimage_Widget extends Widget_Base {
 		// Immagine nativo: ogni effetto esiste due volte, una per stato.
 		$this->start_controls_tabs( 'effetti_immagine' );
 
-		$this->start_controls_tab( 'effetti_normale', array( 'label' => esc_html__( 'Normal', 'elementor' ) ) );
+		$this->start_controls_tab( 'effetti_normale', array( 'label' => esc_html__( 'Normal', 'vbeb' ) ) );
 
 		$this->add_control(
 			'opacity',
 			array(
-				'label'     => esc_html__( 'Opacity', 'elementor' ),
+				'label'     => esc_html__( 'Opacity', 'vbeb' ),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => array( 'px' => array( 'min' => 0.10, 'max' => 1, 'step' => 0.01 ) ),
 				'selectors' => array( '{{WRAPPER}} .vbeb-room-image img' => 'opacity: {{SIZE}};' ),
@@ -228,12 +228,12 @@ class VBEB_Roomimage_Widget extends Widget_Base {
 
 		$this->end_controls_tab();
 
-		$this->start_controls_tab( 'effetti_hover', array( 'label' => esc_html__( 'Hover', 'elementor' ) ) );
+		$this->start_controls_tab( 'effetti_hover', array( 'label' => esc_html__( 'Hover', 'vbeb' ) ) );
 
 		$this->add_control(
 			'opacity_hover',
 			array(
-				'label'     => esc_html__( 'Opacity', 'elementor' ),
+				'label'     => esc_html__( 'Opacity', 'vbeb' ),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => array( 'px' => array( 'min' => 0.10, 'max' => 1, 'step' => 0.01 ) ),
 				'selectors' => array( '{{WRAPPER}} .vbeb-room-image img:hover' => 'opacity: {{SIZE}};' ),
@@ -251,7 +251,7 @@ class VBEB_Roomimage_Widget extends Widget_Base {
 		$this->add_control(
 			'hover_transition',
 			array(
-				'label'     => esc_html__( 'Transition Duration', 'elementor' ) . ' (s)',
+				'label'     => esc_html__( 'Transition Duration', 'vbeb' ) . ' (s)',
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => array( 'px' => array( 'min' => 0, 'max' => 3, 'step' => 0.1 ) ),
 				'selectors' => array( '{{WRAPPER}} .vbeb-room-image img' => 'transition-duration: {{SIZE}}s;' ),
@@ -273,7 +273,7 @@ class VBEB_Roomimage_Widget extends Widget_Base {
 		$this->add_control(
 			'hover_animation',
 			array(
-				'label' => esc_html__( 'Hover Animation', 'elementor' ),
+				'label' => esc_html__( 'Hover Animation', 'vbeb' ),
 				'type'  => Controls_Manager::HOVER_ANIMATION,
 			)
 		);
@@ -294,7 +294,7 @@ class VBEB_Roomimage_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'radius',
 			array(
-				'label'      => esc_html__( 'Border Radius', 'elementor' ),
+				'label'      => esc_html__( 'Border Radius', 'vbeb' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em', 'rem' ),
 				'selectors'  => array( '{{WRAPPER}} .vbeb-room-image img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};' ),
@@ -305,7 +305,7 @@ class VBEB_Roomimage_Widget extends Widget_Base {
 			Group_Control_Box_Shadow::get_type(),
 			array(
 				'name'     => 'image_box_shadow',
-				'exclude'  => array( 'box_shadow_position' ),
+				'exclude'  => array( 'box_shadow_position' ), // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- campi esclusi da un controllo di Elementor, non una query.
 				'selector' => '{{WRAPPER}} .vbeb-room-image img',
 			)
 		);
@@ -313,7 +313,7 @@ class VBEB_Roomimage_Widget extends Widget_Base {
 		$this->add_control(
 			'heading_caption',
 			array(
-				'label'     => esc_html__( 'Caption', 'elementor' ),
+				'label'     => esc_html__( 'Caption', 'vbeb' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 				'condition' => array( 'caption!' => 'none' ),
@@ -323,7 +323,7 @@ class VBEB_Roomimage_Widget extends Widget_Base {
 		$this->add_control(
 			'caption_color',
 			array(
-				'label'     => esc_html__( 'Color', 'elementor' ),
+				'label'     => esc_html__( 'Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( '{{WRAPPER}} .vbeb-room-image-caption' => 'color: {{VALUE}};' ),
 				'condition' => array( 'caption!' => 'none' ),
@@ -333,7 +333,7 @@ class VBEB_Roomimage_Widget extends Widget_Base {
 		$this->add_control(
 			'caption_space',
 			array(
-				'label'      => esc_html__( 'Spacing', 'elementor' ),
+				'label'      => esc_html__( 'Spacing', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px' ),
 				'range'      => array( 'px' => array( 'min' => 0, 'max' => 60 ) ),
@@ -356,7 +356,7 @@ class VBEB_Roomimage_Widget extends Widget_Base {
 
 		if ( empty( $img ) ) {
 			if ( $in_editor ) {
-				echo '<div style="padding:15px;border:1px dashed #c5c7c9;border-radius:4px;text-align:center;color:#6d7882;font-size:13px;line-height:1.5;"><strong>VBEB Camera - Immagine principale</strong><br>La foto della camera comparir&agrave; sul front-end.</div>';
+				echo '<div style="padding:15px;border:1px dashed #c5c7c9;border-radius:4px;text-align:center;color:#6d7882;font-size:13px;line-height:1.5;"><strong>' . esc_html__( 'VBEB Room - Main Image', 'vbeb' ) . '</strong><br>' . esc_html__( 'The room photo will appear on the front end.', 'vbeb' ) . '</div>';
 			}
 			return;
 		}

@@ -248,7 +248,7 @@ class VBEB_Price_Widget extends Widget_Base {
 	protected function render() {
 		if ( ! VBEB_Room_Context::has_context() || ! class_exists( 'VikBooking' ) ) {
 			if ( \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
-				echo '<div style="padding:20px;border:1px dashed #ccc;text-align:center;color:#888;">Prezzo Camera: il prezzo reale comparirà sul front-end di una pagina camera.</div>';
+				echo '<div style="padding:20px;border:1px dashed #ccc;text-align:center;color:#888;">' . esc_html__( 'Room - Price: the real price will appear on the front end of a room page.', 'vbeb' ) . '</div>';
 			}
 			return;
 		}

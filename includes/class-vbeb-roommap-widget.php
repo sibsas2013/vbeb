@@ -266,7 +266,7 @@ class VBEB_Roommap_Widget extends Widget_Base {
 			. '<div id="' . esc_attr( $id ) . '" class="vbeb-geo-map-editor" style="width: 100%; height: ' . $altezza . 'px;">';
 
 		if ( ! $attiva ) {
-			return $html . '<span class="vbeb-roommap-placeholder">La mappa comparir&agrave; sul front-end.</span></div></div></div>';
+			return $html . '<span class="vbeb-roommap-placeholder">' . esc_html__( 'The map will appear on the front end.', 'vbeb' ) . '</span></div></div></div>';
 		}
 
 		$dati = array(

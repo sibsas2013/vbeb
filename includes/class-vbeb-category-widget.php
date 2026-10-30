@@ -49,7 +49,7 @@ class VBEB_Category_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_category',
 			array(
-				'label' => esc_html__( 'Heading', 'elementor' ), // VBEB 7.366.0: era "Categoria".
+				'label' => esc_html__( 'Heading', 'vbeb' ), // VBEB 7.366.0: era "Categoria".
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			)
 		);
@@ -57,7 +57,7 @@ class VBEB_Category_Widget extends Widget_Base {
 		$this->add_control(
 			'html_tag',
 			array(
-				'label'   => esc_html__( 'HTML Tag', 'elementor' ),
+				'label'   => esc_html__( 'HTML Tag', 'vbeb' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'span',
 				'options' => array(
@@ -79,7 +79,7 @@ class VBEB_Category_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_category',
 			array(
-				'label' => esc_html__( 'Heading', 'elementor' ), // VBEB 7.366.0: era "Stile".
+				'label' => esc_html__( 'Heading', 'vbeb' ), // VBEB 7.366.0: era "Stile".
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -102,13 +102,13 @@ class VBEB_Category_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'category_align',
 			array(
-				'label'   => esc_html__( 'Alignment', 'elementor' ),
+				'label'   => esc_html__( 'Alignment', 'vbeb' ),
 				'type'    => Controls_Manager::CHOOSE,
 				'options' => array(
-					'left'   => array( 'title' => esc_html__( 'Left', 'elementor' ), 'icon' => 'eicon-text-align-left' ),
-					'center' => array( 'title' => esc_html__( 'Center', 'elementor' ), 'icon' => 'eicon-text-align-center' ),
-					'right'  => array( 'title' => esc_html__( 'Right', 'elementor' ), 'icon' => 'eicon-text-align-right' ),
-					'justify'=> array( 'title' => esc_html__( 'Justified', 'elementor' ), 'icon' => 'eicon-text-align-justify' ),
+					'left'   => array( 'title' => esc_html__( 'Left', 'vbeb' ), 'icon' => 'eicon-text-align-left' ),
+					'center' => array( 'title' => esc_html__( 'Center', 'vbeb' ), 'icon' => 'eicon-text-align-center' ),
+					'right'  => array( 'title' => esc_html__( 'Right', 'vbeb' ), 'icon' => 'eicon-text-align-right' ),
+					'justify'=> array( 'title' => esc_html__( 'Justified', 'vbeb' ), 'icon' => 'eicon-text-align-justify' ),
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .vbeb-room-category' => 'text-align: {{VALUE}};',
@@ -146,23 +146,23 @@ class VBEB_Category_Widget extends Widget_Base {
 		$this->add_control(
 			'category_blend_mode',
 			array(
-				'label'     => esc_html__( 'Blend Mode', 'elementor' ),
+				'label'     => esc_html__( 'Blend Mode', 'vbeb' ),
 				'type'      => Controls_Manager::SELECT,
 				'default'   => '',
 				'options'   => array(
-					''            => esc_html__( 'Normal', 'elementor' ),
-					'multiply'    => esc_html__( 'Multiply', 'elementor' ),
-					'screen'      => esc_html__( 'Screen', 'elementor' ),
-					'overlay'     => esc_html__( 'Overlay', 'elementor' ),
-					'darken'      => esc_html__( 'Darken', 'elementor' ),
-					'lighten'     => esc_html__( 'Lighten', 'elementor' ),
-					'color-dodge' => esc_html__( 'Color Dodge', 'elementor' ),
-					'saturation'  => esc_html__( 'Saturation', 'elementor' ),
-					'color'       => esc_html__( 'Color', 'elementor' ),
-					'difference'  => esc_html__( 'Difference', 'elementor' ),
-					'exclusion'   => esc_html__( 'Exclusion', 'elementor' ),
-					'hue'         => esc_html__( 'Hue', 'elementor' ),
-					'luminosity'  => esc_html__( 'Luminosity', 'elementor' ), // VBEB 7.500.0: in fondo, come in Elementor.
+					''            => esc_html__( 'Normal', 'vbeb' ),
+					'multiply'    => esc_html__( 'Multiply', 'vbeb' ),
+					'screen'      => esc_html__( 'Screen', 'vbeb' ),
+					'overlay'     => esc_html__( 'Overlay', 'vbeb' ),
+					'darken'      => esc_html__( 'Darken', 'vbeb' ),
+					'lighten'     => esc_html__( 'Lighten', 'vbeb' ),
+					'color-dodge' => esc_html__( 'Color Dodge', 'vbeb' ),
+					'saturation'  => esc_html__( 'Saturation', 'vbeb' ),
+					'color'       => esc_html__( 'Color', 'vbeb' ),
+					'difference'  => esc_html__( 'Difference', 'vbeb' ),
+					'exclusion'   => esc_html__( 'Exclusion', 'vbeb' ),
+					'hue'         => esc_html__( 'Hue', 'vbeb' ),
+					'luminosity'  => esc_html__( 'Luminosity', 'vbeb' ), // VBEB 7.500.0: in fondo, come in Elementor.
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .vbeb-room-category' => 'mix-blend-mode: {{VALUE}};',
@@ -176,7 +176,7 @@ class VBEB_Category_Widget extends Widget_Base {
 		$this->add_control(
 			'category_color',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .vbeb-room-category' => 'color: {{VALUE}};',
@@ -203,13 +203,13 @@ class VBEB_Category_Widget extends Widget_Base {
 			// Stessa identica funzione usata nei template originali di VikBooking.
 			$category = VikBooking::sayCategory( $idcat, $vbo_tn );
 		} else {
-			$category = \Elementor\Plugin::$instance->editor->is_edit_mode() ? '[Categoria]' : '';
+			$category = \Elementor\Plugin::$instance->editor->is_edit_mode() ? __( '[Category]', 'vbeb' ) : '';
 		}
 
 		if ( '' === $category ) {
 			return;
 		}
 
-		echo '<' . $tag . ' class="vbeb-room-category">' . esc_html( $category ) . '</' . $tag . '>';
+		echo '<' . tag_escape( $tag ) . ' class="vbeb-room-category">' . esc_html( $category ) . '</' . tag_escape( $tag ) . '>';
 	}
 }

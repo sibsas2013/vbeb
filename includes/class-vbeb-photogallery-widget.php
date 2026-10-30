@@ -58,7 +58,7 @@ class VBEB_Photogallery_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_gallery',
 			array(
-				'label' => esc_html__( 'Settings', 'elementor' ), // VBEB 7.624.0: era "Galleria".
+				'label' => esc_html__( 'Settings', 'vbeb' ), // VBEB 7.624.0: era "Galleria".
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			)
 		);
@@ -75,7 +75,7 @@ class VBEB_Photogallery_Widget extends Widget_Base {
 		$this->add_control(
 			'lazyload',
 			array(
-				'label'        => esc_html__( 'Lazy Load', 'elementor' ),
+				'label'        => esc_html__( 'Lazy Load', 'vbeb' ),
 				'type'         => Controls_Manager::SWITCHER,
 				'return_value' => 'yes',
 				'default'      => 'yes',
@@ -85,12 +85,12 @@ class VBEB_Photogallery_Widget extends Widget_Base {
 		$this->add_control(
 			'gallery_layout',
 			array(
-				'label'     => esc_html__( 'Layout', 'elementor' ),
+				'label'     => esc_html__( 'Layout', 'vbeb' ),
 				'type'      => Controls_Manager::SELECT,
 				'default'   => 'grid',
 				'options'   => array(
-					'grid'      => esc_html__( 'Grid', 'elementor' ),
-					'justified' => esc_html__( 'Justified', 'elementor' ),
+					'grid'      => esc_html__( 'Grid', 'vbeb' ),
+					'justified' => esc_html__( 'Justified', 'vbeb' ),
 					'masonry'   => esc_html__( 'Masonry', 'vbeb' ),
 				),
 				'separator' => 'before',
@@ -100,7 +100,7 @@ class VBEB_Photogallery_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'columns',
 			array(
-				'label'          => esc_html__( 'Columns', 'elementor' ),
+				'label'          => esc_html__( 'Columns', 'vbeb' ),
 				'type'           => Controls_Manager::NUMBER,
 				'default'        => 4,
 				'tablet_default' => 2,
@@ -129,7 +129,7 @@ class VBEB_Photogallery_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'gap',
 			array(
-				'label'          => esc_html__( 'Spacing', 'elementor' ),
+				'label'          => esc_html__( 'Spacing', 'vbeb' ),
 				'type'           => Controls_Manager::SLIDER,
 				'default'        => array( 'size' => 10 ),
 				'tablet_default' => array( 'size' => 10 ),
@@ -141,12 +141,12 @@ class VBEB_Photogallery_Widget extends Widget_Base {
 		$this->add_control(
 			'link_to',
 			array(
-				'label'   => esc_html__( 'Link', 'elementor' ),
+				'label'   => esc_html__( 'Link', 'vbeb' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'file',
 				'options' => array(
-					'none' => esc_html__( 'None', 'elementor' ),
-					'file' => esc_html__( 'Media File', 'elementor' ),
+					'none' => esc_html__( 'None', 'vbeb' ),
+					'file' => esc_html__( 'Media File', 'vbeb' ),
 				),
 			)
 		);
@@ -154,19 +154,19 @@ class VBEB_Photogallery_Widget extends Widget_Base {
 		$this->add_control(
 			'open_lightbox',
 			array(
-				'label'       => esc_html__( 'Lightbox', 'elementor' ),
+				'label'       => esc_html__( 'Lightbox', 'vbeb' ),
 				'type'        => Controls_Manager::SELECT,
 				'description' => sprintf(
 					/* translators: 1: Link open tag, 2: Link close tag. */
-					esc_html__( 'Manage your site’s lightbox settings in the %1$sLightbox panel%2$s.', 'elementor' ),
+					esc_html__( 'Manage your site’s lightbox settings in the %1$sLightbox panel%2$s.', 'vbeb' ),
 					'<a href="javascript: $e.run( \'panel/global/open\' ).then( () => $e.route( \'panel/global/settings-lightbox\' ) )">',
 					'</a>'
 				),
 				'default'     => 'default',
 				'options'     => array(
-					'default' => esc_html__( 'Default', 'elementor' ),
-					'yes'     => esc_html__( 'Yes', 'elementor' ),
-					'no'      => esc_html__( 'No', 'elementor' ),
+					'default' => esc_html__( 'Default', 'vbeb' ),
+					'yes'     => esc_html__( 'Yes', 'vbeb' ),
+					'no'      => esc_html__( 'No', 'vbeb' ),
 				),
 				'condition'   => array( 'link_to' => 'file' ),
 			)
@@ -176,7 +176,7 @@ class VBEB_Photogallery_Widget extends Widget_Base {
 		$this->add_control(
 			'aspect_ratio',
 			array(
-				'label'     => esc_html__( 'Aspect Ratio', 'elementor' ),
+				'label'     => esc_html__( 'Aspect Ratio', 'vbeb' ),
 				'type'      => Controls_Manager::SELECT,
 				'default'   => '3:2',
 				'options'   => array(
@@ -200,7 +200,7 @@ class VBEB_Photogallery_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'image_style',
 			array(
-				'label' => esc_html__( 'Image', 'elementor' ),
+				'label' => esc_html__( 'Image', 'vbeb' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -210,14 +210,14 @@ class VBEB_Photogallery_Widget extends Widget_Base {
 		$this->start_controls_tab(
 			'image_normal',
 			array(
-				'label' => esc_html__( 'Normal', 'elementor' ),
+				'label' => esc_html__( 'Normal', 'vbeb' ),
 			)
 		);
 
 		$this->add_control(
 			'image_border_color',
 			array(
-				'label'     => esc_html__( 'Border Color', 'elementor' ),
+				'label'     => esc_html__( 'Border Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}}' => '--image-border-color: {{VALUE}}',
@@ -228,7 +228,7 @@ class VBEB_Photogallery_Widget extends Widget_Base {
 		$this->add_control(
 			'image_border_width',
 			array(
-				'label'      => esc_html__( 'Border Width', 'elementor' ),
+				'label'      => esc_html__( 'Border Width', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', '%', 'em', 'rem', 'vw', 'custom' ),
 				'range'      => array(
@@ -244,7 +244,7 @@ class VBEB_Photogallery_Widget extends Widget_Base {
 		$this->add_control(
 			'image_border_radius',
 			array(
-				'label'      => esc_html__( 'Border Radius', 'elementor' ),
+				'label'      => esc_html__( 'Border Radius', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 				'selectors'  => array(
@@ -266,14 +266,14 @@ class VBEB_Photogallery_Widget extends Widget_Base {
 		$this->start_controls_tab(
 			'image_hover',
 			array(
-				'label' => esc_html__( 'Hover', 'elementor' ),
+				'label' => esc_html__( 'Hover', 'vbeb' ),
 			)
 		);
 
 		$this->add_control(
 			'image_border_color_hover',
 			array(
-				'label'     => esc_html__( 'Border Color', 'elementor' ),
+				'label'     => esc_html__( 'Border Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .elementor-gallery-item:hover' => 'border-color: {{VALUE}}',
@@ -284,7 +284,7 @@ class VBEB_Photogallery_Widget extends Widget_Base {
 		$this->add_control(
 			'image_border_radius_hover',
 			array(
-				'label'      => esc_html__( 'Border Radius', 'elementor' ),
+				'label'      => esc_html__( 'Border Radius', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 				'selectors'  => array(
@@ -308,10 +308,10 @@ class VBEB_Photogallery_Widget extends Widget_Base {
 		$this->add_control(
 			'image_hover_animation',
 			array(
-				'label'     => esc_html__( 'Hover Animation', 'elementor' ),
+				'label'     => esc_html__( 'Hover Animation', 'vbeb' ),
 				'type'      => Controls_Manager::SELECT,
 				'options'   => array(
-					''                      => esc_html__( 'None', 'elementor' ),
+					''                      => esc_html__( 'None', 'vbeb' ),
 					'grow'                  => esc_html__( 'Zoom In', 'vbeb' ),
 					'shrink-contained'      => esc_html__( 'Zoom Out', 'vbeb' ),
 					'move-contained-left'   => esc_html__( 'Move Left', 'vbeb' ),
@@ -327,7 +327,7 @@ class VBEB_Photogallery_Widget extends Widget_Base {
 		$this->add_control(
 			'image_animation_duration',
 			array(
-				'label'     => esc_html__( 'Animation Duration', 'elementor' ) . ' (ms)',
+				'label'     => esc_html__( 'Animation Duration', 'vbeb' ) . ' (ms)',
 				'type'      => Controls_Manager::SLIDER,
 				'default'   => array( 'size' => 800 ),
 				'range'     => array(
@@ -390,7 +390,7 @@ class VBEB_Photogallery_Widget extends Widget_Base {
 		}
 		$done = true;
 		$g = '.vbeb-photogallery';
-		echo '<style>'
+		$css = ''
 			. $g . ' .elementor-gallery-item{border:solid var(--image-border-width) var(--image-border-color);border-radius:var(--image-border-radius);display:block;overflow:hidden;position:relative;text-decoration:none;transition-property:all;}'
 			. $g . ' .elementor-gallery-item__image.e-gallery-image{transition-duration:var(--image-transition-duration);transition-property:filter,transform;}'
 			. $g . ' .elementor-animated-content{--translate:0,0;}'
@@ -412,7 +412,8 @@ class VBEB_Photogallery_Widget extends Widget_Base {
 			. $g . '.e-gallery--lazyload .e-gallery-image:not(.e-gallery-image-loaded){filter:none;transform:none;}'
 			. $g . '.e-gallery--lazyload .elementor-animated-content .elementor-animated-item--shrink-contained:not(.e-gallery-image-loaded){transform:scale(1.17);}'
 			. $g . '.e-gallery--lazyload .elementor-animated-content .elementor-animated-item--move-contained-left:not(.e-gallery-image-loaded),' . $g . '.e-gallery--lazyload .elementor-animated-content .elementor-animated-item--move-contained-right:not(.e-gallery-image-loaded),' . $g . '.e-gallery--lazyload .elementor-animated-content .elementor-animated-item--move-contained-top:not(.e-gallery-image-loaded),' . $g . '.e-gallery--lazyload .elementor-animated-content .elementor-animated-item--move-contained-bottom:not(.e-gallery-image-loaded){transform:scale(1.2) translate(var(--translate));}'
-			. '</style>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			. '';
+		echo '<style>' . $css . '</style>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSS fisso del plugin, nessun dato esterno.
 	}
 
 	protected function render() {
@@ -420,7 +421,7 @@ class VBEB_Photogallery_Widget extends Widget_Base {
 
 		if ( ! VBEB_Room_Context::has_context() ) {
 			if ( $is_editor ) {
-				echo '<div style="padding:20px;border:1px dashed #ccc;text-align:center;color:#888;">Galleria Camera: le foto reali compariranno sul front-end di una pagina camera.</div>';
+				echo '<div style="padding:20px;border:1px dashed #ccc;text-align:center;color:#888;">' . esc_html__( 'Room - Gallery: the real photos will appear on the front end of a room page.', 'vbeb' ) . '</div>';
 			}
 			return;
 		}
@@ -463,7 +464,7 @@ class VBEB_Photogallery_Widget extends Widget_Base {
 
 		if ( empty( $items ) ) {
 			if ( $is_editor ) {
-				echo '<div style="padding:20px;border:1px dashed #ccc;text-align:center;color:#888;">Questa camera non ha foto caricate.</div>';
+				echo '<div style="padding:20px;border:1px dashed #ccc;text-align:center;color:#888;">' . esc_html__( 'This room has no photos.', 'vbeb' ) . '</div>';
 			}
 			return;
 		}

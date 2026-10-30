@@ -405,7 +405,7 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 				'label'       => esc_html__( 'Title', 'vbeb' ),
 				'type'        => Controls_Manager::TEXTAREA,
 				'default'     => '',
-				'placeholder' => '' !== $prima ? $prima : 'Richiedi informazioni per',
+				'placeholder' => '' !== $prima ? $prima : __( 'Request information for', 'vbeb' ),
 			)
 		);
 
@@ -1353,7 +1353,7 @@ class VBEB_Reqinfoform_Widget extends Widget_Base {
 
 		if ( '' === $parti['form'] ) {
 			if ( $in_editor ) {
-				echo '<div style="padding:20px;border:1px dashed #ccc;text-align:center;color:#888;">Modulo informazioni: il modulo reale comparirà nel popup del pulsante informazioni della pagina camera.</div>';
+				echo '<div style="padding:20px;border:1px dashed #ccc;text-align:center;color:#888;">' . esc_html__( 'Room - Information Form: the real form will appear in the popup of the information button on the room page.', 'vbeb' ) . '</div>';
 			}
 			return;
 		}

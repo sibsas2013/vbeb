@@ -69,7 +69,7 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_carousel',
 			array(
-				'label' => esc_html__( 'Image Carousel', 'elementor' ),
+				'label' => esc_html__( 'Image Carousel', 'vbeb' ),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			)
 		);
@@ -95,12 +95,12 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->add_control(
 			'thumbnail_size',
 			array(
-				'label'   => esc_html__( 'Image Resolution', 'elementor' ),
+				'label'   => esc_html__( 'Image Resolution', 'vbeb' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'full',
 				'options' => array(
-					'full'   => esc_html__( 'Full', 'elementor' ),
-					'custom' => esc_html__( 'Custom', 'elementor' ),
+					'full'   => esc_html__( 'Full', 'vbeb' ),
+					'custom' => esc_html__( 'Custom', 'vbeb' ),
 				),
 			)
 		);
@@ -108,9 +108,9 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->add_control(
 			'thumbnail_custom_dimension',
 			array(
-				'label'       => esc_html__( 'Image Dimension', 'elementor' ),
+				'label'       => esc_html__( 'Image Dimension', 'vbeb' ),
 				'type'        => Controls_Manager::IMAGE_DIMENSIONS,
-				'description' => esc_html__( 'You can crop the original image size to any custom size. You can also set a single value for height or width in order to keep the original size ratio.', 'elementor' ),
+				'description' => esc_html__( 'You can crop the original image size to any custom size. You can also set a single value for height or width in order to keep the original size ratio.', 'vbeb' ),
 				'condition'   => array( 'thumbnail_size' => 'custom' ),
 			)
 		);
@@ -118,7 +118,7 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'slides_per_view',
 			array(
-				'label'           => esc_html__( 'Slides to Show', 'elementor' ),
+				'label'           => esc_html__( 'Slides to Show', 'vbeb' ),
 				'type'            => Controls_Manager::NUMBER,
 				'default'         => 1,
 				'tablet_default'  => 1,
@@ -131,7 +131,7 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'slides_to_scroll',
 			array(
-				'label'           => esc_html__( 'Slides to Scroll', 'elementor' ),
+				'label'           => esc_html__( 'Slides to Scroll', 'vbeb' ),
 				'type'            => Controls_Manager::NUMBER,
 				'default'         => 1,
 				'tablet_default'  => 1,
@@ -152,12 +152,12 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->add_control(
 			'image_stretch',
 			array(
-				'label'   => esc_html__( 'Image Stretch', 'elementor' ),
+				'label'   => esc_html__( 'Image Stretch', 'vbeb' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'no',
 				'options' => array(
-					'no'  => esc_html__( 'No', 'elementor' ),
-					'yes' => esc_html__( 'Yes', 'elementor' ),
+					'no'  => esc_html__( 'No', 'vbeb' ),
+					'yes' => esc_html__( 'Yes', 'vbeb' ),
 				),
 			)
 		);
@@ -165,14 +165,14 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->add_control(
 			'navigation',
 			array(
-				'label'   => esc_html__( 'Navigation', 'elementor' ),
+				'label'   => esc_html__( 'Navigation', 'vbeb' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'both',
 				'options' => array(
-					'both'   => esc_html__( 'Arrows and Dots', 'elementor' ),
-					'arrows' => esc_html__( 'Arrows', 'elementor' ),
-					'dots'   => esc_html__( 'Dots', 'elementor' ),
-					'none'   => esc_html__( 'None', 'elementor' ),
+					'both'   => esc_html__( 'Arrows and Dots', 'vbeb' ),
+					'arrows' => esc_html__( 'Arrows', 'vbeb' ),
+					'dots'   => esc_html__( 'Dots', 'vbeb' ),
+					'none'   => esc_html__( 'None', 'vbeb' ),
 				),
 			)
 		);
@@ -183,7 +183,7 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->add_control(
 			'navigation_previous_icon',
 			array(
-				'label'            => esc_html__( 'Previous Arrow Icon', 'elementor' ),
+				'label'            => esc_html__( 'Previous Arrow Icon', 'vbeb' ),
 				'type'             => Controls_Manager::ICONS,
 				'fa4compatibility' => 'icon',
 				'skin'             => 'inline',
@@ -210,7 +210,7 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->add_control(
 			'navigation_next_icon',
 			array(
-				'label'            => esc_html__( 'Next Arrow Icon', 'elementor' ),
+				'label'            => esc_html__( 'Next Arrow Icon', 'vbeb' ),
 				'type'             => Controls_Manager::ICONS,
 				'fa4compatibility' => 'icon',
 				'skin'             => 'inline',
@@ -238,12 +238,12 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->add_control(
 			'link_to',
 			array(
-				'label'   => esc_html__( 'Link', 'elementor' ),
+				'label'   => esc_html__( 'Link', 'vbeb' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'file',
 				'options' => array(
-					'none'   => esc_html__( 'None', 'elementor' ),
-					'file'   => esc_html__( 'Media File', 'elementor' ),
+					'none'   => esc_html__( 'None', 'vbeb' ),
+					'file'   => esc_html__( 'Media File', 'vbeb' ),
 					// VBEB 7.613.0, su richiesta dell'utente: tolto "URL
 					// personalizzato" (e il campo del collegamento).
 				),
@@ -258,19 +258,19 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->add_control(
 			'open_lightbox',
 			array(
-				'label'       => esc_html__( 'Lightbox', 'elementor' ),
+				'label'       => esc_html__( 'Lightbox', 'vbeb' ),
 				'type'        => Controls_Manager::SELECT,
 				'description' => sprintf(
 					/* translators: 1: Link open tag, 2: Link close tag. */
-					esc_html__( 'Manage your site’s lightbox settings in the %1$sLightbox panel%2$s.', 'elementor' ),
+					esc_html__( 'Manage your site’s lightbox settings in the %1$sLightbox panel%2$s.', 'vbeb' ),
 					'<a href="javascript: $e.run( \'panel/global/open\' ).then( () => $e.route( \'panel/global/settings-lightbox\' ) )">',
 					'</a>'
 				),
 				'default'     => 'default',
 				'options'     => array(
-					'default' => esc_html__( 'Default', 'elementor' ),
-					'yes'     => esc_html__( 'Yes', 'elementor' ),
-					'no'      => esc_html__( 'No', 'elementor' ),
+					'default' => esc_html__( 'Default', 'vbeb' ),
+					'yes'     => esc_html__( 'Yes', 'vbeb' ),
+					'no'      => esc_html__( 'No', 'vbeb' ),
 				),
 				'condition'   => array( 'link_to' => 'file' ),
 			)
@@ -329,7 +329,7 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'thumbs_space_between',
 			array(
-				'label'      => esc_html__( 'Spacing', 'elementor' ), // VBEB 7.637.0: era "Spaziatura tra miniature".
+				'label'      => esc_html__( 'Spacing', 'vbeb' ), // VBEB 7.637.0: era "Spaziatura tra miniature".
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px' ),
 				'range'      => array(
@@ -347,7 +347,7 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->add_control(
 			'thumbs_aspect_ratio',
 			array(
-				'label'                => esc_html__( 'Aspect Ratio', 'elementor' ),
+				'label'                => esc_html__( 'Aspect Ratio', 'vbeb' ),
 				'type'                 => Controls_Manager::SELECT,
 				'default'              => '3:2',
 				'options'              => array(
@@ -384,7 +384,7 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_additional_settings',
 			array(
-				'label' => esc_html__( 'Additional Options', 'elementor' ), // VBEB 7.608.0: come il Carosello d'immagini di Elementor (era "Additional Settings").
+				'label' => esc_html__( 'Additional Options', 'vbeb' ), // VBEB 7.608.0: come il Carosello d'immagini di Elementor (era "Additional Settings").
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			)
 		);
@@ -399,10 +399,10 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->add_control(
 			'lazyload',
 			array(
-				'label'        => esc_html__( 'Lazyload', 'elementor' ),
+				'label'        => esc_html__( 'Lazyload', 'vbeb' ),
 				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Yes', 'elementor' ),
-				'label_off'    => esc_html__( 'No', 'elementor' ),
+				'label_on'     => esc_html__( 'Yes', 'vbeb' ),
+				'label_off'    => esc_html__( 'No', 'vbeb' ),
 				'return_value' => 'yes',
 				'default'      => '',
 			)
@@ -411,7 +411,7 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->add_control(
 			'autoplay',
 			array(
-				'label'   => esc_html__( 'Autoplay', 'elementor' ),
+				'label'   => esc_html__( 'Autoplay', 'vbeb' ),
 				'type'    => Controls_Manager::SWITCHER,
 				'default' => 'yes',
 			)
@@ -420,7 +420,7 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->add_control(
 			'pause_on_hover',
 			array(
-				'label'     => esc_html__( 'Pause on Hover', 'elementor' ),
+				'label'     => esc_html__( 'Pause on Hover', 'vbeb' ),
 				'type'      => Controls_Manager::SWITCHER,
 				'default'   => 'yes',
 				'condition' => array( 'autoplay' => 'yes' ),
@@ -433,10 +433,10 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->add_control(
 			'pause_on_interaction',
 			array(
-				'label'        => esc_html__( 'Pause on Interaction', 'elementor' ),
+				'label'        => esc_html__( 'Pause on Interaction', 'vbeb' ),
 				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Yes', 'elementor' ),
-				'label_off'    => esc_html__( 'No', 'elementor' ),
+				'label_on'     => esc_html__( 'Yes', 'vbeb' ),
+				'label_off'    => esc_html__( 'No', 'vbeb' ),
 				'return_value' => 'yes',
 				'default'      => 'yes',
 				'condition'    => array( 'autoplay' => 'yes' ),
@@ -446,7 +446,7 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->add_control(
 			'autoplay_speed',
 			array(
-				'label'     => esc_html__( 'Autoplay Speed', 'elementor' ) . ' (ms)',
+				'label'     => esc_html__( 'Autoplay Speed', 'vbeb' ) . ' (ms)',
 				'type'      => Controls_Manager::NUMBER,
 				'default'   => 5000,
 				'min'       => 1000,
@@ -459,7 +459,7 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->add_control(
 			'loop',
 			array(
-				'label'   => esc_html__( 'Infinite Loop', 'elementor' ),
+				'label'   => esc_html__( 'Infinite Loop', 'vbeb' ),
 				'type'    => Controls_Manager::SWITCHER,
 				'default' => 'yes',
 			)
@@ -468,7 +468,7 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->add_control(
 			'speed',
 			array(
-				'label'   => esc_html__( 'Animation Speed', 'elementor' ) . ' (ms)',
+				'label'   => esc_html__( 'Animation Speed', 'vbeb' ) . ' (ms)',
 				'type'    => Controls_Manager::NUMBER,
 				'default' => 500,
 				'min'     => 0,
@@ -483,12 +483,12 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->add_control(
 			'direction',
 			array(
-				'label'   => esc_html__( 'Direction', 'elementor' ),
+				'label'   => esc_html__( 'Direction', 'vbeb' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'ltr',
 				'options' => array(
-					'ltr' => esc_html__( 'Left', 'elementor' ),
-					'rtl' => esc_html__( 'Right', 'elementor' ),
+					'ltr' => esc_html__( 'Left', 'vbeb' ),
+					'rtl' => esc_html__( 'Right', 'vbeb' ),
 				),
 			)
 		);
@@ -508,7 +508,7 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_navigation',
 			array(
-				'label'     => esc_html__( 'Navigation', 'elementor' ),
+				'label'     => esc_html__( 'Navigation', 'vbeb' ),
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => array( 'navigation!' => 'none' ),
 			)
@@ -517,7 +517,7 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->add_control(
 			'heading_style_arrows',
 			array(
-				'label'     => esc_html__( 'Arrows', 'elementor' ),
+				'label'     => esc_html__( 'Arrows', 'vbeb' ),
 				'type'      => Controls_Manager::HEADING,
 				'condition' => array( 'navigation' => array( 'arrows', 'both' ) ),
 			)
@@ -526,12 +526,12 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->add_control(
 			'arrows_position',
 			array(
-				'label'        => esc_html__( 'Position', 'elementor' ),
+				'label'        => esc_html__( 'Position', 'vbeb' ),
 				'type'         => Controls_Manager::SELECT,
 				'default'      => 'inside',
 				'options'      => array(
-					'inside'  => esc_html__( 'Inside', 'elementor' ),
-					'outside' => esc_html__( 'Outside', 'elementor' ),
+					'inside'  => esc_html__( 'Inside', 'vbeb' ),
+					'outside' => esc_html__( 'Outside', 'vbeb' ),
 				),
 				'prefix_class' => 'vbeb-arrows-position-',
 				'condition'    => array( 'navigation' => array( 'arrows', 'both' ) ),
@@ -541,7 +541,7 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'arrows_size',
 			array(
-				'label'      => esc_html__( 'Size', 'elementor' ),
+				'label'      => esc_html__( 'Size', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em', 'rem', 'custom' ),
 				'range'      => array(
@@ -564,7 +564,7 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->add_control(
 			'arrows_color',
 			array(
-				'label'     => esc_html__( 'Color', 'elementor' ),
+				'label'     => esc_html__( 'Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'condition' => array( 'navigation' => array( 'arrows', 'both' ) ),
 				'selectors' => array(
@@ -576,7 +576,7 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->add_control(
 			'heading_style_dots',
 			array(
-				'label'     => esc_html__( 'Pagination', 'elementor' ),
+				'label'     => esc_html__( 'Pagination', 'vbeb' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 				'condition' => array( 'navigation' => array( 'dots', 'both' ) ),
@@ -588,12 +588,12 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->add_control(
 			'dots_position',
 			array(
-				'label'        => esc_html__( 'Position', 'elementor' ),
+				'label'        => esc_html__( 'Position', 'vbeb' ),
 				'type'         => Controls_Manager::SELECT,
 				'default'      => 'inside',
 				'options'      => array(
-					'outside' => esc_html__( 'Outside', 'elementor' ),
-					'inside'  => esc_html__( 'Inside', 'elementor' ),
+					'outside' => esc_html__( 'Outside', 'vbeb' ),
+					'inside'  => esc_html__( 'Inside', 'vbeb' ),
 				),
 				'prefix_class' => 'vbeb-dots-position-',
 				'condition'    => array( 'navigation' => array( 'dots', 'both' ) ),
@@ -603,7 +603,7 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'dots_gap',
 			array(
-				'label'      => esc_html__( 'Space Between Dots', 'elementor' ),
+				'label'      => esc_html__( 'Space Between Dots', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em', 'rem', 'custom' ),
 				'range'      => array(
@@ -619,7 +619,7 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'dots_size',
 			array(
-				'label'      => esc_html__( 'Size', 'elementor' ),
+				'label'      => esc_html__( 'Size', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em', 'rem', 'custom' ),
 				'range'      => array(
@@ -639,7 +639,7 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->add_control(
 			'dots_color',
 			array(
-				'label'     => esc_html__( 'Color', 'elementor' ),
+				'label'     => esc_html__( 'Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'condition' => array( 'navigation' => array( 'dots', 'both' ) ),
 				'selectors' => array(
@@ -651,7 +651,7 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->add_control(
 			'dots_color_active',
 			array(
-				'label'     => esc_html__( 'Active Color', 'elementor' ),
+				'label'     => esc_html__( 'Active Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'condition' => array( 'navigation' => array( 'dots', 'both' ) ),
 				'selectors' => array(
@@ -667,7 +667,7 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_images',
 			array(
-				'label' => esc_html__( 'Image', 'elementor' ), // VBEB 7.635.0: era "Images".
+				'label' => esc_html__( 'Image', 'vbeb' ), // VBEB 7.635.0: era "Images".
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -680,12 +680,12 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'gallery_vertical_align',
 			array(
-				'label'     => esc_html__( 'Vertical Align', 'elementor' ),
+				'label'     => esc_html__( 'Vertical Align', 'vbeb' ),
 				'type'      => Controls_Manager::CHOOSE,
 				'options'   => array(
-					'flex-start' => array( 'title' => esc_html__( 'Start', 'elementor' ), 'icon' => 'eicon-v-align-top' ),
-					'center'     => array( 'title' => esc_html__( 'Center', 'elementor' ), 'icon' => 'eicon-v-align-middle' ),
-					'flex-end'   => array( 'title' => esc_html__( 'End', 'elementor' ), 'icon' => 'eicon-v-align-bottom' ),
+					'flex-start' => array( 'title' => esc_html__( 'Start', 'vbeb' ), 'icon' => 'eicon-v-align-top' ),
+					'center'     => array( 'title' => esc_html__( 'Center', 'vbeb' ), 'icon' => 'eicon-v-align-middle' ),
+					'flex-end'   => array( 'title' => esc_html__( 'End', 'vbeb' ), 'icon' => 'eicon-v-align-bottom' ),
 				),
 				'condition' => array( 'slides_per_view!' => array( 1, '1' ) ),
 				'selectors' => array(
@@ -697,11 +697,11 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->add_control(
 			'image_spacing',
 			array(
-				'label'     => esc_html__( 'Spacing', 'elementor' ),
+				'label'     => esc_html__( 'Spacing', 'vbeb' ),
 				'type'      => Controls_Manager::SELECT,
 				'options'   => array(
-					''       => esc_html__( 'Default', 'elementor' ),
-					'custom' => esc_html__( 'Custom', 'elementor' ),
+					''       => esc_html__( 'Default', 'vbeb' ),
+					'custom' => esc_html__( 'Custom', 'vbeb' ),
 				),
 				'default'   => '',
 				'condition' => array( 'slides_per_view!' => array( 1, '1' ) ),
@@ -714,7 +714,7 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'space_between',
 			array(
-				'label'      => esc_html__( 'Image Spacing', 'elementor' ),
+				'label'      => esc_html__( 'Image Spacing', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px' ),
 				'range'      => array(
@@ -747,7 +747,7 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'image_border_radius',
 			array(
-				'label'      => esc_html__( 'Border Radius', 'elementor' ),
+				'label'      => esc_html__( 'Border Radius', 'vbeb' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 				'selectors'  => array(
@@ -783,14 +783,14 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->start_controls_tab(
 			'thumbs_normal',
 			array(
-				'label' => esc_html__( 'Normal', 'elementor' ),
+				'label' => esc_html__( 'Normal', 'vbeb' ),
 			)
 		);
 
 		$this->add_control(
 			'thumbs_border_color',
 			array(
-				'label'     => esc_html__( 'Border Color', 'elementor' ),
+				'label'     => esc_html__( 'Border Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .vbeb-gallery-thumbs' => '--vbeb-th-bc: {{VALUE}};',
@@ -801,7 +801,7 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->add_control(
 			'thumbs_border_width',
 			array(
-				'label'      => esc_html__( 'Border Width', 'elementor' ),
+				'label'      => esc_html__( 'Border Width', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', '%', 'em', 'rem', 'vw', 'custom' ),
 				'range'      => array(
@@ -817,7 +817,7 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->add_control(
 			'thumbs_radius',
 			array(
-				'label'      => esc_html__( 'Border Radius', 'elementor' ),
+				'label'      => esc_html__( 'Border Radius', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 				'range'      => array(
@@ -843,14 +843,14 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->start_controls_tab(
 			'thumbs_hover',
 			array(
-				'label' => esc_html__( 'Hover', 'elementor' ),
+				'label' => esc_html__( 'Hover', 'vbeb' ),
 			)
 		);
 
 		$this->add_control(
 			'thumbs_border_color_hover',
 			array(
-				'label'     => esc_html__( 'Border Color', 'elementor' ),
+				'label'     => esc_html__( 'Border Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .vbeb-gallery-thumbs .swiper-slide:hover img' => 'border-color: {{VALUE}};',
@@ -861,7 +861,7 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$this->add_control(
 			'thumbs_radius_hover',
 			array(
-				'label'      => esc_html__( 'Border Radius', 'elementor' ),
+				'label'      => esc_html__( 'Border Radius', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 				'range'      => array(
@@ -905,7 +905,7 @@ class VBEB_Gallery_Widget extends Widget_Base {
 	protected function render() {
 		if ( ! VBEB_Room_Context::has_context() ) {
 			if ( \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
-				echo '<div style="padding:20px;border:1px dashed #ccc;text-align:center;color:#888;">Galleria Camera: le foto reali compariranno sul front-end di una pagina camera.</div>';
+				echo '<div style="padding:20px;border:1px dashed #ccc;text-align:center;color:#888;">' . esc_html__( 'Room - Image Carousel: the real photos will appear on the front end of a room page.', 'vbeb' ) . '</div>';
 			}
 			return;
 		}
@@ -993,7 +993,7 @@ class VBEB_Gallery_Widget extends Widget_Base {
 
 		if ( empty( $items ) ) {
 			if ( \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
-				echo '<div style="padding:20px;border:1px dashed #ccc;text-align:center;color:#888;">Questa camera non ha foto caricate.</div>';
+				echo '<div style="padding:20px;border:1px dashed #ccc;text-align:center;color:#888;">' . esc_html__( 'This room has no photos.', 'vbeb' ) . '</div>';
 			}
 			return;
 		}
@@ -1039,9 +1039,9 @@ class VBEB_Gallery_Widget extends Widget_Base {
 			$kit       = \Elementor\Plugin::$instance->kits_manager->get_active_kit();
 			$lb_sito   = $kit && 'yes' === $kit->get_settings( 'global_image_lightbox' );
 			if ( 'no' === $scelta_lb ) {
-				$attr_lightbox = $lb_sito ? ' data-elementor-open-lightbox="no"' : '';
+				$attr_lightbox = $lb_sito ? 'no' : '';
 			} elseif ( 'yes' === $scelta_lb || $lb_sito ) {
-				$attr_lightbox = ' data-elementor-open-lightbox="yes"';
+				$attr_lightbox = 'yes';
 			}
 		}
 
@@ -1081,7 +1081,9 @@ class VBEB_Gallery_Widget extends Widget_Base {
 				// e le copie create da Swiper per il ciclo infinito
 				// (".swiper-slide-duplicate") Elementor le salta da solo.
 				// VBEB 7.616.0: "Lightbox" come Elementor (add_lightbox_data_attributes()).
-				echo '<a href="' . esc_url( $item['big'] ) . '"' . $attr_lightbox . ( '' !== $attr_lightbox && false === strpos( $attr_lightbox, '"no"' ) ? ' data-elementor-lightbox-slideshow="' . esc_attr( $gallery_id ) . '" data-elementor-lightbox-index="' . (int) ( $item_index - 1 ) . '"' : '' ) . '>';
+				// VBEB free: $attr_lightbox e' il valore ("yes", "no" o vuoto),
+				// stampato con esc_attr().
+				echo '<a href="' . esc_url( $item['big'] ) . '"' . ( '' !== $attr_lightbox ? ' data-elementor-open-lightbox="' . esc_attr( $attr_lightbox ) . '"' : '' ) . ( 'yes' === $attr_lightbox ? ' data-elementor-lightbox-slideshow="' . esc_attr( $gallery_id ) . '" data-elementor-lightbox-index="' . (int) ( $item_index - 1 ) . '"' : '' ) . '>';
 				echo $lazy ? '<img class="swiper-lazy" data-src="' . esc_url( $item['src'] ) . '" alt="' . esc_attr( $item['alt'] ) . '" /><div class="swiper-lazy-preloader"></div>' : '<img src="' . esc_url( $item['src'] ) . '" alt="' . esc_attr( $item['alt'] ) . '" />';
 				echo '</a>';
 			}
@@ -1099,11 +1101,11 @@ class VBEB_Gallery_Widget extends Widget_Base {
 			foreach ( array( 'next', 'prev' ) as $verso ) {
 				$icona = isset( $settings[ 'navigation_' . ( 'prev' === $verso ? 'previous' : 'next' ) . '_icon' ] ) ? $settings[ 'navigation_' . ( 'prev' === $verso ? 'previous' : 'next' ) . '_icon' ] : array();
 				if ( ! empty( $icona['value'] ) ) {
-					echo '<div class="swiper-button-' . $verso . ' vbeb-has-icon">';
+					echo '<div class="swiper-button-' . esc_attr( $verso ) . ' vbeb-has-icon">';
 					\Elementor\Icons_Manager::render_icon( $icona, array( 'aria-hidden' => 'true' ) );
 					echo '</div>';
 				} else {
-					echo '<div class="swiper-button-' . $verso . '"></div>';
+					echo '<div class="swiper-button-' . esc_attr( $verso ) . '"></div>';
 				}
 			}
 		}
@@ -1139,7 +1141,6 @@ class VBEB_Gallery_Widget extends Widget_Base {
 		$loop_js         = ( 'yes' === $settings['loop'] ) ? 'true' : 'false';
 		// VBEB 7.610.0: niente piu' "Effetto": sempre "slide".
 		$effect_js       = 'slide';
-		$fade_opt        = '';
 		$slides_per_view = isset( $settings['slides_per_view'] ) ? (int) $settings['slides_per_view'] : 1;
 		$slides_to_scroll = isset( $settings['slides_to_scroll'] ) ? (int) $settings['slides_to_scroll'] : 1;
 		// VBEB 7.632.0: con "Spaziatura" su "Predefinito" 10px.
@@ -1271,10 +1272,10 @@ class VBEB_Gallery_Widget extends Widget_Base {
 					slidesPerView: <?php echo (int) $slides_per_view; ?>,
 					slidesPerGroup: <?php echo (int) $slides_to_scroll; ?>,
 					spaceBetween: <?php echo (int) $space_between; ?>,
-					loop: <?php echo $loop_js; ?>,
+					loop: <?php echo esc_js( $loop_js ); ?>,
 					speed: <?php echo (int) $transition_speed; ?>,
-					effect: '<?php echo esc_js( $effect_js ); ?>'<?php echo $fade_opt; ?>,
-					autoplay: <?php echo $autoplay_js; ?>,
+					effect: '<?php echo esc_js( $effect_js ); ?>',
+					autoplay: <?php echo esc_js( $autoplay_js ); ?>,
 					<?php if ( isset( $settings['lazyload'] ) && 'yes' === $settings['lazyload'] ) : ?>
 					lazy: { loadPrevNext: true, loadPrevNextAmount: 1 },
 					preloadImages: false,

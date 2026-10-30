@@ -172,9 +172,19 @@ function vbeb_render_template_page() {
 					<td>
 						<select name="vbeb_template_listing" id="vbeb_template_listing">
 							<option value="0"><?php esc_html_e( '-- Use the original VikBooking template --', 'vbeb' ); ?></option>
-							<?php foreach ( $templates as $tpl ) : ?>
+							<?php
+							foreach ( $templates as $tpl ) :
+								// VBEB free, segnalato dall'utente: il valore resta il
+								// template nella lingua predefinita (la scelta vale per
+								// tutte le lingue); nome e ID mostrati sono quelli della
+								// copia nella lingua scelta nella barra in alto, se c'e'.
+								$mostrato = function_exists( 'vbeb_template_lingua' ) ? get_post( vbeb_template_lingua( $tpl->ID ) ) : null;
+								if ( ! $mostrato ) {
+									$mostrato = $tpl;
+								}
+								?>
 								<option value="<?php echo esc_attr( $tpl->ID ); ?>" <?php selected( $current_listing, $tpl->ID ); ?>>
-									<?php echo esc_html( $tpl->post_title ); ?> (ID <?php echo (int) $tpl->ID; ?>)
+									<?php echo esc_html( $mostrato->post_title ); ?> (ID <?php echo (int) $mostrato->ID; ?>)
 								</option>
 							<?php endforeach; ?>
 						</select>

@@ -62,16 +62,16 @@ class VBEB_Amenities_Widget extends Widget_Base {
 		$this->add_control(
 			'layout',
 			array(
-				'label'   => esc_html__( 'Layout', 'elementor' ),
+				'label'   => esc_html__( 'Layout', 'vbeb' ),
 				'type'    => Controls_Manager::CHOOSE,
 				'default' => 'traditional',
 				'options' => array(
 					'traditional' => array(
-						'title' => esc_html__( 'Default', 'elementor' ),
+						'title' => esc_html__( 'Default', 'vbeb' ),
 						'icon'  => 'eicon-editor-list-ul',
 					),
 					'inline'      => array(
-						'title' => esc_html__( 'Inline', 'elementor' ),
+						'title' => esc_html__( 'Inline', 'vbeb' ),
 						'icon'  => 'eicon-ellipsis-h',
 					),
 				),
@@ -86,8 +86,8 @@ class VBEB_Amenities_Widget extends Widget_Base {
 			array(
 				'label'        => esc_html__( 'Show Amenity Name', 'vbeb' ),
 				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Yes', 'elementor' ),
-				'label_off'    => esc_html__( 'No', 'elementor' ),
+				'label_on'     => esc_html__( 'Yes', 'vbeb' ),
+				'label_off'    => esc_html__( 'No', 'vbeb' ),
 				'return_value' => 'yes',
 				'default'      => 'yes',
 			)
@@ -112,7 +112,7 @@ class VBEB_Amenities_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_divider',
 			array(
-				'label' => esc_html__( 'List', 'elementor' ),
+				'label' => esc_html__( 'List', 'vbeb' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -121,7 +121,7 @@ class VBEB_Amenities_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'columns',
 			array(
-				'label'          => esc_html__( 'Columns', 'elementor' ),
+				'label'          => esc_html__( 'Columns', 'vbeb' ),
 				'type'           => Controls_Manager::NUMBER,
 				'default'        => 1,
 				'tablet_default' => 1,
@@ -138,7 +138,7 @@ class VBEB_Amenities_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'space_between',
 			array(
-				'label'      => esc_html__( 'Space Between', 'elementor' ),
+				'label'      => esc_html__( 'Space Between', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em', 'rem', 'custom' ),
 				'range'      => array(
@@ -155,12 +155,12 @@ class VBEB_Amenities_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'list_align',
 			array(
-				'label'                => esc_html__( 'Alignment', 'elementor' ),
+				'label'                => esc_html__( 'Alignment', 'vbeb' ),
 				'type'                 => Controls_Manager::CHOOSE,
 				'options'              => array(
-					'start'  => array( 'title' => esc_html__( 'Start', 'elementor' ), 'icon' => 'eicon-h-align-left' ),
-					'center' => array( 'title' => esc_html__( 'Center', 'elementor' ), 'icon' => 'eicon-h-align-center' ),
-					'end'    => array( 'title' => esc_html__( 'End', 'elementor' ), 'icon' => 'eicon-h-align-right' ),
+					'start'  => array( 'title' => esc_html__( 'Start', 'vbeb' ), 'icon' => 'eicon-h-align-left' ),
+					'center' => array( 'title' => esc_html__( 'Center', 'vbeb' ), 'icon' => 'eicon-h-align-center' ),
+					'end'    => array( 'title' => esc_html__( 'End', 'vbeb' ), 'icon' => 'eicon-h-align-right' ),
 				),
 				// Allinea il contenuto di ogni servizio (in verticale) o i
 				// servizi nella riga (in linea), e il divisore orizzontale.
@@ -178,10 +178,10 @@ class VBEB_Amenities_Widget extends Widget_Base {
 		$this->add_control(
 			'divider',
 			array(
-				'label'        => esc_html__( 'Divider', 'elementor' ),
+				'label'        => esc_html__( 'Divider', 'vbeb' ),
 				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'On', 'elementor' ),
-				'label_off'    => esc_html__( 'Off', 'elementor' ),
+				'label_on'     => esc_html__( 'On', 'vbeb' ),
+				'label_off'    => esc_html__( 'Off', 'vbeb' ),
 				'return_value' => 'yes',
 				'default'      => '',
 				'separator'    => 'before',
@@ -192,14 +192,14 @@ class VBEB_Amenities_Widget extends Widget_Base {
 		$this->add_control(
 			'divider_style',
 			array(
-				'label'     => esc_html__( 'Style', 'elementor' ),
+				'label'     => esc_html__( 'Style', 'vbeb' ),
 				'type'      => Controls_Manager::SELECT,
 				'default'   => 'solid',
 				'options'   => array(
-					'solid'  => esc_html__( 'Solid', 'elementor' ),
-					'double' => esc_html__( 'Double', 'elementor' ),
-					'dotted' => esc_html__( 'Dotted', 'elementor' ),
-					'dashed' => esc_html__( 'Dashed', 'elementor' ),
+					'solid'  => esc_html__( 'Solid', 'vbeb' ),
+					'double' => esc_html__( 'Double', 'vbeb' ),
+					'dotted' => esc_html__( 'Dotted', 'vbeb' ),
+					'dashed' => esc_html__( 'Dashed', 'vbeb' ),
 				),
 				'condition' => array( 'divider' => 'yes' ),
 				'selectors' => array( $elenco => '--vbeb-am-ds: {{VALUE}};' ),
@@ -209,7 +209,7 @@ class VBEB_Amenities_Widget extends Widget_Base {
 		$this->add_control(
 			'divider_weight',
 			array(
-				'label'      => esc_html__( 'Weight', 'elementor' ),
+				'label'      => esc_html__( 'Weight', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em', 'rem', 'custom' ),
 				'range'      => array( 'px' => array( 'min' => 1, 'max' => 20 ) ),
@@ -222,7 +222,7 @@ class VBEB_Amenities_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'divider_width',
 			array(
-				'label'      => esc_html__( 'Width', 'elementor' ),
+				'label'      => esc_html__( 'Width', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( '%', 'px', 'custom' ),
 				'range'      => array( '%' => array( 'min' => 0, 'max' => 100 ) ),
@@ -238,7 +238,7 @@ class VBEB_Amenities_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'divider_height',
 			array(
-				'label'      => esc_html__( 'Height', 'elementor' ),
+				'label'      => esc_html__( 'Height', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( '%', 'px', 'custom' ),
 				'range'      => array( '%' => array( 'min' => 0, 'max' => 100 ) ),
@@ -254,7 +254,7 @@ class VBEB_Amenities_Widget extends Widget_Base {
 		$this->add_control(
 			'divider_color',
 			array(
-				'label'     => esc_html__( 'Color', 'elementor' ),
+				'label'     => esc_html__( 'Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#ddd',
 				'condition' => array( 'divider' => 'yes' ),
@@ -268,7 +268,7 @@ class VBEB_Amenities_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_icon',
 			array(
-				'label' => esc_html__( 'Icon', 'elementor' ),
+				'label' => esc_html__( 'Icon', 'vbeb' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -283,7 +283,7 @@ class VBEB_Amenities_Widget extends Widget_Base {
 		$this->add_control(
 			'icon_color',
 			array(
-				'label'     => esc_html__( 'Color', 'elementor' ),
+				'label'     => esc_html__( 'Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .vbeb-amenity-icon' => 'color: {{VALUE}}; fill: {{VALUE}};',
@@ -294,7 +294,7 @@ class VBEB_Amenities_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'icon_size',
 			array(
-				'label'      => esc_html__( 'Size', 'elementor' ),
+				'label'      => esc_html__( 'Size', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'separator'  => 'before',
 				'size_units' => array( 'px', '%', 'em', 'rem', 'vw', 'custom' ),
@@ -316,7 +316,7 @@ class VBEB_Amenities_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'icon_spacing',
 			array(
-				'label'      => esc_html__( 'Gap', 'elementor' ),
+				'label'      => esc_html__( 'Gap', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em', 'rem', 'custom' ),
 				'range'      => array(
@@ -337,13 +337,13 @@ class VBEB_Amenities_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'icon_vertical_align',
 			array(
-				'label'     => esc_html__( 'Vertical Alignment', 'elementor' ),
+				'label'     => esc_html__( 'Vertical Alignment', 'vbeb' ),
 				'type'      => Controls_Manager::CHOOSE,
 				'separator' => 'before',
 				'options'   => array(
-					'flex-start' => array( 'title' => esc_html__( 'Start', 'elementor' ), 'icon' => 'eicon-v-align-top' ),
-					'center'     => array( 'title' => esc_html__( 'Center', 'elementor' ), 'icon' => 'eicon-v-align-middle' ),
-					'flex-end'   => array( 'title' => esc_html__( 'End', 'elementor' ), 'icon' => 'eicon-v-align-bottom' ),
+					'flex-start' => array( 'title' => esc_html__( 'Start', 'vbeb' ), 'icon' => 'eicon-v-align-top' ),
+					'center'     => array( 'title' => esc_html__( 'Center', 'vbeb' ), 'icon' => 'eicon-v-align-middle' ),
+					'flex-end'   => array( 'title' => esc_html__( 'End', 'vbeb' ), 'icon' => 'eicon-v-align-bottom' ),
 				),
 				'default'   => 'center',
 				'selectors' => array(
@@ -355,7 +355,7 @@ class VBEB_Amenities_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'icon_vertical_offset',
 			array(
-				'label'      => esc_html__( 'Adjust Vertical Position', 'elementor' ),
+				'label'      => esc_html__( 'Adjust Vertical Position', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em', 'rem', 'custom' ),
 				'range'      => array(
@@ -375,7 +375,7 @@ class VBEB_Amenities_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_text',
 			array(
-				'label' => esc_html__( 'Text', 'elementor' ),
+				'label' => esc_html__( 'Text', 'vbeb' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 				// VBEB 7.393.0: solo con il nome visibile.
 				'condition' => array( 'show_name' => 'yes' ),
@@ -407,7 +407,7 @@ class VBEB_Amenities_Widget extends Widget_Base {
 		$this->add_control(
 			'text_color',
 			array(
-				'label'     => esc_html__( 'Color', 'elementor' ),
+				'label'     => esc_html__( 'Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .vbeb-amenity-name' => 'color: {{VALUE}};',
@@ -421,7 +421,7 @@ class VBEB_Amenities_Widget extends Widget_Base {
 	protected function render() {
 		if ( ! VBEB_Room_Context::has_context() ) {
 			if ( \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
-				echo '<div style="padding:20px;border:1px dashed #ccc;text-align:center;color:#888;">Camera - Servizi: l\'elenco reale comparirà sul front-end di una pagina camera.</div>';
+				echo '<div style="padding:20px;border:1px dashed #ccc;text-align:center;color:#888;">' . esc_html__( 'Room - Amenities: the real list will appear on the front end of a room page.', 'vbeb' ) . '</div>';
 			}
 			return;
 		}
@@ -441,7 +441,7 @@ class VBEB_Amenities_Widget extends Widget_Base {
 
 		if ( empty( $amenities ) ) {
 			if ( \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
-				echo '<div style="padding:20px;border:1px dashed #ccc;text-align:center;color:#888;">Questa camera non ha servizi/caratteristiche assegnati.</div>';
+				echo '<div style="padding:20px;border:1px dashed #ccc;text-align:center;color:#888;">' . esc_html__( 'This room has no amenities assigned.', 'vbeb' ) . '</div>';
 			}
 			return;
 		}

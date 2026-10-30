@@ -943,7 +943,7 @@ class VBEB_Calendar_Widget extends Widget_Base {
 
 		if ( empty( $content ) ) {
 			if ( $in_editor ) {
-				echo '<div style="padding:20px;border:1px dashed #ccc;text-align:center;color:#888;">Calendario Disponibilità: il calendario reale comparirà sul front-end di una pagina camera.</div>';
+				echo '<div style="padding:20px;border:1px dashed #ccc;text-align:center;color:#888;">' . esc_html__( 'Room - Calendar: the real calendar will appear on the front end of a room page.', 'vbeb' ) . '</div>';
 			}
 			return;
 		}

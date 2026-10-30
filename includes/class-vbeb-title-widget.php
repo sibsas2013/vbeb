@@ -48,7 +48,7 @@ class VBEB_Title_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_title',
 			array(
-				'label' => esc_html__( 'Heading', 'elementor' ), // VBEB 7.580.0: "Heading" come il widget Titolo di Elementor (in spagnolo "Encabezado").
+				'label' => esc_html__( 'Heading', 'vbeb' ), // VBEB 7.580.0: "Heading" come il widget Titolo di Elementor (in spagnolo "Encabezado").
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			)
 		);
@@ -56,7 +56,7 @@ class VBEB_Title_Widget extends Widget_Base {
 		$this->add_control(
 			'html_tag',
 			array(
-				'label'   => esc_html__( 'HTML Tag', 'elementor' ),
+				'label'   => esc_html__( 'HTML Tag', 'vbeb' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'h2',
 				'options' => array(
@@ -78,7 +78,7 @@ class VBEB_Title_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_title',
 			array(
-				'label' => esc_html__( 'Heading', 'elementor' ), // VBEB 7.363.0: era "Stile".
+				'label' => esc_html__( 'Heading', 'vbeb' ), // VBEB 7.363.0: era "Stile".
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -101,13 +101,13 @@ class VBEB_Title_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'title_align',
 			array(
-				'label'   => esc_html__( 'Alignment', 'elementor' ),
+				'label'   => esc_html__( 'Alignment', 'vbeb' ),
 				'type'    => Controls_Manager::CHOOSE,
 				'options' => array(
-					'left'   => array( 'title' => esc_html__( 'Left', 'elementor' ), 'icon' => 'eicon-text-align-left' ),
-					'center' => array( 'title' => esc_html__( 'Center', 'elementor' ), 'icon' => 'eicon-text-align-center' ),
-					'right'  => array( 'title' => esc_html__( 'Right', 'elementor' ), 'icon' => 'eicon-text-align-right' ),
-					'justify'=> array( 'title' => esc_html__( 'Justified', 'elementor' ), 'icon' => 'eicon-text-align-justify' ),
+					'left'   => array( 'title' => esc_html__( 'Left', 'vbeb' ), 'icon' => 'eicon-text-align-left' ),
+					'center' => array( 'title' => esc_html__( 'Center', 'vbeb' ), 'icon' => 'eicon-text-align-center' ),
+					'right'  => array( 'title' => esc_html__( 'Right', 'vbeb' ), 'icon' => 'eicon-text-align-right' ),
+					'justify'=> array( 'title' => esc_html__( 'Justified', 'vbeb' ), 'icon' => 'eicon-text-align-justify' ),
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .vbeb-room-title' => 'text-align: {{VALUE}};',
@@ -146,24 +146,24 @@ class VBEB_Title_Widget extends Widget_Base {
 		$this->add_control(
 			'title_blend_mode',
 			array(
-				'label'     => esc_html__( 'Blend Mode', 'elementor' ),
+				'label'     => esc_html__( 'Blend Mode', 'vbeb' ),
 				'type'      => Controls_Manager::SELECT,
 				'default'   => '',
 				'options'   => array(
-					''            => esc_html__( 'Normal', 'elementor' ),
-					'multiply'    => esc_html__( 'Multiply', 'elementor' ),
-					'screen'      => esc_html__( 'Screen', 'elementor' ),
-					'overlay'     => esc_html__( 'Overlay', 'elementor' ),
-					'darken'      => esc_html__( 'Darken', 'elementor' ),
-					'lighten'     => esc_html__( 'Lighten', 'elementor' ),
-					'color-dodge' => esc_html__( 'Color Dodge', 'elementor' ),
-					'saturation'  => esc_html__( 'Saturation', 'elementor' ),
-					'color'       => esc_html__( 'Color', 'elementor' ),
-					'difference'  => esc_html__( 'Difference', 'elementor' ),
-					'exclusion'   => esc_html__( 'Exclusion', 'elementor' ),
-					'hue'         => esc_html__( 'Hue', 'elementor' ),
+					''            => esc_html__( 'Normal', 'vbeb' ),
+					'multiply'    => esc_html__( 'Multiply', 'vbeb' ),
+					'screen'      => esc_html__( 'Screen', 'vbeb' ),
+					'overlay'     => esc_html__( 'Overlay', 'vbeb' ),
+					'darken'      => esc_html__( 'Darken', 'vbeb' ),
+					'lighten'     => esc_html__( 'Lighten', 'vbeb' ),
+					'color-dodge' => esc_html__( 'Color Dodge', 'vbeb' ),
+					'saturation'  => esc_html__( 'Saturation', 'vbeb' ),
+					'color'       => esc_html__( 'Color', 'vbeb' ),
+					'difference'  => esc_html__( 'Difference', 'vbeb' ),
+					'exclusion'   => esc_html__( 'Exclusion', 'vbeb' ),
+					'hue'         => esc_html__( 'Hue', 'vbeb' ),
 					// VBEB 7.499.0: in fondo, come nel widget "Titolo" di Elementor.
-					'luminosity'  => esc_html__( 'Luminosity', 'elementor' ),
+					'luminosity'  => esc_html__( 'Luminosity', 'vbeb' ),
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .vbeb-room-title' => 'mix-blend-mode: {{VALUE}};',
@@ -177,7 +177,7 @@ class VBEB_Title_Widget extends Widget_Base {
 		$this->add_control(
 			'title_color',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .vbeb-room-title' => 'color: {{VALUE}};',
@@ -201,7 +201,7 @@ class VBEB_Title_Widget extends Widget_Base {
 		if ( VBEB_Room_Context::has_context() ) {
 			$name = VBEB_Room_Context::get( 'name', '' );
 		} else {
-			$name = \Elementor\Plugin::$instance->editor->is_edit_mode() ? '[Nome Camera]' : '';
+			$name = \Elementor\Plugin::$instance->editor->is_edit_mode() ? __( '[Room Name]', 'vbeb' ) : '';
 		}
 
 		if ( '' === $name ) {
@@ -220,6 +220,6 @@ class VBEB_Title_Widget extends Widget_Base {
 			echo '<style>.vbeb-room-title{margin:0;}</style>';
 		}
 
-		echo '<' . $tag . ' class="vbeb-room-title">' . esc_html( $name ) . '</' . $tag . '>';
+		echo '<' . tag_escape( $tag ) . ' class="vbeb-room-title">' . esc_html( $name ) . '</' . tag_escape( $tag ) . '>';
 	}
 }

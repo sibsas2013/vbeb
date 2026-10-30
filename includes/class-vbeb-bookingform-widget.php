@@ -55,7 +55,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_content_title',
 			array(
-				'label' => esc_html__( 'Heading', 'elementor' ),
+				'label' => esc_html__( 'Heading', 'vbeb' ),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			)
 		);
@@ -68,8 +68,8 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 			array(
 				'label'        => esc_html__( 'Show Title', 'vbeb' ),
 				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Yes', 'elementor' ),
-				'label_off'    => esc_html__( 'No', 'elementor' ),
+				'label_on'     => esc_html__( 'Yes', 'vbeb' ),
+				'label_off'    => esc_html__( 'No', 'vbeb' ),
 				'return_value' => 'yes',
 				// VBEB 7.605.0, su richiesta dell'utente: con "Prenotazione
 				// abilitata" spenta in VikBooking il titolo ("Seleziona una
@@ -82,7 +82,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_control(
 			'title_text',
 			array(
-				'label'       => esc_html__( 'Title', 'elementor' ),
+				'label'       => esc_html__( 'Title', 'vbeb' ),
 				'type'        => Controls_Manager::TEXTAREA,
 				'label_block' => true,
 				'placeholder' => esc_html__( 'Leave empty to use the original VikBooking text', 'vbeb' ),
@@ -94,7 +94,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_control(
 			'title_tag',
 			array(
-				'label'   => esc_html__( 'HTML Tag', 'elementor' ),
+				'label'   => esc_html__( 'HTML Tag', 'vbeb' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'h4',
 				'condition' => array( 'show_title' => 'yes' ),
@@ -130,12 +130,12 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'capacity_block_layout',
 			array(
-				'label'   => esc_html__( 'Layout', 'elementor' ),
+				'label'   => esc_html__( 'Layout', 'vbeb' ),
 				'type'    => Controls_Manager::CHOOSE,
 				'default' => 'row',
 				'options' => array(
-					'row'    => array( 'title' => esc_html__( 'Horizontal', 'elementor' ), 'icon' => 'eicon-ellipsis-h' ),
-					'column' => array( 'title' => esc_html__( 'Vertical', 'elementor' ), 'icon' => 'eicon-editor-list-ul' ),
+					'row'    => array( 'title' => esc_html__( 'Horizontal', 'vbeb' ), 'icon' => 'eicon-ellipsis-h' ),
+					'column' => array( 'title' => esc_html__( 'Vertical', 'vbeb' ), 'icon' => 'eicon-editor-list-ul' ),
 				),
 				// VBEB 7.430.0: oltre alla direzione, la posizione del
 				// divisore (sezione di stile "Ospiti", "Elenco").
@@ -157,14 +157,14 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_control(
 			'capacity_icon_view',
 			array(
-				'label'                => esc_html__( 'View', 'elementor' ),
+				'label'                => esc_html__( 'View', 'vbeb' ),
 				'type'                 => Controls_Manager::SELECT,
 				'separator'            => 'before',
 				'default'              => 'stacked',
 				'options'              => array(
-					'default' => esc_html__( 'Default', 'elementor' ),
-					'stacked' => esc_html__( 'Stacked', 'elementor' ),
-					'framed'  => esc_html__( 'Framed', 'elementor' ),
+					'default' => esc_html__( 'Default', 'vbeb' ),
+					'stacked' => esc_html__( 'Stacked', 'vbeb' ),
+					'framed'  => esc_html__( 'Framed', 'vbeb' ),
 				),
 				// VBEB 7.645.0: colori da "Colore principale" (--vbeb-cap-p) e
 				// "Colore secondario" (--vbeb-cap-s) di Stile > Ospiti, con lo
@@ -188,13 +188,13 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_control(
 			'capacity_icon_shape',
 			array(
-				'label'                => esc_html__( 'Shape', 'elementor' ),
+				'label'                => esc_html__( 'Shape', 'vbeb' ),
 				'type'                 => Controls_Manager::SELECT,
 				'default'              => 'circle',
 				'options'              => array(
-					'square'  => esc_html__( 'Square', 'elementor' ),
-					'rounded' => esc_html__( 'Rounded', 'elementor' ),
-					'circle'  => esc_html__( 'Circle', 'elementor' ),
+					'square'  => esc_html__( 'Square', 'vbeb' ),
+					'rounded' => esc_html__( 'Rounded', 'vbeb' ),
+					'circle'  => esc_html__( 'Circle', 'vbeb' ),
 				),
 				// Come Elementor: arrotondato = 10%.
 				'selectors_dictionary' => array(
@@ -228,7 +228,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_content_fields_width',
 			array(
-				'label' => esc_html__( 'Form Fields', 'elementor' ), // VBEB 7.455.0: era "Campo modulo".
+				'label' => esc_html__( 'Form Fields', 'vbeb' ), // VBEB 7.455.0: era "Campo modulo".
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			)
 		);
@@ -304,9 +304,9 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 				'default'              => 'md',
 				'separator'            => 'before',
 				'options'              => array(
-					'sm' => esc_html__( 'Small', 'elementor' ),
-					'md' => esc_html__( 'Medium', 'elementor' ),
-					'lg' => esc_html__( 'Large', 'elementor' ),
+					'sm' => esc_html__( 'Small', 'vbeb' ),
+					'md' => esc_html__( 'Medium', 'vbeb' ),
+					'lg' => esc_html__( 'Large', 'vbeb' ),
 				),
 				'selectors_dictionary' => array(
 					'sm' => '40px',
@@ -328,7 +328,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_title',
 			array(
-				'label'     => esc_html__( 'Heading', 'elementor' ),
+				'label'     => esc_html__( 'Heading', 'vbeb' ),
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => array( 'show_title' => 'yes' ),
 			)
@@ -344,14 +344,14 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'title_align',
 			array(
-				'label'     => esc_html__( 'Alignment', 'elementor' ),
+				'label'     => esc_html__( 'Alignment', 'vbeb' ),
 				'type'      => Controls_Manager::CHOOSE,
 				'separator' => 'after',
 				'options'   => array(
-					'left'    => array( 'title' => esc_html__( 'Left', 'elementor' ), 'icon' => 'eicon-text-align-left' ),
-					'center'  => array( 'title' => esc_html__( 'Center', 'elementor' ), 'icon' => 'eicon-text-align-center' ),
-					'right'   => array( 'title' => esc_html__( 'Right', 'elementor' ), 'icon' => 'eicon-text-align-right' ),
-					'justify' => array( 'title' => esc_html__( 'Justified', 'elementor' ), 'icon' => 'eicon-text-align-justify' ),
+					'left'    => array( 'title' => esc_html__( 'Left', 'vbeb' ), 'icon' => 'eicon-text-align-left' ),
+					'center'  => array( 'title' => esc_html__( 'Center', 'vbeb' ), 'icon' => 'eicon-text-align-center' ),
+					'right'   => array( 'title' => esc_html__( 'Right', 'vbeb' ), 'icon' => 'eicon-text-align-right' ),
+					'justify' => array( 'title' => esc_html__( 'Justified', 'vbeb' ), 'icon' => 'eicon-text-align-justify' ),
 				),
 				// display:block perche' l'allineamento valga anche con i tag
 				// in linea (span).
@@ -386,23 +386,23 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_control(
 			'title_blend_mode',
 			array(
-				'label'     => esc_html__( 'Blend Mode', 'elementor' ),
+				'label'     => esc_html__( 'Blend Mode', 'vbeb' ),
 				'type'      => Controls_Manager::SELECT,
 				'default'   => '',
 				'options'   => array(
-					''            => esc_html__( 'Normal', 'elementor' ),
-					'multiply'    => esc_html__( 'Multiply', 'elementor' ),
-					'screen'      => esc_html__( 'Screen', 'elementor' ),
-					'overlay'     => esc_html__( 'Overlay', 'elementor' ),
-					'darken'      => esc_html__( 'Darken', 'elementor' ),
-					'lighten'     => esc_html__( 'Lighten', 'elementor' ),
-					'color-dodge' => esc_html__( 'Color Dodge', 'elementor' ),
-					'saturation'  => esc_html__( 'Saturation', 'elementor' ),
-					'color'       => esc_html__( 'Color', 'elementor' ),
-					'difference'  => esc_html__( 'Difference', 'elementor' ),
-					'exclusion'   => esc_html__( 'Exclusion', 'elementor' ),
-					'hue'         => esc_html__( 'Hue', 'elementor' ),
-					'luminosity'  => esc_html__( 'Luminosity', 'elementor' ), // VBEB 7.512.0: in fondo, come in Elementor.
+					''            => esc_html__( 'Normal', 'vbeb' ),
+					'multiply'    => esc_html__( 'Multiply', 'vbeb' ),
+					'screen'      => esc_html__( 'Screen', 'vbeb' ),
+					'overlay'     => esc_html__( 'Overlay', 'vbeb' ),
+					'darken'      => esc_html__( 'Darken', 'vbeb' ),
+					'lighten'     => esc_html__( 'Lighten', 'vbeb' ),
+					'color-dodge' => esc_html__( 'Color Dodge', 'vbeb' ),
+					'saturation'  => esc_html__( 'Saturation', 'vbeb' ),
+					'color'       => esc_html__( 'Color', 'vbeb' ),
+					'difference'  => esc_html__( 'Difference', 'vbeb' ),
+					'exclusion'   => esc_html__( 'Exclusion', 'vbeb' ),
+					'hue'         => esc_html__( 'Hue', 'vbeb' ),
+					'luminosity'  => esc_html__( 'Luminosity', 'vbeb' ), // VBEB 7.512.0: in fondo, come in Elementor.
 				),
 				'selectors' => array( $titolo => 'mix-blend-mode: {{VALUE}};' ),
 			)
@@ -411,7 +411,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_control(
 			'title_color',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( $titolo => 'color: {{VALUE}};' ),
 			)
@@ -443,7 +443,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_control(
 			'heading_capacity_list',
 			array(
-				'label' => esc_html__( 'List', 'elementor' ),
+				'label' => esc_html__( 'List', 'vbeb' ),
 				'type'  => Controls_Manager::HEADING,
 			)
 		);
@@ -477,7 +477,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'capacity_block_gap',
 			array(
-				'label'      => esc_html__( 'Space Between', 'elementor' ),
+				'label'      => esc_html__( 'Space Between', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em', 'rem', 'custom' ),
 				'range'      => array(
@@ -494,12 +494,12 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'capacity_block_align',
 			array(
-				'label'   => esc_html__( 'Alignment', 'elementor' ),
+				'label'   => esc_html__( 'Alignment', 'vbeb' ),
 				'type'    => Controls_Manager::CHOOSE,
 				'options' => array(
-					'flex-start' => array( 'title' => esc_html__( 'Left', 'elementor' ), 'icon' => 'eicon-h-align-left' ),
-					'center'     => array( 'title' => esc_html__( 'Center', 'elementor' ), 'icon' => 'eicon-h-align-center' ),
-					'flex-end'   => array( 'title' => esc_html__( 'Right', 'elementor' ), 'icon' => 'eicon-h-align-right' ),
+					'flex-start' => array( 'title' => esc_html__( 'Left', 'vbeb' ), 'icon' => 'eicon-h-align-left' ),
+					'center'     => array( 'title' => esc_html__( 'Center', 'vbeb' ), 'icon' => 'eicon-h-align-center' ),
+					'flex-end'   => array( 'title' => esc_html__( 'Right', 'vbeb' ), 'icon' => 'eicon-h-align-right' ),
 				),
 				'selectors' => array(
 					// VBEB 7.430.0: anche align-items, per il layout in verticale.
@@ -515,10 +515,10 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_control(
 			'capacity_divider',
 			array(
-				'label'        => esc_html__( 'Divider', 'elementor' ),
+				'label'        => esc_html__( 'Divider', 'vbeb' ),
 				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'On', 'elementor' ),
-				'label_off'    => esc_html__( 'Off', 'elementor' ),
+				'label_on'     => esc_html__( 'On', 'vbeb' ),
+				'label_off'    => esc_html__( 'Off', 'vbeb' ),
 				'return_value' => 'yes',
 				'prefix_class' => 'vbeb-cap-divider-',
 			)
@@ -527,14 +527,14 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_control(
 			'capacity_divider_style',
 			array(
-				'label'     => esc_html__( 'Style', 'elementor' ),
+				'label'     => esc_html__( 'Style', 'vbeb' ),
 				'type'      => Controls_Manager::SELECT,
 				'default'   => 'solid',
 				'options'   => array(
-					'solid'  => esc_html__( 'Solid', 'elementor' ),
-					'double' => esc_html__( 'Double', 'elementor' ),
-					'dotted' => esc_html__( 'Dotted', 'elementor' ),
-					'dashed' => esc_html__( 'Dashed', 'elementor' ),
+					'solid'  => esc_html__( 'Solid', 'vbeb' ),
+					'double' => esc_html__( 'Double', 'vbeb' ),
+					'dotted' => esc_html__( 'Dotted', 'vbeb' ),
+					'dashed' => esc_html__( 'Dashed', 'vbeb' ),
 				),
 				'condition' => array( 'capacity_divider' => 'yes' ),
 				'selectors' => array( '{{WRAPPER}} .vbmaxminpeopleroom' => '--vbeb-cap-ds: {{VALUE}};' ),
@@ -544,7 +544,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_control(
 			'capacity_divider_weight',
 			array(
-				'label'      => esc_html__( 'Weight', 'elementor' ),
+				'label'      => esc_html__( 'Weight', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em', 'rem', 'custom' ),
 				'range'      => array( 'px' => array( 'min' => 1, 'max' => 20 ) ),
@@ -559,7 +559,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'capacity_divider_width',
 			array(
-				'label'      => esc_html__( 'Width', 'elementor' ),
+				'label'      => esc_html__( 'Width', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( '%', 'px', 'custom' ),
 				'range'      => array( '%' => array( 'min' => 0, 'max' => 100 ) ),
@@ -572,7 +572,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_control(
 			'capacity_divider_color',
 			array(
-				'label'     => esc_html__( 'Color', 'elementor' ),
+				'label'     => esc_html__( 'Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#ddd',
 				'condition' => array( 'capacity_divider' => 'yes' ),
@@ -583,7 +583,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_control(
 			'heading_capacity_icon',
 			array(
-				'label'     => esc_html__( 'Icon', 'elementor' ),
+				'label'     => esc_html__( 'Icon', 'vbeb' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			)
@@ -598,7 +598,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_control(
 			'capacity_icon_primary_color',
 			array(
-				'label'     => esc_html__( 'Primary Color', 'elementor' ),
+				'label'     => esc_html__( 'Primary Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}}' => '--vbeb-cap-p: {{VALUE}};',
@@ -609,7 +609,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_control(
 			'capacity_icon_secondary_color',
 			array(
-				'label'     => esc_html__( 'Secondary Color', 'elementor' ),
+				'label'     => esc_html__( 'Secondary Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'condition' => array( 'capacity_icon_view!' => 'default' ),
 				'selectors' => array(
@@ -621,7 +621,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'capacity_icon_size',
 			array(
-				'label'      => esc_html__( 'Size', 'elementor' ),
+				'label'      => esc_html__( 'Size', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px' ),
 				'range'      => array(
@@ -647,7 +647,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'capacity_icon_padding',
 			array(
-				'label'      => esc_html__( 'Padding', 'elementor' ),
+				'label'      => esc_html__( 'Padding', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', '%', 'em', 'rem', 'vw', 'custom' ),
 				'range'      => array(
@@ -667,7 +667,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'capacity_icon_spacing',
 			array(
-				'label'      => esc_html__( 'Spacing', 'elementor' ),
+				'label'      => esc_html__( 'Spacing', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em', 'rem', 'custom' ),
 				'range'      => array( 'px' => array( 'min' => 0, 'max' => 50 ) ),
@@ -684,7 +684,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'capacity_icon_border_width',
 			array(
-				'label'      => esc_html__( 'Border Width', 'elementor' ),
+				'label'      => esc_html__( 'Border Width', 'vbeb' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', 'rem', 'vw', 'custom' ),
 				'condition'  => array( 'capacity_icon_view' => 'framed' ),
@@ -697,7 +697,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'capacity_icon_border_radius',
 			array(
-				'label'      => esc_html__( 'Border Radius', 'elementor' ),
+				'label'      => esc_html__( 'Border Radius', 'vbeb' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 				'condition'  => array( 'capacity_icon_view!' => 'default' ),
@@ -736,13 +736,13 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'capacity_vertical_align',
 			array(
-				'label'     => esc_html__( 'Vertical Alignment', 'elementor' ),
+				'label'     => esc_html__( 'Vertical Alignment', 'vbeb' ),
 				'type'      => Controls_Manager::CHOOSE,
 				'separator' => 'before',
 				'options'   => array(
-					'flex-start' => array( 'title' => esc_html__( 'Start', 'elementor' ), 'icon' => 'eicon-v-align-top' ),
-					'center'     => array( 'title' => esc_html__( 'Center', 'elementor' ), 'icon' => 'eicon-v-align-middle' ),
-					'flex-end'   => array( 'title' => esc_html__( 'End', 'elementor' ), 'icon' => 'eicon-v-align-bottom' ),
+					'flex-start' => array( 'title' => esc_html__( 'Start', 'vbeb' ), 'icon' => 'eicon-v-align-top' ),
+					'center'     => array( 'title' => esc_html__( 'Center', 'vbeb' ), 'icon' => 'eicon-v-align-middle' ),
+					'flex-end'   => array( 'title' => esc_html__( 'End', 'vbeb' ), 'icon' => 'eicon-v-align-bottom' ),
 				),
 				'default'   => 'center',
 				'selectors' => array(
@@ -754,7 +754,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'capacity_icon_offset',
 			array(
-				'label'      => esc_html__( 'Adjust Vertical Position', 'elementor' ),
+				'label'      => esc_html__( 'Adjust Vertical Position', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em', 'rem', 'custom' ),
 				'range'      => array(
@@ -776,7 +776,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_control(
 			'heading_capacity_text',
 			array(
-				'label'     => esc_html__( 'Text', 'elementor' ),
+				'label'     => esc_html__( 'Text', 'vbeb' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			)
@@ -786,7 +786,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'capacity_typography',
-				'label'    => esc_html__( 'Typography', 'elementor' ),
+				'label'    => esc_html__( 'Typography', 'vbeb' ),
 				'selector' => '{{WRAPPER}} .vbmaxlabeldet, {{WRAPPER}} .vbmaxnumberdet',
 			)
 		);
@@ -802,7 +802,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_control(
 			'capacity_color',
 			array(
-				'label'     => esc_html__( 'Color', 'elementor' ),
+				'label'     => esc_html__( 'Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .vbmaxlabeldet, {{WRAPPER}} .vbmaxnumberdet' => 'color: {{VALUE}};',
@@ -816,7 +816,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_container',
 			array(
-				'label' => esc_html__( 'Form', 'elementor' ), // VBEB 7.415.0: era "Contenitore Modulo".
+				'label' => esc_html__( 'Form', 'vbeb' ), // VBEB 7.415.0: era "Contenitore Modulo".
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -836,7 +836,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'form_column_gap',
 			array(
-				'label'      => esc_html__( 'Columns Gap', 'elementor' ),
+				'label'      => esc_html__( 'Columns Gap', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em', 'rem', 'custom' ),
 				'range'      => array( 'px' => array( 'min' => 0, 'max' => 60 ) ),
@@ -852,7 +852,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'form_row_gap',
 			array(
-				'label'      => esc_html__( 'Rows Gap', 'elementor' ),
+				'label'      => esc_html__( 'Rows Gap', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em', 'rem', 'custom' ),
 				'range'      => array( 'px' => array( 'min' => 0, 'max' => 60 ) ),
@@ -886,7 +886,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_control(
 			'container_background_color',
 			array(
-				'label'     => esc_html__( 'Background Color', 'elementor' ),
+				'label'     => esc_html__( 'Background Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'separator' => 'before',
 				'selectors' => array(
@@ -906,7 +906,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'container_border_radius',
 			array(
-				'label'      => esc_html__( 'Border Radius', 'elementor' ),
+				'label'      => esc_html__( 'Border Radius', 'vbeb' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 				'selectors'  => array(
@@ -926,7 +926,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'container_padding',
 			array(
-				'label'      => esc_html__( 'Padding', 'elementor' ),
+				'label'      => esc_html__( 'Padding', 'vbeb' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', 'rem', '%', 'vw', 'custom' ),
 				'selectors'  => array(
@@ -955,7 +955,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_control(
 			'heading_labels',
 			array(
-				'label'     => esc_html__( 'Label', 'elementor' ),
+				'label'     => esc_html__( 'Label', 'vbeb' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			)
@@ -966,7 +966,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'label_spacing',
 			array(
-				'label'      => esc_html__( 'Spacing', 'elementor' ),
+				'label'      => esc_html__( 'Spacing', 'vbeb' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em', 'rem', 'custom' ),
 				'range'      => array( 'px' => array( 'min' => 0, 'max' => 60 ) ),
@@ -979,7 +979,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_control(
 			'label_color',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( $etichette => 'color: {{VALUE}};' ),
 			)
@@ -1009,7 +1009,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_control(
 			'guests_policy_color',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .vbo-guests-allowed-policy, {{WRAPPER}} .vbo-guests-allowed-policy *' => 'color: {{VALUE}};',
@@ -1047,7 +1047,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_fields',
 			array(
-				'label' => esc_html__( 'Field', 'elementor' ),
+				'label' => esc_html__( 'Field', 'vbeb' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -1057,7 +1057,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_control(
 			'field_text_color',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( $campi_testo => 'color: {{VALUE}};' ),
 			)
@@ -1074,7 +1074,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_control(
 			'field_bg_color',
 			array(
-				'label'     => esc_html__( 'Background Color', 'elementor' ),
+				'label'     => esc_html__( 'Background Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'separator' => 'before',
 				'selectors' => array(
@@ -1097,7 +1097,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_control(
 			'field_border_color',
 			array(
-				'label'     => esc_html__( 'Border Color', 'elementor' ),
+				'label'     => esc_html__( 'Border Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'separator' => 'before',
 				'selectors' => array( $campi_box => 'border-color: {{VALUE}};' ),
@@ -1107,7 +1107,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'field_border_width',
 			array(
-				'label'      => esc_html__( 'Border Width', 'elementor' ),
+				'label'      => esc_html__( 'Border Width', 'vbeb' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', 'rem', 'vw', 'custom' ),
 				'selectors'  => array( $campi_box => 'border-style: solid; border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};' ),
@@ -1117,7 +1117,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'field_border_radius',
 			array(
-				'label'      => esc_html__( 'Border Radius', 'elementor' ),
+				'label'      => esc_html__( 'Border Radius', 'vbeb' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 				'selectors'  => array( $campi_box => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};' ),
@@ -1195,12 +1195,12 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 
 		$this->start_controls_tabs( 'button_style_tabs' );
 
-		$this->start_controls_tab( 'button_style_tab_normal', array( 'label' => esc_html__( 'Normal', 'elementor' ) ) );
+		$this->start_controls_tab( 'button_style_tab_normal', array( 'label' => esc_html__( 'Normal', 'vbeb' ) ) );
 
 		$this->add_control(
 			'button_text_color',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( $pulsante => 'color: {{VALUE}};' ),
 			)
@@ -1211,10 +1211,10 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 			array(
 				'name'           => 'button_background',
 				'types'          => array( 'classic', 'gradient' ),
-				'exclude'        => array( 'image' ),
+				'exclude'        => array( 'image' ), // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- campi esclusi da un controllo di Elementor, non una query.
 				'selector'       => $pulsante,
 				'fields_options' => array(
-					'background' => array( 'label' => esc_html__( 'Background Type', 'elementor' ) ),
+					'background' => array( 'label' => esc_html__( 'Background Type', 'vbeb' ) ),
 				),
 			)
 		);
@@ -1229,12 +1229,12 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 
 		$this->end_controls_tab();
 
-		$this->start_controls_tab( 'button_style_tab_hover', array( 'label' => esc_html__( 'Hover', 'elementor' ) ) );
+		$this->start_controls_tab( 'button_style_tab_hover', array( 'label' => esc_html__( 'Hover', 'vbeb' ) ) );
 
 		$this->add_control(
 			'button_text_color_hover',
 			array(
-				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'label'     => esc_html__( 'Text Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( $pulsante_hover => 'color: {{VALUE}};' ),
 			)
@@ -1245,10 +1245,10 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 			array(
 				'name'           => 'button_background_hover',
 				'types'          => array( 'classic', 'gradient' ),
-				'exclude'        => array( 'image' ),
+				'exclude'        => array( 'image' ), // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- campi esclusi da un controllo di Elementor, non una query.
 				'selector'       => $pulsante_hover,
 				'fields_options' => array(
-					'background' => array( 'label' => esc_html__( 'Background Type', 'elementor' ) ),
+					'background' => array( 'label' => esc_html__( 'Background Type', 'vbeb' ) ),
 				),
 			)
 		);
@@ -1256,7 +1256,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_control(
 			'button_border_color_hover',
 			array(
-				'label'     => esc_html__( 'Border Color', 'elementor' ),
+				'label'     => esc_html__( 'Border Color', 'vbeb' ),
 				'type'      => Controls_Manager::COLOR,
 				'condition' => array( 'button_border_border!' => '' ),
 				'selectors' => array( $pulsante_hover => 'border-color: {{VALUE}};' ),
@@ -1279,7 +1279,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'button_border_radius',
 			array(
-				'label'      => esc_html__( 'Border Radius', 'elementor' ),
+				'label'      => esc_html__( 'Border Radius', 'vbeb' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 				'selectors'  => array( $pulsante => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};' ),
@@ -1289,7 +1289,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'button_padding',
 			array(
-				'label'      => esc_html__( 'Padding', 'elementor' ),
+				'label'      => esc_html__( 'Padding', 'vbeb' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', '%', 'rem', 'vw', 'custom' ),
 				'separator'  => 'before',
@@ -1334,7 +1334,7 @@ class VBEB_Bookingform_Widget extends Widget_Base {
 
 		if ( empty( $content ) ) {
 			if ( $in_editor ) {
-				echo '<div style="padding:20px;border:1px dashed #ccc;text-align:center;color:#888;">Form Prenotazione: il form reale comparirà sul front-end di una pagina camera.</div>';
+				echo '<div style="padding:20px;border:1px dashed #ccc;text-align:center;color:#888;">' . esc_html__( 'Room - Booking Form: the real form will appear on the front end of a room page.', 'vbeb' ) . '</div>';
 			}
 			return;
 		}
