@@ -1,0 +1,662 @@
+/**
+ * VBEB - Bridge for VikBooking and Elementor
+ * Regole fisse dei widget della camera.
+ *
+ * VBEB free (revisione di wordpress.org): queste regole prima erano stampate
+ * dai widget in blocchi <style>; ora sono in questo file, caricato con
+ * wp_enqueue_style(). I commenti spiegano da dove vengono.
+ */
+
+/* VBEB Camera - Nome: niente margine del tema sul titolo (come
+   ".elementor-heading-title"); le regole del pannello, piu' specifiche,
+   continuano a valere. */
+.vbeb-room-title {
+	margin: 0;
+}
+
+/* VBEB Camera - Descrizione e Descrizione breve: niente margine sopra il
+   primo elemento e sotto l'ultimo; la "Spaziatura paragrafo" del pannello
+   continua a valere fra i paragrafi. */
+.vbeb-description > :first-child,
+.vbeb-smalldescription > :first-child {
+	margin-top: 0 !important;
+	margin-block-start: 0 !important;
+}
+
+.vbeb-description > :last-child,
+.vbeb-smalldescription > :last-child {
+	margin-bottom: 0 !important;
+	margin-block-end: 0 !important;
+}
+
+/* Capolettera (solo con "Capolettera" acceso), con i valori di partenza del
+   widget Editor di testo di Elementor. */
+.vbeb-dropcap-yes .vbeb-description::first-letter,
+.vbeb-dropcap-yes .vbeb-smalldescription::first-letter {
+	float: left;
+	text-align: center;
+	font-size: 50px;
+	line-height: 1;
+	margin-inline-end: 10px;
+}
+
+.vbeb-dropcap-yes.vbeb-dropcap-view-stacked .vbeb-description::first-letter,
+.vbeb-dropcap-yes.vbeb-dropcap-view-stacked .vbeb-smalldescription::first-letter {
+	padding: 10px;
+	background-color: #69727d;
+	color: #fff;
+}
+
+.vbeb-dropcap-yes.vbeb-dropcap-view-framed .vbeb-description::first-letter,
+.vbeb-dropcap-yes.vbeb-dropcap-view-framed .vbeb-smalldescription::first-letter {
+	padding: 10px;
+	color: #69727d;
+	border: 3px solid;
+	background-color: transparent;
+}
+
+/* VBEB Camera - Servizi. */
+.vbeb-amenities-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.vbeb-amenity-item {
+	display: flex;
+	position: relative;
+}
+
+/* Spazio dell'icona largo quanto la Dimensione, per l'allineamento
+   orizzontale; spostamento verticale con "top". */
+.vbeb-amenity-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	width: var(--vbeb-am-is, auto);
+	position: relative;
+	line-height: 1;
+}
+
+.vbeb-amenities-traditional {
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+}
+
+.vbeb-amenities-inline {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+/* Divisore (sezione di stile "Elenco"), a meta' dello spazio intermedio. */
+.vbeb-am-divider-yes .vbeb-amenities-traditional .vbeb-amenity-item:not(:last-child)::after {
+	content: "";
+	position: absolute;
+	bottom: calc(var(--vbeb-am-gap, 10px) / -2);
+	left: var(--vbeb-am-dl, 0);
+	right: var(--vbeb-am-dr, auto);
+	margin: 0 auto;
+	width: var(--vbeb-am-dw, 100%);
+	border-top: var(--vbeb-am-dwt, 1px) var(--vbeb-am-ds, solid) var(--vbeb-am-dc, #ddd);
+	transform: translateY(50%);
+}
+
+.vbeb-am-divider-yes .vbeb-amenities-inline .vbeb-amenity-item:not(:last-child)::after {
+	content: "";
+	position: absolute;
+	right: calc(var(--vbeb-am-gap, 10px) / -2);
+	top: 50%;
+	height: var(--vbeb-am-dh, 100%);
+	border-left: var(--vbeb-am-dwt, 1px) var(--vbeb-am-ds, solid) var(--vbeb-am-dc, #ddd);
+	transform: translate(50%, -50%);
+}
+
+/* VBEB Camera - Mappa: nel widget niente riga, margini e spazio che
+   VikBooking da' al blocco della mappa dentro la sua pagina; niente raggio di
+   VikBooking sul riquadro (":where()" non pesa: "Raggio del bordo" del
+   pannello lo sostituisce). Titolo senza margine sopra, 15px sotto come
+   VikBooking. Nell'editor il riquadro grigio al posto della mappa. */
+.vbeb-roommap-wrap .vbo-room-details-geo-wrapper {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+:where(.vbeb-roommap-wrap) .vbo-geo-wrapper {
+	border-radius: 0;
+}
+
+.vbeb-roommap-title {
+	margin-top: 0;
+	margin-block-start: 0;
+	margin-bottom: 15px;
+}
+
+.vbeb-roommap-wrap .vbeb-geo-map-editor {
+	background: #e5e3df;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.vbeb-roommap-placeholder {
+	color: #6d7882;
+	font-size: 13px;
+}
+
+/* VBEB Camera - Pulsante informazioni: niente margine sopra il pulsante,
+   "Posizione" e larghezza dal pannello Stile (variabili), icona che segue
+   Tipografia e Colore del testo, niente contorno di focus. */
+.vbeb-reqinfo-wrap .vbo-reqinfo-cont {
+	margin-top: 0;
+	text-align: var(--vbeb-ri-ta);
+}
+
+.vbeb-reqinfo-wrap .vbo-reqinfo-opener.vbeb-reqinfo-btn {
+	width: var(--vbeb-ri-w);
+	justify-content: center;
+	box-sizing: border-box;
+}
+
+/* Misura del pulsante (padding e dimensione del testo), sostituibile con
+   "Tipografia" e "Rientro" del pannello Stile, piu' specifici. */
+.vbeb-reqinfo-wrap .vbeb-reqinfo-btn {
+	padding: 12px 24px;
+	font-size: 15px;
+	display: inline-flex;
+	align-items: center;
+}
+
+.vbeb-reqinfo-wrap .vbeb-reqinfo-btn-icon-wrap {
+	display: inline-flex;
+	align-items: center;
+	font-size: inherit;
+	color: inherit;
+	line-height: 1;
+}
+
+.vbeb-reqinfo-wrap .vbeb-reqinfo-btn-icon-wrap i {
+	font-size: inherit;
+	color: inherit;
+}
+
+.vbeb-reqinfo-wrap .vbeb-reqinfo-btn-icon-wrap svg {
+	width: 1em;
+	height: 1em;
+	fill: currentColor;
+}
+
+.vbeb-reqinfo-wrap .vbo-reqinfo-opener:focus,
+.vbeb-reqinfo-wrap .vbo-reqinfo-opener:focus-visible {
+	outline: none !important;
+}
+
+.vbeb-reqinfo-wrap .vbo-reqinfo-opener:focus-visible {
+	box-shadow: none;
+}
+
+/* Altezza del popup: VikBooking limita ".vbdialog-inner" a max-height:50%
+   con min-height:50% e overflow-y:scroll; qui l'altezza segue il contenuto
+   fino al 90% dello schermo e la barra compare solo se serve. */
+.vbeb-reqinfo-wrap .vbdialog-inner.vbdialog-reqinfo {
+	box-sizing: border-box;
+	height: auto;
+	min-height: 0;
+	max-height: 90vh;
+	max-height: 90dvh;
+	overflow-y: auto;
+	overscroll-behavior: contain;
+}
+
+/* VBEB Camera - Calendario. */
+
+/* Niente margine sopra il titolo (il sotto resta): viene dal tema. */
+.vbeb-calendar-title {
+	margin-top: 0;
+	margin-block-start: 0;
+}
+
+/* Nel calendario con i prezzi il colore dello stato copre tutta la cella,
+   come nel calendario senza prezzi; i giorni di arrivo e partenza restano
+   come li disegna VikBooking. */
+.vbeb-calendar-wrap .vbcalprice td.vbtdbusy:not(.vbtdbusyforcheckin):not(.vbtdbusyforcheckout) {
+	background: var(--vbo-red-color);
+	color: var(--vbo-contrast-text-color);
+}
+
+.vbeb-calendar-wrap .vbcalprice td.vbtdwarning {
+	background: var(--vbo-orange-color);
+	color: var(--vbo-contrast-text-color);
+}
+
+.vbeb-calendar-wrap .vbcalprice td.vbtdbusy .vbcalpricedaynum span,
+.vbeb-calendar-wrap .vbcalprice td.vbtdwarning .vbcalpricedaynum span {
+	background: transparent;
+	border-color: transparent;
+	color: inherit;
+}
+
+.vbeb-calendar-wrap .vbcalprice td.vbtdfree .vbcalpricedaynum span {
+	background: transparent;
+	border-color: transparent;
+}
+
+/* Giorni passati con opacita' 50% anche nel calendario con i prezzi. */
+.vbeb-calendar-wrap tr.vbcalnumdaysprice td.vbtdpast {
+	opacity: .5;
+}
+
+/* Due calendari per riga fino a 860px di schermo, poi uno, come la scheda
+   camera di VikBooking; ogni calendario riempie la sua colonna. */
+.vbeb-calendar-wrap .vbcalsblock {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media only screen and (max-width: 860px) {
+	.vbeb-calendar-wrap .vbcalsblock {
+		grid-template-columns: repeat(1, minmax(0, 1fr));
+	}
+}
+
+.vbeb-calendar-wrap .vbcalsblock .vbcaldivcont {
+	width: 100%;
+}
+
+/* Se due mesi affiancati non ci stanno, uno sotto l'altro (la classe la
+   mette assets/js/vbeb-widgets.js, che misura i calendari). */
+.vbeb-calendar-wrap .vbcalsblock.vbeb-cal-una-colonna {
+	grid-template-columns: minmax(0, 1fr);
+}
+
+/* VBEB Camera - Carosello d'immagini: foto con le loro proporzioni,
+   centrate nella slide, come il Carosello d'immagini di Elementor;
+   "Allunga immagine" le porta a tutta larghezza. */
+.vbeb-gallery-swiper .swiper-slide {
+	text-align: center;
+}
+
+.vbeb-gallery-swiper .swiper-slide img {
+	max-width: 100%;
+	height: auto;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.vbeb-gallery-swiper .vbeb-image-stretch .swiper-slide img {
+	width: 100%;
+}
+
+.vbeb-arrows-position-outside .vbeb-gallery-swiper {
+	padding: 0 40px;
+}
+
+/* Icone delle frecce scelte nel pannello, con la misura di "Dimensione" e il
+   colore di "Colore". */
+.vbeb-gallery-swiper .vbeb-has-icon::after {
+	content: none;
+}
+
+.vbeb-gallery-swiper .vbeb-has-icon i {
+	font-size: var(--swiper-navigation-size, 44px);
+	line-height: 1;
+}
+
+.vbeb-gallery-swiper .vbeb-has-icon svg {
+	width: var(--swiper-navigation-size, 44px);
+	height: var(--swiper-navigation-size, 44px);
+	fill: currentColor;
+}
+
+.vbeb-arrows-position-outside .vbeb-gallery-swiper .swiper-button-next {
+	right: 0;
+}
+
+.vbeb-arrows-position-outside .vbeb-gallery-swiper .swiper-button-prev {
+	left: 0;
+}
+
+/* Paginazione "Esterno", sotto le immagini. */
+.vbeb-dots-position-outside .vbeb-gallery-swiper .swiper {
+	padding-bottom: calc(var(--vbeb-gal-ds, 8px) + 16px);
+	box-sizing: border-box;
+	--swiper-pagination-bottom: 4px;
+}
+
+/* La galleria deve poter restringersi: dentro un contenitore flessibile o
+   una griglia la larghezza minima di un elemento e' quella del contenuto, e
+   il carosello affianca le immagini su una riga larghissima. "width: 0" con
+   "min-width: 100%" annulla quel contributo e fa comunque occupare tutta la
+   colonna disponibile. */
+.vbeb-gallery-outer {
+	width: 0;
+	min-width: 100%;
+	max-width: 100%;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}
+
+.vbeb-gallery-outer .vbeb-gallery-swiper,
+.vbeb-gallery-outer .vbeb-gallery-thumbs,
+.vbeb-gallery-outer .swiper {
+	width: 100%;
+	min-width: 0;
+	max-width: 100%;
+	overflow: hidden;
+}
+
+.elementor-widget-vbeb_room_image_carousel_widget,
+.elementor-widget-vbeb_room_image_carousel_widget > .elementor-widget-container {
+	min-width: 0;
+	max-width: 100%;
+}
+
+.vbeb-gallery-thumbs .swiper-slide {
+	cursor: pointer;
+}
+
+/* Miniature: altezza dalle "Proporzioni" (predefinito 3:2); bordo da
+   "Colore del bordo" e "Spessore bordi", sostituito sulla miniatura scelta
+   da "Bordo miniatura attiva". */
+.vbeb-gallery-thumbs .swiper-slide img {
+	width: 100%;
+	height: auto;
+	aspect-ratio: 3 / 2;
+	object-fit: cover;
+	display: block;
+	border: solid var(--vbeb-th-bw, 0) var(--vbeb-th-bc, transparent);
+	box-sizing: border-box;
+}
+
+/* VBEB Camera - Galleria: regole della Galleria di Elementor Pro
+   (widget-gallery.css e transitions.css) che servono alla sezione Stile >
+   Immagine, limitate a questo widget: senza Elementor Pro quei file non ci
+   sono. Con il Lazy Load le foto partono gia' nella loro forma, senza
+   animazione d'ingresso. */
+.vbeb-photogallery .elementor-gallery-item {
+	border:solid var(--image-border-width) var(--image-border-color);
+	border-radius:var(--image-border-radius);
+	display:block;
+	overflow:hidden;
+	position:relative;
+	text-decoration:none;
+	transition-property:all;
+}
+
+.vbeb-photogallery .elementor-gallery-item__image.e-gallery-image {
+	transition-duration:var(--image-transition-duration);
+	transition-property:filter,transform;
+}
+
+.vbeb-photogallery .elementor-animated-content {
+	--translate:0,0;
+}
+
+.vbeb-photogallery .elementor-animated-content [class*=elementor-animated-item] {
+	will-change:transform,opacity;
+}
+
+.vbeb-photogallery .elementor-animated-content:hover .elementor-animated-item--grow,
+.vbeb-photogallery .elementor-animated-content:focus .elementor-animated-item--grow {
+	transform:scale(1.1);
+}
+
+.vbeb-photogallery .elementor-animated-content .elementor-animated-item--shrink-contained {
+	transform:scale(1.17);
+}
+
+.vbeb-photogallery .elementor-animated-content:hover .elementor-animated-item--shrink-contained,
+.vbeb-photogallery .elementor-animated-content:focus .elementor-animated-item--shrink-contained {
+	transform:scale(1);
+}
+
+.vbeb-photogallery .elementor-animated-content .elementor-animated-item--move-contained-left,
+.vbeb-photogallery .elementor-animated-content .elementor-animated-item--move-contained-right,
+.vbeb-photogallery .elementor-animated-content .elementor-animated-item--move-contained-top,
+.vbeb-photogallery .elementor-animated-content .elementor-animated-item--move-contained-bottom {
+	transform:scale(1.2) translate(var(--translate));
+}
+
+.vbeb-photogallery .elementor-animated-content:hover .elementor-animated-item--move-contained-right,
+.vbeb-photogallery .elementor-animated-content:focus .elementor-animated-item--move-contained-right {
+	--translate:8%,0;
+}
+
+.vbeb-photogallery .elementor-animated-content:hover .elementor-animated-item--move-contained-left,
+.vbeb-photogallery .elementor-animated-content:focus .elementor-animated-item--move-contained-left {
+	--translate:-8%,0;
+}
+
+.vbeb-photogallery .elementor-animated-content:hover .elementor-animated-item--move-contained-top,
+.vbeb-photogallery .elementor-animated-content:focus .elementor-animated-item--move-contained-top {
+	--translate:0,-8%;
+}
+
+.vbeb-photogallery .elementor-animated-content:hover .elementor-animated-item--move-contained-bottom,
+.vbeb-photogallery .elementor-animated-content:focus .elementor-animated-item--move-contained-bottom {
+	--translate:0,8%;
+}
+
+.vbeb-photogallery.e-gallery--lazyload .e-gallery-image:not(.e-gallery-image-loaded) {
+	filter:none;
+	transform:none;
+}
+
+.vbeb-photogallery.e-gallery--lazyload .elementor-animated-content .elementor-animated-item--shrink-contained:not(.e-gallery-image-loaded) {
+	transform:scale(1.17);
+}
+
+.vbeb-photogallery.e-gallery--lazyload .elementor-animated-content .elementor-animated-item--move-contained-left:not(.e-gallery-image-loaded),
+.vbeb-photogallery.e-gallery--lazyload .elementor-animated-content .elementor-animated-item--move-contained-right:not(.e-gallery-image-loaded),
+.vbeb-photogallery.e-gallery--lazyload .elementor-animated-content .elementor-animated-item--move-contained-top:not(.e-gallery-image-loaded),
+.vbeb-photogallery.e-gallery--lazyload .elementor-animated-content .elementor-animated-item--move-contained-bottom:not(.e-gallery-image-loaded) {
+	transform:scale(1.2) translate(var(--translate));
+}
+
+/* VBEB Camera - Modulo prenotazione: niente margini di VikBooking sopra e
+   sotto il modulo e sul titolo, niente linea sotto il titolo, etichette a
+   sinistra, Adulti e Bambini a meta' riga, campi alti come "Altezza campi"
+   (54px se manca), "Camera 1, 2..." centrato, divisore fra le voci degli
+   ospiti. */
+.vbeb-bookingform-wrap .vbo-seldates-cont {
+	margin-top:0;
+	margin-bottom:0;
+}
+
+.vbeb-bookingform-wrap .vbo-room-details-booking-wrapper .vbdivsearch {
+	margin-bottom:0;
+}
+
+:where(.vbeb-bookingform-wrap) .vbeb-form-title {
+	margin-top:0;
+}
+
+.vbeb-bookingform-wrap .vbeb-form-title {
+	border-bottom:0;
+}
+
+.vbeb-bookingform-wrap .vbo-room-details-booking-wrapper {
+	vertical-align:top;
+}
+
+.vbeb-bookingform-wrap .vbo-search-num-adults-entry > label,
+.vbeb-bookingform-wrap .vbo-search-num-children-entry > label {
+	text-align:left;
+}
+
+.vbeb-bookingform-wrap .vbo-search-num-aduchild-entry > .vbo-search-num-adults-entry,
+.vbeb-bookingform-wrap .vbo-search-num-aduchild-entry > .vbo-search-num-children-entry {
+	flex:1 1 0;
+	min-width:0;
+}
+
+.vbeb-bookingform-wrap .vbdivsearch .vb-search-inner .vbo-search-inpblock .input-group {
+	height:var(--vbeb-field-h,54px);
+	box-sizing:border-box;
+}
+
+.vbeb-bookingform-wrap .vbdivsearch .vb-search-inner .vbo-search-inpblock .input-group > input {
+	height:100%;
+}
+
+.vbeb-bookingform-wrap .vbdivsearch .vb-search-inner .vbo-search-inpblock .input-group > .vbo-caltrigger {
+	height:auto;
+	line-height:1;
+}
+
+.vbeb-bookingform-wrap .vbo-seldates-cont .vbdivsearch .vb-search-inner div select {
+	height:var(--vbeb-field-h,54px) !important;
+	box-sizing:border-box;
+}
+
+.vbeb-bookingform-wrap .vbo-search-num-aduchild-entry > .vbo-search-roomnum {
+	margin:0;
+	align-self:flex-end;
+	display:flex;
+	align-items:center;
+	height:var(--vbeb-field-h,54px);
+	box-sizing:border-box;
+}
+
+.vbeb-cap-divider-yes .vbmaxminpeopleroom > div:not(:last-child)::after {
+	content:"";
+	position:absolute;
+	top:var(--vbeb-cap-a-top);
+	bottom:var(--vbeb-cap-a-bottom);
+	left:var(--vbeb-cap-a-left);
+	right:var(--vbeb-cap-a-right);
+	width:var(--vbeb-cap-a-w);
+	height:var(--vbeb-cap-a-h);
+	margin:0 auto;
+	border-left:var(--vbeb-cap-a-bl);
+	border-top:var(--vbeb-cap-a-bt);
+	transform:var(--vbeb-cap-a-tr);
+	box-sizing:border-box;
+	pointer-events:none;
+}
+
+/* Freccia dei menu Adulti, Bambini e Camere con il colore del pannello
+   ("--vbeb-bf-arrow", immagine SVG preparata dal widget). */
+.vbeb-bookingform-wrap .vbdivsearch .vb-search-inner select[name="adults[]"],
+.vbeb-bookingform-wrap .vbdivsearch .vb-search-inner select[name="children[]"],
+.vbeb-bookingform-wrap .vbdivsearch .vb-search-inner select[name="roomsnum"] {
+	background-image: var(--vbeb-bf-arrow);
+}
+
+/* Icone degli ospiti con Visualizza "Predefinito": misura naturale del
+   simbolo ("!important": la regola di "Dimensione icone" pesa di piu'). */
+.vbeb-bf-icon-default .vbmaxadultsdet .vbmaximgdet i,
+.vbeb-bf-icon-default .vbmaxchildrendet .vbmaximgdet i,
+.vbeb-bf-icon-default .vbmaxtotdet .vbmaximgdet i {
+	width: auto !important;
+	height: auto !important;
+	line-height: normal !important;
+}
+
+/* VBEB Camera - Modulo informazioni: fuori dal popup senza posizione fissa
+   e senza l'aspetto del riquadro di VikBooking; campi affiancabili
+   ("Larghezza colonna"); casella dei termini prima del testo; sfondo e
+   bordo del messaggio dopo l'invio (Stile > Messaggio). */
+.vbeb-reqinfoform.vbeb-reqinfoform-fuori {
+	position:static;
+	transform:none;
+	left:auto;
+	top:auto;
+	width:auto;
+	max-width:none;
+	min-height:0;
+	overflow:visible;
+	z-index:auto;
+}
+
+.vbeb-reqinfoform.vbeb-reqinfoform-fuori {
+	margin:0;
+	padding:0;
+	border:0;
+	border-radius:0;
+	box-shadow:none;
+	background:transparent;
+}
+
+.vbeb-reqinfoform .vbdialog-reqinfo-formcont {
+	margin:0;
+}
+
+.vbeb-reqinfoform .vbeb-reqinfoform-title {
+	margin-top:0;
+}
+
+.vbeb-reqinfoform .vbdialog-reqinfo-formcont {
+	display:flex;
+	flex-wrap:wrap;
+	column-gap:var(--vbeb-ri-gap,10px);
+}
+
+.vbeb-reqinfoform .vbdialog-reqinfo-formcont > .vbdialog-reqinfo-formentry {
+	flex:0 0 100%;
+	max-width:100%;
+	min-width:0;
+	box-sizing:border-box;
+}
+
+.vbeb-reqinfoform .vbdialog-reqinfo-formentry-ckbox input[type="checkbox"] {
+	margin:0 4px 0 0;
+	vertical-align:middle;
+}
+
+.notice:has(> p > .vbeb-reqinfo-msg) {
+	background-color:var(--vbeb-notice-bg,var(--vbo-white-bg-color)) !important;
+	border-color:var(--vbeb-notice-bc,var(--vbo-lightblue-color)) !important;
+}
+
+.notice:has(> p > .vbeb-reqinfo-msg) {
+	display:block;
+	width:auto;
+	box-sizing:border-box;
+}
+
+/* VBEB Calendario popup: lo strato "::before" delle frecce, che porta lo
+   sfondo di hover scelto nel pannello (VikBooking azzera lo sfondo della
+   freccia con "!important"); "Nascondi" i pulsanti; i giorni prima della
+   data minima che non sono passati hanno l'aspetto dei giorni futuri. */
+[class*="vbeb-calpop-"] .ui-datepicker .ui-datepicker-prev::before,
+.ui-datepicker[class*="vbeb-calpop-"] .ui-datepicker-prev::before,
+[class*="vbeb-calpop-"] .ui-datepicker .ui-datepicker-next::before,
+.ui-datepicker[class*="vbeb-calpop-"] .ui-datepicker-next::before {
+	content:"";
+	position:absolute;
+	top:0;
+	right:0;
+	bottom:0;
+	left:0;
+	border-radius:inherit;
+	background-color:transparent;
+	pointer-events:none;
+}
+
+.ui-datepicker.vbeb-calpop-nocmd .vbo-drp-commands-bottom {
+	display:none !important;
+}
+
+[class*="vbeb-calpop-"] .ui-datepicker td.date-past:not(.vbeb-past),
+.ui-datepicker[class*="vbeb-calpop-"] td.date-past:not(.vbeb-past) {
+	opacity:1 !important;
+}
+
+/* Calendario di prova del widget "VBEB Calendario popup": senza aspetto
+   proprio, lo da' il template "VBEB Popup" che lo contiene. */
+.vbeb-calpop-preview .ui-datepicker {
+	display:inline-block;
+	background:transparent;
+	border:0;
+	border-radius:0;
+	box-shadow:none;
+	padding:0;
+	margin:0;
+}
+
+.vbeb-calpop-preview {
+	max-width:100%;
+	overflow-x:auto;
+}

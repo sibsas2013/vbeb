@@ -51,7 +51,17 @@ VikBooking and Elementor are trademarks of their respective owners. This plugin 
 3. In Elementor, create a template of type "Page" and add the widgets of the "VBEB - Room Details" category.
 4. Go to VBEB > Template and select the template for the Room Details page.
 
-On activation the plugin copies the override file `default_listing.php` to `wp-content/uploads/vikbooking/overrides/site/roomdetails/`. If a file with the same name already exists and was not created by this plugin, it is not overwritten: a copy with the suffix `-vbeb-suggested.php` is saved next to it and a notice is shown in the dashboard.
+The plugin does not copy or modify any file. When a template is selected, VBEB tells VikBooking (through its `vikbooking_before_display_roomdetails` action) to use the room details layout included in the plugin folder. Without a selected template, VikBooking works exactly as before, including any template override you created yourself.
+
+== External services ==
+
+This plugin can connect to the Google Maps JavaScript API, a service provided by Google, to show the map of a room.
+
+* What it is used for: only in the Elementor editor, the "VBEB Room - Map" widget shows the real map of the preview room, so you can see how the map looks while you design the template. On the public pages of the site, the map is drawn by VikBooking itself, not by this plugin.
+* When it is used: only when the "VBEB Room - Map" widget is on the template open in the Elementor editor, and only if "Enable Geocoding" is turned on in VikBooking with a Google Maps API key.
+* What data is sent: the Google Maps API key saved in VikBooking, the coordinates of the room shown on the map and, like any request made by a browser, the IP address and browser information of the person using the Elementor editor.
+
+This service is provided by Google: [Google Maps Platform Terms of Service](https://cloud.google.com/maps-platform/terms), [Google Privacy Policy](https://policies.google.com/privacy).
 
 == Frequently Asked Questions ==
 

@@ -47,7 +47,7 @@ The plugin also adds the **VBEB Popup** template type, with two popup types: **I
 3. In Elementor, create a template of type "Page" and add the widgets of the "VBEB - Room Details" category.
 4. Go to **VBEB > Template** and select the template for the Room Details page.
 
-On activation the plugin copies the override file `default_listing.php` to `wp-content/uploads/vikbooking/overrides/site/roomdetails/`. If a file with the same name already exists and was not created by this plugin, it is not overwritten: a copy with the suffix `-vbeb-suggested.php` is saved next to it and a notice is shown in the dashboard.
+The plugin does not copy or modify any file. When a template is selected, VBEB tells VikBooking (through its `vikbooking_before_display_roomdetails` action) to use the room details layout included in the plugin folder. Without a selected template, VikBooking works exactly as before, including any template override you created yourself.
 
 The supported room layout is the VikBooking "Listing" layout, the default one for new rooms. Without a selected template, the Room Details page is shown exactly as VikBooking draws it.
 
@@ -64,7 +64,7 @@ Note: for a logged-in user, VikBooking shows its data in the language chosen in 
 
 ## Translations
 
-The interface of the plugin is in English and is translated into Italian and Spanish (text domain `vbeb-bridge-for-vikbooking-and-elementor`, files in the `languages` folder).
+The interface of the plugin is in English (text domain `vbeb-bridge-for-vikbooking-and-elementor`). Translations into other languages are managed on [translate.wordpress.org](https://translate.wordpress.org/) and are installed automatically by WordPress.
 
 ## License
 

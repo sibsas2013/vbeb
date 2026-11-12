@@ -10,7 +10,6 @@
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: vbeb-bridge-for-vikbooking-and-elementor
- * Domain Path: /languages
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -22,23 +21,15 @@ define( 'VBEB_MAIN_FILE', __FILE__ );
 define( 'VBEB_PATH', plugin_dir_path( __FILE__ ) );
 define( 'VBEB_URL', plugin_dir_url( __FILE__ ) );
 
-/**
- * VBEB 7.616.0, su richiesta dell'utente: traduzioni dei testi propri del
- * plugin (dominio "vbeb-bridge-for-vikbooking-and-elementor"). Nel codice i testi sono in inglese; il file
- * languages/vbeb-it_IT riporta l'italiano.
- * VBEB free (wordpress.org), su richiesta dell'utente: anche i testi che
- * esistono in Elementor usano il dominio "vbeb-bridge-for-vikbooking-and-elementor" (wordpress.org accetta solo
- * il dominio del plugin). L'inglese resta quello di Elementor e le
- * traduzioni italiana e spagnola sono copiate dai file di lingua di
- * Elementor (elementor-it_IT.po, elementor-es_ES.po): i commenti "dominio
- * elementor" nei widget indicano questi testi.
- * Un file in wp-content/languages/plugins/ (per esempio fatto con Loco
- * Translate) ha la precedenza su quello del plugin.
+/*
+ * Traduzioni: i testi del plugin usano il dominio
+ * "vbeb-bridge-for-vikbooking-and-elementor". VBEB free (revisione di
+ * wordpress.org): niente load_plugin_textdomain() e niente cartella
+ * languages; WordPress carica da solo le traduzioni di translate.wordpress.org
+ * (o un file in wp-content/languages/plugins/, per esempio fatto con Loco
+ * Translate). I testi che esistono anche in Elementor usano lo stesso dominio
+ * (i commenti "dominio elementor" nei widget li indicano).
  */
-function vbeb_load_textdomain() {
-	load_plugin_textdomain( 'vbeb-bridge-for-vikbooking-and-elementor', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' ); // phpcs:ignore PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound -- traduzioni italiana e spagnola incluse nel plugin (cartella languages).
-}
-add_action( 'init', 'vbeb_load_textdomain', 0 );
 
 /**
  * Impedisce l'attivazione del plugin se Elementor e/o VikBooking non sono
@@ -90,8 +81,8 @@ add_action( 'admin_notices', 'vbeb_admin_notice_missing_elementor' );
  * (editor.js, "replace(/(:)[^;]+(;?)/g, ...)"): vinceva di nuovo VikBooking.
  *
  * Qui, per i soli widget VBEB e per i soli colori globali, la regola viene
- * ristampata accanto al widget con il colore globale e il "!important"
- * originale, rispettando condizioni e dispositivi. Le impostazioni
+ * riscritta con il colore globale e il "!important" originale, rispettando
+ * condizioni e dispositivi (restituisce il CSS, senza tag). Le impostazioni
  * interessate ridisegnano il widget quando cambiano (vedi sotto), cosi'
  * anche nell'editor la regola compare subito.
  */
@@ -147,16 +138,47 @@ function vbeb_regole_globali_forzate( $element ) {
 		$css .= $regole;
 	}
 
-	return '' === $css ? '' : '<style>' . $css . '</style>';
+	return $css;
 }
 
+/*
+ * VBEB free (revisione di wordpress.org): sul sito le regole vanno nel
+ * foglio CSS che Elementor genera per la pagina o il template
+ * (Stylesheet::add_raw_css()), non piu' in un blocco <style> accanto al
+ * widget.
+ */
+add_action(
+	'elementor/element/parse_css',
+	function ( $post_css, $element ) {
+		if ( ! $element instanceof \Elementor\Widget_Base || 0 !== strpos( get_class( $element ), 'VBEB_' ) ) {
+			return;
+		}
+		$css = vbeb_regole_globali_forzate( $element );
+		if ( '' !== $css ) {
+			$post_css->get_stylesheet()->add_raw_css( $css );
+		}
+	},
+	10,
+	2
+);
+
+/*
+ * Nell'editor il foglio di Elementor lo scrive lo script dell'editor, che
+ * non conosce queste regole: il widget le porta in un segnaposto nascosto e
+ * assets/js/vbeb-editor.js le aggiunge all'anteprima, anche dopo ogni
+ * modifica.
+ */
 add_filter(
 	'elementor/widget/render_content',
 	function ( $content, $widget ) {
-		if ( 0 !== strpos( get_class( $widget ), 'VBEB_' ) ) {
+		if ( 0 !== strpos( get_class( $widget ), 'VBEB_' ) || ! \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
 			return $content;
 		}
-		return vbeb_regole_globali_forzate( $widget ) . $content;
+		$css = vbeb_regole_globali_forzate( $widget );
+		if ( '' === $css ) {
+			return $content;
+		}
+		return '<span class="vbeb-css-globali" hidden data-vbeb-css="' . esc_attr( $css ) . '"></span>' . $content;
 	},
 	10,
 	2
@@ -231,7 +253,7 @@ function vbeb_template_lingua( $template_id ) {
  * Gli stili degli elementi v4 di Elementor per un template inserito da VBEB.
  *
  * VBEB 7.641.0, su richiesta dell'utente (per ora solo il template
- * "Dettaglio camera", override-templates/default_listing.php). Elementor
+ * "Dettaglio camera", override-templates/roomdetails/default_listing.php). Elementor
  * prepara il foglio con gli stili degli elementi v4 (Flexbox, Titolo e
  * Paragrafo atomici: modules/atomic-widgets/styles/atomic-styles-manager.php)
  * solo per la pagina aperta e per l'anteprima dell'editor
@@ -333,7 +355,12 @@ add_action(
 					if ( '' === $valore || null === $valore ) {
 						continue;
 					}
-					$righe[] = '--vbo-pref-' . preg_replace( '/[^a-z0-9]/', '', strtolower( $chiave ) ) . ': ' . $valore . ';';
+					// VBEB free (revisione di wordpress.org): solo colori validi.
+					$valore = vbeb_colore_css( $valore );
+					if ( '' === $valore ) {
+						continue;
+					}
+					$righe[] = '--vbo-pref-' . preg_replace( '/[^a-z0-9]/', '', strtolower( (string) $chiave ) ) . ': ' . $valore . ';';
 				}
 				if ( ! empty( $righe ) ) {
 					wp_add_inline_style( 'vbeb-vikbooking-editor', ':root {' . implode( '', $righe ) . '}' );
@@ -469,25 +496,23 @@ function vbeb_popup_css_chiusura( $sel ) {
 }
 
 /**
- * VBEB 7.487.0: CSS dei popup "VBEB Popup" sul sito, una volta per pagina.
+ * VBEB 7.487.0: CSS dei popup "VBEB Popup" sul sito.
  * Il riquadro di VikBooking (".vbdialog-reqinfo", con l'altezza massima del
  * "Pulsante informazioni") non scorre piu' lui: scorre il contenitore
  * interno ".vbeb-popup-scroll", e il riquadro lascia uscire il pulsante di
  * chiusura.
  *
- * @return string
+ * VBEB free (revisione di wordpress.org): le regole si aggiungono al foglio
+ * dei widget con wp_add_inline_style() (vedi vbeb_registra_risorse()); qui
+ * restano perche' il pulsante di chiusura usa l'immagine di VikBooking, il
+ * cui indirizzo dipende dal sito.
+ *
+ * @return string CSS, senza tag.
  */
 function vbeb_popup_css_sito() {
-	static $fatto = false;
-	if ( $fatto ) {
-		return '';
-	}
-	$fatto = true;
-	return '<style id="vbeb-popup-sito">'
-		. '.vbeb-reqinfo-wrap .vbdialog-inner.vbdialog-reqinfo.vbeb-popup{overflow:visible;display:flex;flex-direction:column;}'
+	return '.vbeb-reqinfo-wrap .vbdialog-inner.vbdialog-reqinfo.vbeb-popup{overflow:visible;display:flex;flex-direction:column;}'
 		. '.vbeb-popup>.vbeb-popup-scroll{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;}'
-		. vbeb_popup_css_chiusura( '.vbeb-popup>.vbeb-popup-close' )
-		. '</style>';
+		. vbeb_popup_css_chiusura( '.vbeb-popup>.vbeb-popup-close' );
 }
 
 /**
@@ -653,11 +678,81 @@ add_filter( 'wp_mail', 'vbeb_reqinfo_etichette_email' );
 require_once VBEB_PATH . 'includes/class-vbeb-room-context.php';
 // VBEB 7.30.0: camera di esempio nell'editor di Elementor.
 require_once VBEB_PATH . 'includes/class-vbeb-editor-preview.php';
-// VBEB free: fogli e icone di VikBooking nell'anteprima dell'editor.
-require_once VBEB_PATH . 'includes/vbeb-editor-helpers.php';
+// VBEB free (revisione di wordpress.org): stampa filtrata dell'HTML di VikBooking.
+require_once VBEB_PATH . 'includes/vbeb-kses.php';
+
+/**
+ * Fogli e script di VBEB.
+ *
+ * VBEB free (revisione di wordpress.org): le regole e gli script che i
+ * widget stampavano in blocchi <style> e <script> sono nei file della
+ * cartella assets, registrati qui e caricati dai widget
+ * (get_style_depends() e get_script_depends()).
+ *
+ * @return void
+ */
+function vbeb_registra_risorse() {
+	wp_register_style( 'vbeb-widgets', VBEB_URL . 'assets/css/vbeb-widgets.css', array(), VBEB_VERSION );
+	wp_add_inline_style( 'vbeb-widgets', vbeb_popup_css_sito() );
+	wp_register_script( 'vbeb-widgets', VBEB_URL . 'assets/js/vbeb-widgets.js', array(), VBEB_VERSION, true );
+	wp_register_script( 'vbeb-calpopup', VBEB_URL . 'assets/js/vbeb-calpopup.js', array( 'jquery' ), VBEB_VERSION, true );
+	wp_register_script( 'vbeb-editor', VBEB_URL . 'assets/js/vbeb-editor.js', array( 'elementor-frontend' ), VBEB_VERSION, true );
+}
+add_action( 'init', 'vbeb_registra_risorse' );
+
+/**
+ * Nell'anteprima dell'editor: il foglio dei widget e lo script dell'editor.
+ *
+ * @return void
+ */
+function vbeb_carica_risorse_editor() {
+	wp_enqueue_style( 'vbeb-widgets' );
+	wp_enqueue_script( 'vbeb-editor' );
+}
+add_action( 'elementor/preview/enqueue_scripts', 'vbeb_carica_risorse_editor' );
+
+/**
+ * Sul sito, con un template scelto in VBEB > Template, il foglio dei widget
+ * si carica nell'intestazione della pagina: i widget sono dentro la pagina
+ * di VikBooking, disegnata dopo l'intestazione, e senza questo il foglio
+ * arriverebbe solo in fondo alla pagina.
+ *
+ * @return void
+ */
+function vbeb_carica_risorse_sito() {
+	if ( (int) get_option( 'vbeb_template_listing', 0 ) > 0 ) {
+		wp_enqueue_style( 'vbeb-widgets' );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'vbeb_carica_risorse_sito' );
 require_once VBEB_PATH . 'includes/class-vbeb-admin-settings.php';
 require_once VBEB_PATH . 'includes/class-vbeb-hide-layout-option.php';
-require_once VBEB_PATH . 'includes/class-vbeb-override-installer.php';
+
+/**
+ * Pagina "Dettaglio camera" di VikBooking con il template Elementor scelto.
+ *
+ * VBEB free, revisione di wordpress.org: al posto di copiare un file di
+ * override nella cartella uploads, VBEB sostituisce la vista di VikBooking
+ * con una sottoclasse che prende il file "default_listing" dalla cartella del
+ * plugin (vedi includes/class-vbeb-roomdetails-view.php). Solo con un
+ * template scelto in VBEB > Template: senza template resta tutto come lo
+ * disegna VikBooking, compresi eventuali override dell'utente.
+ *
+ * @param object $vista Vista di VikBooking, passata per riferimento.
+ * @return void
+ */
+function vbeb_vista_dettaglio_camera( &$vista ) {
+	if ( ! is_object( $vista ) || ! is_a( $vista, 'VikbookingViewRoomdetails' ) || (int) get_option( 'vbeb_template_listing', 0 ) <= 0 ) {
+		return;
+	}
+
+	require_once VBEB_PATH . 'includes/class-vbeb-roomdetails-view.php';
+
+	if ( class_exists( 'VBEB_Roomdetails_View' ) && ! $vista instanceof VBEB_Roomdetails_View ) {
+		$vista = VBEB_Roomdetails_View::da_vista( $vista );
+	}
+}
+add_action( 'vikbooking_before_display_roomdetails', 'vbeb_vista_dettaglio_camera' );
 
 /**
  * VBEB 7.616.0, su richiesta dell'utente: in VikBooking (Globale >
