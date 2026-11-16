@@ -37,6 +37,22 @@ Widget in the "VBEB - General Widgets" category:
 
 The plugin also adds the "VBEB Popup" template type, with two popup types: "Information Form", used by the Room - Information Button widget to show the information request form in a popup, and "Popup Calendar", for the date picker of the Room - Booking Form widget.
 
+= How to use =
+
+1. In VikBooking > Shortcodes, create a shortcode of type "Room Details" and add it to a WordPress page (VikBooking can create the page for you). This is the page where VikBooking shows the rooms.
+2. Edit that page and, in the "Template" option of the page settings, choose "Elementor Full Width", so the room details can use the whole width of the page. Update the page.
+3. In the WordPress dashboard, go to Elementor > Templates > Saved Templates and add a new template of type "Page", for example "Room Details".
+4. Open it with Elementor and build the layout with the widgets of the "VBEB - Room Details" category. In the editor the widgets show the data of a sample room, so you can see the real result while you design.
+5. Publish the template.
+6. Go to VBEB > Template, choose your template in "Room Details" and save. From now on, every room page of VikBooking uses this template.
+7. Optional: for the information request in a popup, create a template of type "VBEB Popup" with Popup Type "Information Form", add the Room - Information Form widget and select the template in the Room - Information Button widget. For a custom date picker, create a "VBEB Popup" template with Popup Type "Popup Calendar", add the VBEB Popup Calendar widget and select the template in the Room - Booking Form widget.
+
+To go back to the original VikBooking page, choose "Use the original VikBooking template" in VBEB > Template.
+
+= Room layout option in VikBooking =
+
+While VBEB is active, the "Style Layout" option (Classic or Listing) is hidden in the VikBooking room edit screen, because the look of the room page is decided by the Elementor template. The value already saved for each room is not changed. VBEB uses the "Listing" layout, the default one for new rooms.
+
 VikBooking and Elementor are trademarks of their respective owners. This plugin is not affiliated with or endorsed by them.
 
 = Requirements =
@@ -67,7 +83,11 @@ This service is provided by Google: [Google Maps Platform Terms of Service](http
 
 = Which room layout is supported? =
 
-The "Listing" layout of VikBooking, the default one for new rooms.
+The "Listing" layout of VikBooking, the default one for new rooms. A room saved with the "Classic" layout keeps the original VikBooking page. To switch it to "Listing", deactivate VBEB for a moment (the "Style Layout" option appears again in the room edit screen), change the option, save the room and activate VBEB again.
+
+= Why is the "Style Layout" option missing in the VikBooking room edit screen? =
+
+VBEB hides it while it is active, because the look of the room page is decided by the Elementor template. See "Room layout option in VikBooking" above.
 
 = What happens if I do not select a template? =
 
