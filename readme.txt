@@ -51,7 +51,7 @@ To go back to the original VikBooking page, choose "Use the original VikBooking 
 
 = Room layout option in VikBooking =
 
-While VBEB is active, the "Style Layout" option (Classic or Listing) is hidden in the VikBooking room edit screen, because the look of the room page is decided by the Elementor template. The value already saved for each room is not changed. VBEB uses the "Listing" layout, the default one for new rooms.
+While VBEB is active, the "Layout style" option (Classic or Listing) is hidden in the VikBooking room edit screen, because the look of the room page is decided by the Elementor template. The value already saved for each room is not changed. VBEB uses the "Listing" layout, the default one for new rooms.
 
 = Compatibility =
 
@@ -88,9 +88,9 @@ This service is provided by Google: [Google Maps Platform Terms of Service](http
 
 = Which room layout is supported? =
 
-The "Listing" layout of VikBooking, the default one for new rooms. A room saved with the "Classic" layout keeps the original VikBooking page. To switch it to "Listing", deactivate VBEB for a moment (the "Style Layout" option appears again in the room edit screen), change the option, save the room and activate VBEB again.
+The "Listing" layout of VikBooking, the default one for new rooms. A room saved with the "Classic" layout keeps the original VikBooking page. To switch it to "Listing", deactivate VBEB for a moment (the "Layout style" option appears again in the room edit screen), change the option, save the room and activate VBEB again.
 
-= Why is the "Style Layout" option missing in the VikBooking room edit screen? =
+= Why is the "Layout style" option missing in the VikBooking room edit screen? =
 
 VBEB hides it while it is active, because the look of the room page is decided by the Elementor template. See "Room layout option in VikBooking" above.
 

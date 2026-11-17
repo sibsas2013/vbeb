@@ -54,7 +54,7 @@ To go back to the original VikBooking page, choose "Use the original VikBooking 
 
 ### Room layout option in VikBooking
 
-While VBEB is active, the "Style Layout" option (Classic or Listing) is hidden in the VikBooking room edit screen, because the look of the room page is decided by the Elementor template. The value already saved for each room is not changed. VBEB uses the "Listing" layout, the default one for new rooms: to switch a room saved as "Classic", deactivate VBEB for a moment, change the option, save the room and activate VBEB again.
+While VBEB is active, the "Layout style" option (Classic or Listing) is hidden in the VikBooking room edit screen, because the look of the room page is decided by the Elementor template. The value already saved for each room is not changed. VBEB uses the "Listing" layout, the default one for new rooms: to switch a room saved as "Classic", deactivate VBEB for a moment, change the option, save the room and activate VBEB again.
 
 ## Installation
 
