@@ -53,6 +53,11 @@ To go back to the original VikBooking page, choose "Use the original VikBooking 
 
 While VBEB is active, the "Style Layout" option (Classic or Listing) is hidden in the VikBooking room edit screen, because the look of the room page is decided by the Elementor template. The value already saved for each room is not changed. VBEB uses the "Listing" layout, the default one for new rooms.
 
+= Compatibility =
+
+* Multilingual sites: works with WPML and Polylang (see the FAQ).
+* Themes: tested with Plaza (theme for VikBooking), Hello Elementor and Astra.
+
 VikBooking and Elementor are trademarks of their respective owners. This plugin is not affiliated with or endorsed by them.
 
 = Requirements =

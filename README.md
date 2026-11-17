@@ -66,6 +66,11 @@ The plugin does not copy or modify any file. When a template is selected, VBEB t
 
 The supported room layout is the VikBooking "Listing" layout, the default one for new rooms. Without a selected template, the Room Details page is shown exactly as VikBooking draws it.
 
+## Compatibility
+
+- Multilingual sites: works with **WPML** and **Polylang** (see below).
+- Themes: tested with **Plaza** (theme for VikBooking), **Hello Elementor** and **Astra**.
+
 ## Multilingual sites
 
 VBEB works with **WPML** and **Polylang**.
