@@ -102,6 +102,19 @@ The Room Details page is shown exactly as VikBooking draws it.
 
 Yes. The room data is translated with the VikBooking translations. When a translated copy of the Room Details template (or of a "VBEB Popup" or popup calendar template) exists and is published, it is used for the pages in that language. With WPML, the texts typed in the widgets can be translated with the WPML translation editor (the plugin includes a wpml-config.xml file). With Polylang, enable the translation of the Elementor templates in Languages > Settings > Custom post types and taxonomies.
 
+== Screenshots ==
+
+1. The widgets of the "VBEB - Room Details" category in the Elementor panel, with the Room Details template open in the editor.
+2. Description, amenities, availability calendar and booking form showing the real data of a sample room, and the VBEB Popup Calendar widget in the "VBEB - General Widgets" category.
+3. Style options of the Room - Name widget.
+4. Style options of the Room - Main Image widget, above the Room - Image Carousel.
+5. Style options of the Room - Description widget.
+6. A "VBEB Popup" template of type "Popup Calendar": the date picker of the booking form designed with the VBEB Popup Calendar widget.
+7. A "VBEB Popup" template of type "Information Form" with the Room - Information Form widget.
+8. The Room Details and "VBEB Popup" templates in Elementor > Templates > Saved Templates, on a multilingual site.
+9. VBEB > Template: the template used for the VikBooking Room Details page.
+10. VBEB requires VikBooking and Elementor, both in their free versions.
+
 == Changelog ==
 
 = 1.0.0 =
